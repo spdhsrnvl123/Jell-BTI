@@ -47,14 +47,22 @@ class CommentServiceTest {
         System.out.println("댓글 등록 완료");
     }
     @Test
+    @Transactional
     void 댓글모두삭제(){
         commentRepository.deleteAll();
     }
 
-    @Test
-    @Transactional
-    void 글가져오기(){
-        List<jBoard> jBoards = boardRepository.findAllList();
-        System.out.println(jBoards);
-    }
+//    @Test
+//    @Transactional
+//    void 글가져오기(){
+//        List<jBoard> jBoards = boardRepository.findAllList();
+//        System.out.println(jBoards);
+//    }
+//    @Test
+//    @Transactional
+//    void 댓글수출력(){
+//        long i = 3933;
+//        int j = commentRepository.checkCommentCnt(i);
+//        System.out.println(j);
+//    }
 }
