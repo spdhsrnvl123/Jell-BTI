@@ -17,6 +17,9 @@
 ## 🐻 프로젝트 화면 구성(초안)
 <img width="909" alt="스크린샷 2023-03-02 오후 4 48 28" src="https://user-images.githubusercontent.com/108074336/222364621-fff306dd-b5cf-4566-891b-77f3d6bc1fa7.png">
 
+## 🐻 ERD
+![Uploading 스크린샷 2023-03-23 오후 2.25.47.png…]()
+
 ## 🐻 사용 기술
 <table>
     <tr>
