@@ -1,5 +1,7 @@
 package my.jelly.service;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -16,12 +18,16 @@ import java.util.Map;
 @Service
 public class KakaoService {
     public String getToken(String code) throws IOException {
+
+        String access_token = "";
+        String refresh_token = "";
         // 인가코드로 토큰받기
         String host = "https://kauth.kakao.com/oauth/token";
-        URL url = new URL(host);
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        String token = "";
+
         try {
+            URL url = new URL(host);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoOutput(true); // 데이터 기록 알려주기
 
@@ -35,38 +41,40 @@ public class KakaoService {
             bw.write(sb.toString());
             bw.flush();
 
+            //결과 코드 200이면 통신 성공임!
             int responseCode = urlConnection.getResponseCode();
             System.out.println("responseCode = " + responseCode);
 
+            //요청 통해 얻은 JSON타입 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line = "";
             String result = "";
+
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("result = " + result);
+            System.out.println("response body = " + result);
 
-            // json parsing
-            JSONParser parser = new JSONParser();
-            JSONObject elem = (JSONObject) parser.parse(result);
+            //Json 파싱 : Gson라이브러리에 포함된 클래스로 JSON 파싱 객체 생성
+            JsonParser parser = new JsonParser();
+            JsonElement elem = parser.parse(result);
 
-            String access_token = elem.get("access_token").toString();
-            String refresh_token = elem.get("refresh_token").toString();
+
+            access_token = elem.getAsJsonObject().get("access_token").getAsString();
+            refresh_token = elem.getAsJsonObject().get("refresh_token").getAsString();
+
             System.out.println("refresh_token = " + refresh_token);
             System.out.println("access_token = " + access_token);
 
-            token = access_token;
 
             br.close();
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
 
 
-        return token;
+        return access_token;
     }
 
 
