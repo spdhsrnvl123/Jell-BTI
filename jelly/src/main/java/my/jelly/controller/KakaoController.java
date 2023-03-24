@@ -44,7 +44,7 @@ public class KakaoController {
 //            session.setAttribute("email", userInfo.get("email"));
 //            session.setAttribute("age_range", userInfo.get("age_range"));
 //        }
-//
+//아 어려워
 //        //ci는 비즈니스 전환후 검수신청 -> 허락받아야 수집 가능
 //        return "index";
 //    }
