@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 public class MainController {
     @GetMapping("/hello")
     public String test(){
-        return "Hello, JELLY!";
+        return "Hello, World!";
     }
 /*
     @RequestMapping("/logout")
