@@ -25,29 +25,28 @@ class BoardServiceTest {
 
     @Test
     @Transactional
-    @Commit
+    //@Commit
     void 테스트게시글등록(){
         IntStream.rangeClosed(1, 50).forEach(i -> {
             jBoard board = new jBoard();
             Member member = memberService.findUser(("test" + i + "@kakao.com"));
-            board.setBTitle("글 제목" + i);
-            board.setBContent("글 내용" + i);
+            board.setBTitle("글 제목2" + i);
+            board.setBContent("글 내용2" + i);
             board.setMemberVO(member);
             boardRepository.save(board);
         });
         System.out.println("글 등록 완료!");
     }
-    @Test
-    void 테스트(){
-
-    }
 
     @Test
-    void 회원작성글조회(){
+    @Transactional
+    void 특정회원작성글조회(){
         String user = "test1@kakao.com";
         Member member = memberService.findUser(user);
+        System.out.println(member);
+        List<jBoard> list = boardRepository.findBymEmail(member.getMEmail());
 
-
+        System.out.println(list);
     }
 
 }

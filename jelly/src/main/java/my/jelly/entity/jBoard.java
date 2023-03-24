@@ -24,7 +24,7 @@ public class jBoard extends BaseEntity {
     private String bContent; //글 내용
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="mAccount") //name = 생성될 column 명
+    @JoinColumn(name="mEmail") //name = 생성될 column 명
     private Member MemberVO; //작성자 정보
 
 }
