@@ -24,6 +24,6 @@ public class jComment extends BaseEntity {
     private String cContent; //댓글 내용
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="mAccount") //name = 생성될 column 명
+    @JoinColumn(name="mEmail") //name = 생성될 column 명
     private Member MemberVO; //댓글 작성자 정보
 }
