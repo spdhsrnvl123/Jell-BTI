@@ -45,7 +45,7 @@ class BoardServiceTest {
         Member member = memberService.findUser(user);
         System.out.println(member);
         List<jBoard> list = boardRepository.findBymEmail(member.getMEmail());
-
+//리스트에 특정회원이 작성한 글 모두 담기
         System.out.println(list);
     }
 
