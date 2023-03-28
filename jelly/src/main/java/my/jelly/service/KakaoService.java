@@ -38,7 +38,7 @@ public class KakaoService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=aae56b5a75ed41619c033ab689aea475");
-            sb.append("&redirect_uri=http://localhost:8080/login/kakao");
+            sb.append("&redirect_uri=http://localhost:8080/login/kakao"); //프 서버로 바꾸기
             sb.append("&code=" + code);
 
             bw.write(sb.toString());
@@ -62,20 +62,17 @@ public class KakaoService {
             JsonParser parser = new JsonParser();
             JsonElement elem = parser.parse(result);
 
-
             access_token = elem.getAsJsonObject().get("access_token").getAsString();
             refresh_token = elem.getAsJsonObject().get("refresh_token").getAsString();
 
             System.out.println("refresh_token = " + refresh_token);
             System.out.println("access_token = " + access_token);
 
-
             br.close();
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return access_token;
     }
