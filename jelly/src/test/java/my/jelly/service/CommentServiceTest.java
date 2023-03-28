@@ -30,7 +30,7 @@ class CommentServiceTest {
             jComment comment = new jComment();
             long bIdx = (long)(Math.random()*50)+1;
             jBoard board = boardRepository.findBybIdx(bIdx);
-            ㅌㄴ
+
             Member member = memberService.findUser(("test" + (Math.random()*50+1) + "@kakao.com"));
 
             comment.setBoardVO(board);
@@ -47,4 +47,5 @@ class CommentServiceTest {
     void 댓글모두삭제(){
         commentRepository.deleteAll();
     }
+
 }
