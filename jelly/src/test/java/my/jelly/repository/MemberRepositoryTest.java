@@ -18,7 +18,7 @@ class MemberRepositoryTest {
 
     @Test
     @Transactional
-    //@Commit : 변경사항 DB 반영
+    @Commit // 변경사항 DB 반영
     void 테스트회원등록(){
         IntStream.rangeClosed(1,50).forEach(i->{
             member.setMEmail("test"+i+"@kakao.com");

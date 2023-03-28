@@ -22,7 +22,7 @@ public class jRate {
     private jInfo jInfoVO; //평가할 젤리 정보
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mAccount")
+    @JoinColumn(name = "mEmail")
     private Member MemberVO; //평점 남긴 사용자 정보
 
     @Column(nullable = false)
