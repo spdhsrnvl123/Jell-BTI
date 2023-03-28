@@ -24,7 +24,7 @@ public class Member {
     @Column(length = 10, nullable = false)
     private String mNick; //유저 닉네임 : 카카오에서 받아온 정보
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String mJelly; //나의 젤리
 
     public void changeJelly(String mJelly) {
