@@ -17,6 +17,8 @@ public class jBoard extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //mysql에서는 IDENTITY
     private Long bIdx; //글 번호
+    //테스트
+    
 
     @Column(nullable = false, length = 300)
     private String bTitle; //글 제목

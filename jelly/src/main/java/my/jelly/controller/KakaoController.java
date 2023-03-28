@@ -3,6 +3,7 @@ package my.jelly.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.RequiredArgsConstructor;
+import my.jelly.entity.Member;
 import my.jelly.service.KakaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 @RequiredArgsConstructor
 @Controller
@@ -22,43 +24,26 @@ public class KakaoController {
     @Autowired
     KakaoService kakaoService;
 
-    @GetMapping("")
-    public String loginPage()
-    {
-        return "login";
-    }
-
-    // [카카오 로그인]
-//    @GetMapping("/kakao")
-//    public String getCI(@RequestParam String code, Model model, HttpSession session) throws IOException {
-//        System.out.println("code = " + code);
-//        String access_token = kakaoService.getToken(code);
-//        Map<String, Object> userInfo = kakaoService.getUserInfo(access_token);
-//        model.addAttribute("code", code);
-//        model.addAttribute("access_token", access_token);
-//        model.addAttribute("userInfo", userInfo);
-//
-//        //값 꺼내오기
-//        if(model.getAttribute("userInfo") != null){
-//            session.setAttribute("nickname", userInfo.get("nickname"));
-//            session.setAttribute("email", userInfo.get("email"));
-//            session.setAttribute("age_range", userInfo.get("age_range"));
-//        }
-//아 어려워
-//        //ci는 비즈니스 전환후 검수신청 -> 허락받아야 수집 가능
-//        return "index";
-//    }
-
     /* (카카오 로그인) */
     // 프론트에서 인가코드를 받아옴, 받은 인가코드로 카카오서버에서 액세스 토큰 받아와서 반환
     @RequestMapping("/login/kakao")
     public String login(@RequestParam(value = "code", required = false) String code) throws Exception {
-//    System.out.println("#######" + code);
+
         String access_token = kakaoService.getToken(code);
-//    System.out.println("###access_token###" + access_token);
+
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         return access_token;
     }
 
+    // 받은 액세스 토큰으로 유저 정보 확인, 로그인/회원가입 처리
+    @RequestMapping("/oauth/userInfo")
+    public String userInfo(@RequestParam(value = "token") String token) throws Exception {
+        Member userInfo = kakaoService.getUserInfo(token);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("userInfo", userInfo);
+        return gson.toJson(map);
+    }
 }
