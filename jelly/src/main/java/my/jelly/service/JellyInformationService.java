@@ -1,19 +1,15 @@
 package my.jelly.service;
 
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import my.jelly.controller.JellyController;
 import my.jelly.dto.JellyDTO;
 import my.jelly.entity.jInfo;
 import my.jelly.repository.JellyInformationRepository;
-import org.assertj.core.api.Assertions;
-import org.hibernate.annotations.ColumnTransformer;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.BufferedReader;
@@ -22,26 +18,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
+@Service
 @Transactional
-@SpringBootTest
-class JellyInformationTest {
+@RequiredArgsConstructor
+public class JellyInformationService implements JelliyService{
+    private final JellyInformationRepository jellyRepository;
 
-    @Autowired
-    private JellyController controller;
-
-    @Autowired
-    private JellyInformationService service;
-
-    @Autowired
-    private JellyInformationRepository repository;
-
-    @Test
-    void getJellyList() throws IOException, ParseException{
+    public int createJellyInformation() throws IOException {
         StringBuilder urlBuilder = new StringBuilder("https://openapi.foodsafetykorea.go.kr/api/c7e42419587e4873ae88/I2790/json/1/200"); /*URL*/
         urlBuilder.append("/" + URLEncoder.encode("DESC_KOR","UTF-8") + "=" + URLEncoder.encode("하리보", "UTF-8")); /*식품이름*/
 //        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("2", "UTF-8")); /*페이지번호*/
@@ -87,40 +75,61 @@ class JellyInformationTest {
 
             // 제품 이름에 용량이 들어가 있는 제품이 있는경우
             String tmpName = String.valueOf(tmp.get("DESC_KOR"));
+
             String name;
             String gram;
-            if (tmpName.contains("\\(")) {
+            if (tmpName.indexOf("(") > -1) {
                 name = String.valueOf(tmp.get("DESC_KOR")).split("\\(")[0];
-                gram = String.valueOf(tmp.get("DESC_KOR")).split("\\(")[1].replace("G)","");
+                gram = String.valueOf(tmp.get("DESC_KOR")).split("\\(")[1].replace(")","");
             }else {
                 name = String.valueOf(tmp.get("DESC_KOR"));
                 gram = "";
             }
-            System.out.println("이름 : " + String.valueOf(tmp.get("DESC_KOR")).replace("\"","")
-                    + ", 열량 : " + String.valueOf(tmp.get("NUTR_CONT1")).replace("\"","")
-                    + ", 탄수화물 : " + tmp.get("NUTR_CONT2")
-                    + ", 단백질 : " + tmp.get("NUTR_CONT3")
-                    + ", 지방 : " + tmp.get("NUTR_CONT4")
-                    + ", 당류 : " + tmp.get("NUTR_CONT5")
-                    + ", 나트륨 : " + tmp.get("NUTR_CONT6")
-                    + ", 콜레스테롤 : " + tmp.get("NUTR_CONT7")
-                    + ", 포화지방산 : " + tmp.get("NUTR_CONT8")
-                    + ", 트랜스지방 : " + tmp.get("NUTR_CONT9")
-            );
+
+            jelly.setJName(replaceQuote(name));
+            jelly.setJGram(replaceQuote(gram));
+
+            jelly.setJKcal(replaceQuote(tmp.get("NUTR_CONT1")));
+            jelly.setJCarbohydrate(replaceQuote(tmp.get("NUTR_CONT2")));
+            jelly.setJProtein(replaceQuote(tmp.get("NUTR_CONT3")));
+            jelly.setJFat(replaceQuote(tmp.get("NUTR_CONT4")));
+            jelly.setJSugars(replaceQuote(tmp.get("NUTR_CONT5")));
+            jelly.setJSalt(replaceQuote(tmp.get("NUTR_CONT6")));
+            jelly.setJCholesterol(replaceQuote(tmp.get("NUTR_CONT7")));
+
+            jInfo jInfo = new jInfo(jelly);
+
+            jellies.add(jellyRepository.save(jInfo));
+//            System.out.println("이름 : " + tmp.get("DESC_KOR")
+//                    + ", 열량 : " + tmp.get("NUTR_CONT1")
+//                    + ", 탄수화물 : " + tmp.get("NUTR_CONT2")
+//                    + ", 단백질 : " + tmp.get("NUTR_CONT3")
+//                    + ", 지방 : " + tmp.get("NUTR_CONT4")
+//                    + ", 당류 : " + tmp.get("NUTR_CONT5")
+//                    + ", 나트륨 : " + tmp.get("NUTR_CONT6")
+//                    + ", 콜레스테롤 : " + tmp.get("NUTR_CONT7")
+//                    + ", 포화지방산 : " + tmp.get("NUTR_CONT8")
+//                    + ", 트랜스지방 : " + tmp.get("NUTR_CONT9")
+//            );
 
         }
-    }
-    // 깃허브 테스트
-    @Test
-    void saveData() throws IOException, ParseException {
-        int result = service.createJellyInformation();
-        List<jInfo> jellies = repository.findAll();
-
-        Assertions.assertThat(result).isEqualTo(jellies.size());
+        return jellies.size();
     }
 
-    @Test
-    void 컨트롤러부터젤리정보저장() throws IOException {
-        controller.createJellyInformation();
+    @Override
+    public void deleteAllJellyInformation() {
+        jellyRepository.deleteAll();
+    }
+
+
+    public String replaceQuote(Object value){
+        String tmp = String.valueOf(value);
+        if(tmp != null && !tmp.replace("\"", "").equals("")){
+            if(tmp.indexOf("\"") > -1){
+                return tmp.replace("\"", "");
+            }
+            return String.valueOf(value);
+        }
+        return "";
     }
 }
