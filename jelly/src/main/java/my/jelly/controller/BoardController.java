@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 @RequestMapping("/board/")
 public class BoardController {
-//d??
+
 }
