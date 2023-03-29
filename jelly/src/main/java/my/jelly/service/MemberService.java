@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    public Member findUser(String mEmail){ //email로 유저 객체 찾아오기 : memberservice로 빼기
+    public Member findUser(String mEmail){ //email로 유저 객체 찾아오기
         return memberRepository.findBymEmail(mEmail);
     }
 
