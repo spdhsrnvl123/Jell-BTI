@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
 import my.jelly.entity.jInfo;
-import my.jelly.repository.JellyInformationRepository;
+import my.jelly.repository.JellyRepository;
+import my.jelly.repository.SpringDataJpaJellyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,14 +21,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class JellyInformationService implements JelliyService{
-    private final JellyInformationRepository jellyRepository;
+    private final SpringDataJpaJellyRepository springDataJpaJellyRepository;
+    private final JellyRepository jellyRepository;
 
     public int createJellyInformation() throws IOException {
         StringBuilder urlBuilder = new StringBuilder("https://openapi.foodsafetykorea.go.kr/api/c7e42419587e4873ae88/I2790/json/1/200"); /*URL*/
@@ -99,7 +100,7 @@ public class JellyInformationService implements JelliyService{
 
             jInfo jInfo = new jInfo(jelly);
 
-            jellies.add(jellyRepository.save(jInfo));
+            jellies.add(springDataJpaJellyRepository.save(jInfo));
 //            System.out.println("이름 : " + tmp.get("DESC_KOR")
 //                    + ", 열량 : " + tmp.get("NUTR_CONT1")
 //                    + ", 탄수화물 : " + tmp.get("NUTR_CONT2")
@@ -116,12 +117,51 @@ public class JellyInformationService implements JelliyService{
         return jellies.size();
     }
 
+    // 모든 젤리 영양 성분 데이터를 제거하는 메서드
     @Override
     public void deleteAllJellyInformation() {
-        jellyRepository.deleteAll();
+        springDataJpaJellyRepository.deleteAll();
     }
 
+    // 모든 젤리 정보를 가져오는 메서드
+    @Override
+    public List<jInfo> findAll() {
+        List<jInfo> jellies = springDataJpaJellyRepository.findAll();
+        return jellies;
+    }
 
+    @Override
+    public void updateJellyInformation(Long jIdx,JellyDTO jellyDTO) {
+        jellyRepository.update(jIdx, jellyDTO);
+    }
+
+    @Override
+    public JellyDTO findById(Long jIdx) {
+        jInfo jInfo = springDataJpaJellyRepository.findById(jIdx).orElseThrow();
+        JellyDTO result = new JellyDTO(
+                jInfo.getJIdx(),
+                jInfo.getJName(),
+                jInfo.getJDetail(),
+                jInfo.getJKcal(),
+                jInfo.getJGram(),
+                jInfo.getJPrice(),
+                jInfo.getJSweet(),
+                jInfo.getJSour(),
+                jInfo.getJHard(),
+                jInfo.getJSoft(),
+                jInfo.getJSalty(),
+                jInfo.getJCarbohydrate(),
+                jInfo.getJProtein(),
+                jInfo.getJFat(),
+                jInfo.getJSugars(),
+                jInfo.getJSalt(),
+                jInfo.getJCholesterol()
+
+        );
+        return result;
+    }
+
+    // api 데이터 값에 들어있는 따옴표 제거 및 널값 체크하는 메서드
     public String replaceQuote(Object value){
         String tmp = String.valueOf(value);
         if(tmp != null && !tmp.replace("\"", "").equals("")){

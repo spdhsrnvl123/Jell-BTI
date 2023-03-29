@@ -3,14 +3,11 @@ package my.jelly.service;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.controller.JellyController;
 import my.jelly.dto.JellyDTO;
 import my.jelly.entity.jInfo;
-import my.jelly.repository.JellyInformationRepository;
-import org.assertj.core.api.Assertions;
-import org.hibernate.annotations.ColumnTransformer;
+import my.jelly.repository.SpringDataJpaJellyRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +23,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Slf4j
 @Transactional
 @SpringBootTest
@@ -38,7 +37,7 @@ class JellyInformationTest {
     private JellyInformationService service;
 
     @Autowired
-    private JellyInformationRepository repository;
+    private SpringDataJpaJellyRepository repository;
 
     @Test
     void getJellyList() throws IOException, ParseException{
@@ -116,11 +115,39 @@ class JellyInformationTest {
         int result = service.createJellyInformation();
         List<jInfo> jellies = repository.findAll();
 
-        Assertions.assertThat(result).isEqualTo(jellies.size());
+        assertThat(result).isEqualTo(jellies.size());
     }
 
     @Test
     void 컨트롤러부터젤리정보저장() throws IOException {
         controller.createJellyInformation();
+    }
+
+    @Test
+    void 모든젤리영양성분정보가져오기(){
+        List<jInfo> list = service.findAll();
+        assertThat(list.size()).isEqualTo(103);
+
+    }
+
+    @Test
+    void 젤리정보수정하기(){
+        JellyDTO jellyDTO = new JellyDTO();
+        jellyDTO.setJIdx(3671L);
+        jellyDTO.setJCarbohydrate("0");
+        jellyDTO.setJProtein("0");
+
+        controller.updateJellyInformation(3671L, jellyDTO);
+
+        jInfo jInfo = repository.findById(3671L).orElseThrow();
+
+        assertThat(jellyDTO.getJCarbohydrate()).isEqualTo(jInfo.getJCarbohydrate());
+    }
+
+    @Test
+    void 젤리정보하나만가져오기() {
+        JellyDTO result = controller.readJellyInformationById(3671L);
+
+        assertThat(result.getJIdx()).isEqualTo(3671L);
     }
 }
