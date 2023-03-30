@@ -9,19 +9,23 @@ export default function KakaoLogin(){
         try{
             
             const url = new URL(window.location.href);
-            let code = url.herf
+            let code = url.href
+            console.log(code)
             // const code1 = url.searchParams.get("code");
-            // console.log(code1)
             if(code){
-                axios({
-                    url : "/oauth/login/kakao", //설정된 서버 url
-                    method : "post",
-                    data : code
-                }).then((result)=>{
-                    // const accessToken = result.data.split("=")[1].split("&")[0];
-                    // console.log(accessToken) //Token 값 출력
-                    console.log(result)
-                })
+               fetch("/oauth/login/kakao",{
+                    method : "POST",
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    },
+                    body : JSON.stringify({
+                        code
+                    })
+               }).then(res => {
+                    console.log(res)
+               }).catch((error)=>{
+                console.log(error)
+               })
             }
         }catch(error){
             console.log(error);
