@@ -12,7 +12,7 @@ export default function KakaoLogin(){
             console.log(code);
             if(code){
                 axios({
-                    url : "url", //설정된 서버 url
+                    url : "/oauth/login/kakao", //설정된 서버 url
                     method : "post",
                     data : {
                         code : code,
@@ -23,7 +23,7 @@ export default function KakaoLogin(){
                 })
             }
         }catch(error){
-            console.log(error)
+            console.log(error);
         }
     },[])
 
