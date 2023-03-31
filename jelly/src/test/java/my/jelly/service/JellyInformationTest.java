@@ -178,4 +178,6 @@ class JellyInformationTest {
         List<jRate> results = controller.findRatesByEmail("test1");
         assertThat(results.size()).isEqualTo(2);
     }
+
+    //커밋 다시 하기
 }
