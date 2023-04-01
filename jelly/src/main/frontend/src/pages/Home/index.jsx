@@ -9,8 +9,7 @@ export default function Home(){
 
     return(
         <>
-            <div>Login</div>
-            <button onClick={kakao}>카카오 로그인</button>
+            <button style={{ border:0}} onClick={kakao}><img style={{width:"200px"}} src="./kakaoLogin.png" /></button>
         </>
     )
 }
