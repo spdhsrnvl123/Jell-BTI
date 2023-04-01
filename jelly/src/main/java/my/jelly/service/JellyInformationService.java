@@ -7,8 +7,13 @@ import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
+import my.jelly.dto.RateDTO;
+import my.jelly.entity.Member;
 import my.jelly.entity.jInfo;
+import my.jelly.entity.jRate;
 import my.jelly.repository.JellyRepository;
+import my.jelly.repository.MemberRepository;
+import my.jelly.repository.RateRepository;
 import my.jelly.repository.SpringDataJpaJellyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +35,7 @@ public class JellyInformationService implements JelliyService{
     private final SpringDataJpaJellyRepository springDataJpaJellyRepository;
     private final JellyRepository jellyRepository;
 
+    // api로 젤리 정보 받아서 db에 저장하는 메서드
     public int createJellyInformation() throws IOException {
         StringBuilder urlBuilder = new StringBuilder("https://openapi.foodsafetykorea.go.kr/api/c7e42419587e4873ae88/I2790/json/1/200"); /*URL*/
         urlBuilder.append("/" + URLEncoder.encode("DESC_KOR","UTF-8") + "=" + URLEncoder.encode("하리보", "UTF-8")); /*식품이름*/
@@ -130,11 +136,13 @@ public class JellyInformationService implements JelliyService{
         return jellies;
     }
 
+    // 젤리 영양성분 정보 업데이트
     @Override
     public void updateJellyInformation(Long jIdx,JellyDTO jellyDTO) {
         jellyRepository.update(jIdx, jellyDTO);
     }
 
+    // id값으로 젤리 영양성분 정보 검색하기
     @Override
     public JellyDTO findById(Long jIdx) {
         jInfo jInfo = springDataJpaJellyRepository.findById(jIdx).orElseThrow();

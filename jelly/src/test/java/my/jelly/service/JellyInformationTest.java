@@ -6,7 +6,10 @@ import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.controller.JellyController;
 import my.jelly.dto.JellyDTO;
+import my.jelly.dto.RateDTO;
 import my.jelly.entity.jInfo;
+import my.jelly.entity.jRate;
+import my.jelly.repository.RateRepository;
 import my.jelly.repository.SpringDataJpaJellyRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +41,12 @@ class JellyInformationTest {
 
     @Autowired
     private SpringDataJpaJellyRepository repository;
+
+    @Autowired
+    private RateService rateService;
+
+    @Autowired
+    private RateRepository rateRepository;
 
     @Test
     void getJellyList() throws IOException, ParseException{
@@ -150,4 +159,25 @@ class JellyInformationTest {
 
         assertThat(result.getJIdx()).isEqualTo(3671L);
     }
+
+    @Test
+    void 젤리평가저장하기() {
+        RateDTO rateDTO = new RateDTO();
+        rateDTO.setJIdx(3671L);
+        rateDTO.setMEmail("test1@kakao.com");
+        rateDTO.setMJelly("testJelly");
+        rateDTO.setJStar(4);
+        rateDTO.setRContent("개마싯다");
+        jRate result = rateService.createJellyRate(rateDTO);
+
+        assertThat(rateDTO.getJStar()).isEqualTo(result.getJStar());
+    }
+
+    @Test
+    void 이메일로평가정보가져오기() {
+        List<jRate> results = controller.findRatesByEmail("test1");
+        assertThat(results.size()).isEqualTo(2);
+    }
+
+    //커밋 다시 하기
 }

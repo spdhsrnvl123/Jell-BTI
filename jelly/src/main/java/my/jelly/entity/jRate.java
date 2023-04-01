@@ -1,6 +1,7 @@
 package my.jelly.entity;
 
 import lombok.*;
+import my.jelly.dto.RateDTO;
 
 import javax.persistence.*;
 
@@ -27,5 +28,15 @@ public class jRate {
 
     @Column(nullable = false)
     private int jStar; //젤리 평점
+
+    // 0331 박의민 추가함
+    private String rContent; // 젤리 평가
+
+    public jRate(RateDTO rateDTO) {
+        this.jInfoVO = rateDTO.getJInfo();
+        this.MemberVO = rateDTO.getMember();
+        this.jStar = rateDTO.getJStar();
+        this.rContent = rateDTO.getRContent();
+    }
 
 }
