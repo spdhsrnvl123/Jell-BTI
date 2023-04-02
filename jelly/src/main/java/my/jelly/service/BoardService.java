@@ -9,9 +9,16 @@ import my.jelly.repository.BoardRepository;
 import my.jelly.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 @Log4j2
 public class BoardService {
     private final BoardRepository boardRepository;
+
+    public Map<String, Object> getBoardAll() {
+        List
+    }
 }
