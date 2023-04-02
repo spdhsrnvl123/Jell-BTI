@@ -1,10 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"
 
-export default function KakaoLogin(){
-    const navigate = useNavigate();
-    
+const KakaoRedirect = ()=>{
     useEffect(()=>{
         const url = new URL(window.location.href);            
         const code = url.searchParams.get("code");
@@ -20,6 +17,11 @@ export default function KakaoLogin(){
               console.log("소셜로그인 에러", err);
               })
     },[])
-
-    return <div>Kakao Login Redirect URL Page</div>
+    return(
+        <>
+            <h1>카카오 리다이렉트 페이지</h1>
+        </>
+    )
 }
+
+export default KakaoRedirect
