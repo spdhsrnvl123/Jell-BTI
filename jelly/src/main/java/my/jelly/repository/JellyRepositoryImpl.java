@@ -32,4 +32,6 @@ public class JellyRepositoryImpl implements JellyRepository{
         jInfo.setJSalt(jellyDTO.getJSalt());
         jInfo.setJCholesterol(jellyDTO.getJCholesterol());
     }
+
+
 }
