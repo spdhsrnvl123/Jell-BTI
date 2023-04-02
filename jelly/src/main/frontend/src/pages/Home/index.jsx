@@ -1,16 +1,16 @@
-export default function Home(){
-    console.log()
-    // const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`
-    const kakao = ()=>{
-        window.open(
-            `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`
-        ,'_self')
-    }
+import { Link } from "react-router-dom";
 
+const Home = ()=>{
     return(
         <>
-            <div>Login</div>
-            <button onClick={kakao}>카카오 로그인</button>
+            <h1>홈페이지 입니다.</h1>
+            <ul>
+                <li><Link to="/login">카카오로그인</Link></li>
+                <li><Link to="/test">젤리 테스트 페이지</Link></li>
+                <li><Link to="/profile">프로필 페이지</Link></li>
+            </ul>
         </>
     )
 }
+
+export default Home;
