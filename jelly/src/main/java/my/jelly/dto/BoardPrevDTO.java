@@ -3,20 +3,19 @@ package my.jelly.dto;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardDTO {
+public class BoardPrevDTO {
+    // 글 리스트
+    // 글 번호, 글 제목, 글 작성자, 글 작성일자, 댓글 수
     private Long bIdx; //글 번호
     private String bTitle; //글 제목
-    private String bContent; //글 내용
-    private String bWriter; //글 작성자
+    private String mNick; //글 작성자
     private LocalDateTime bDate; //글 작성시간
     private int replyCount; //댓글 수
-
 
 }

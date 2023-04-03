@@ -1,20 +1,15 @@
 package my.jelly.service;
 
-import my.jelly.dto.BoardDTO;
 import my.jelly.entity.Member;
 import my.jelly.entity.jBoard;
 import my.jelly.repository.BoardRepository;
-import my.jelly.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.IntStream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BoardServiceTest {
