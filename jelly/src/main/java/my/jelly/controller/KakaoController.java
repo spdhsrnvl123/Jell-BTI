@@ -34,7 +34,7 @@ public class KakaoController {
         return access_token;
     }
 
-    // 받은 액세스 토큰으로 유저 정보 확인, 로그인/회원가입 처리
+    // 프론트에서 받은 액세스 토큰으로 카카오서버에 요청해 유저 정보 가져오고, 우리 DB에 있는지 확인, 그리고 로그인/회원가입 처리
     @RequestMapping("/oauth/login/userInfo")
     public String userInfo(@RequestParam(value = "token") String token) throws Exception {
         Member userInfo = kakaoService.getUserInfo(token);
