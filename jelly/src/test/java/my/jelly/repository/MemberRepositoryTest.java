@@ -23,7 +23,7 @@ class MemberRepositoryTest {
         IntStream.rangeClosed(1,50).forEach(i->{
             member.setMEmail("test"+i+"@kakao.com");
             member.setMNick("유저"+i);
-            member.setMJelly(String.valueOf((int)(Math.random()*5)+1));
+            member.setMJelly((int)(Math.random()*5)+1);
             memberRepository.save(member);
         });
         System.out.println("회원등록 완료");
