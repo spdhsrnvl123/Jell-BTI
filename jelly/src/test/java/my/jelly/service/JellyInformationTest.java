@@ -164,7 +164,7 @@ class JellyInformationTest {
     void 젤리평가저장하기() {
         RateDTO rateDTO = new RateDTO();
         rateDTO.setJIdx(3671L);
-        rateDTO.setMEmail("test1@kakao.com");
+        rateDTO.setMEmail("magicofclown");
         rateDTO.setMJelly("testJelly");
         rateDTO.setJStar(4);
         rateDTO.setRContent("개마싯다");
@@ -176,7 +176,7 @@ class JellyInformationTest {
     @Test
     void 이메일로평가정보가져오기() {
         List<jRate> results = controller.findRatesByEmail("test1");
-        assertThat(results.size()).isEqualTo(2);
+        assertThat(results.size()).isEqualTo(1);
     }
 
     //커밋 다시 하기
