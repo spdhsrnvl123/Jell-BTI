@@ -19,7 +19,8 @@ public interface BoardRepository extends JpaRepository<jBoard, Long> {
     @Query(value = "select * from j_Board where m_Email = :mEmail",nativeQuery = true)
     List<jBoard> findBymEmail(String mEmail);
 
-    @Query(value = "select new my.jelly.dto.BoardPrevDTO(" +
-            "b.bIdx, b.bTitle, u.mNick,b.)")
-    List<BoardPrevDTO> findBoardAll();
+//    @Query(value = "select new my.jelly.dto.BoardPrevDTO(" +
+//            "t.bIdx, t.bTitle, u.mNick, n.bDate, t.reply  )")
+//    List<BoardPrevDTO> findAllList();
+
 }

@@ -118,7 +118,7 @@ public class KakaoService {
 
             userInfo.setMEmail(email);
             userInfo.setMNick(nickname);
-            userInfo.setMJelly(null); //초기값은 널로 일단 줌
+            userInfo.setMJelly(0); //초기값은 널로 일단 줌
 
             // 유저 이메일로 유저 객체 검색해보고 등록안된 회원이라면 회원가입 처리
             Member findUser = memberRepository.findBymEmail(userInfo.getMEmail());
