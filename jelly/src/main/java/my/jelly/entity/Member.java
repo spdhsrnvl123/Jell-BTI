@@ -25,9 +25,9 @@ public class Member {
     private String mNick; //유저 닉네임 : 카카오에서 받아온 정보
 
     @Column(nullable = true)
-    private String mJelly; //나의 젤리
+    private int mJelly; //나의 젤리
 
-    public void changeJelly(String mJelly) {
+    public void changeJelly(int mJelly) {
         this.mJelly = mJelly;
     } //젤리 변경시 사용
 
