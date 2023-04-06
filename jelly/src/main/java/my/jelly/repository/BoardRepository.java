@@ -12,15 +12,21 @@ import java.util.List;
 public interface BoardRepository extends JpaRepository<jBoard, Long> {
     List<jBoard> findAll();
 
-
+    @Query(value = "select * from j_Board where b_Idx = :bIdx", nativeQuery = true)
     jBoard findBybIdx(Long bIdx);
+
 
     //특정 회원 작성 글 찾아오기
     @Query(value = "select * from j_Board where m_Email = :mEmail",nativeQuery = true)
     List<jBoard> findBymEmail(String mEmail);
 
-//    @Query(value = "select new my.jelly.dto.BoardPrevDTO(" +
-//            "t.bIdx, t.bTitle, u.mNick, n.bDate, t.reply  )")
+//    @Query(value = "SELECT new my.jelly.dto.BoardPrevDTO(" +
+//            "t.bIdx, t.bTitle, u.mNick, n.bDate, t.reply, COUNT(c))" +
+//            "FROM jBoard t" +
+//            "LEFT JOIN t.Member m" +
+//            "LEFT JOIN t.BaseEntity n" +
+//            "LEFT JOIN t.jComment c" +
+//            "GROUP BY t.bIdx",nativeQuery = true)
 //    List<BoardPrevDTO> findAllList();
 
 }

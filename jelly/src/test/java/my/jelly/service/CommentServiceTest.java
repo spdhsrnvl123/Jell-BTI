@@ -22,16 +22,17 @@ class CommentServiceTest {
     private BoardRepository boardRepository;
     @Autowired
     private MemberService memberService;
+
     @Test
     @Transactional
     @Commit
     void 테스트댓글등록(){
         IntStream.rangeClosed(1,100).forEach(i->{
             jComment comment = new jComment();
-            long bIdx = (long)(Math.random()*50)+1;
+            long bIdx = 1;
             jBoard board = boardRepository.findBybIdx(bIdx);
             
-            Member member = memberService.findUser(("test" + (Math.random()*50+1) + "@kakao.com"));
+            Member member = memberService.findUser(("magicofclown@naver.com"));
 
             comment.setBoardVO(board);
             comment.setCContent("테스트 댓글 " + i);
@@ -46,5 +47,10 @@ class CommentServiceTest {
     @Test
     void 댓글모두삭제(){
         commentRepository.deleteAll();
+    }
+
+    @Test
+    void 글가져오기(){
+        boardRepository.findBybIdx(()1);
     }
 }

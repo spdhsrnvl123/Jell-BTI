@@ -30,7 +30,8 @@ public class RateServiceImple implements RateService{
     @Override
     public jRate createJellyRate(RateDTO rateDTO) {
         jInfo jInfo = springDataJpaJellyRepository.findById(rateDTO.getJIdx()).orElseThrow();
-        Member member = memberRepository.findById(rateDTO.getMEmail()).orElseThrow();
+        rateDTO.setMEmail(rateDTO.getMEmail()+"@");
+        Member member = memberRepository.findBymEmail(rateDTO.getMEmail());
         rateDTO.setJInfo(jInfo);
         rateDTO.setMember(member);
         jRate jRate = new jRate(rateDTO);
@@ -50,7 +51,7 @@ public class RateServiceImple implements RateService{
 
     @Override
     public List<jRate> findRatesByEmail(String mEmail) {
-        mEmail+="@kakao.com";
+        mEmail+="@";
         System.out.println("mEmail = " + mEmail);
         return rateRepository.findRatesByEmail(mEmail);
     }
