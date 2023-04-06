@@ -80,7 +80,7 @@ public class JellyController {
         return "delete " + rIdx + "ok";
     }
 
-    @GetMapping("/jellies/rate/{mEmail}")
+    @GetMapping("/jellies/rates/{mEmail}")
     @ResponseBody
     public List<jRate> findRatesByEmail(@PathVariable String mEmail) {
         System.out.println("mEmail = " + mEmail);

@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface RateRepository extends JpaRepository<jRate, Long> {
 
-    @Query("select r from jRate r where r.MemberVO.mEmail = :mEmail")
+    @Query("select r from jRate r where r.MemberVO.mEmail like :mEmail%")
     List<jRate> findRatesByEmail(@Param("mEmail") String mEmail);
 }
