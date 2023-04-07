@@ -27,4 +27,5 @@ public class jBoard extends BaseEntity {
     @JoinColumn(name="mEmail") //name = 생성될 column 명
     private Member MemberVO; //작성자 정보
 
+
 }

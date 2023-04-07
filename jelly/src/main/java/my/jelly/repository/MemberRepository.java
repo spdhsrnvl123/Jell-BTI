@@ -12,7 +12,7 @@ import java.util.List;
 public interface MemberRepository extends JpaRepository<Member, String> {
 
     @Query("select m from Member m where m.mEmail like :mEmail%")
-    Member findBymEmail(String mEmail);
+    Member findBymEmail(@Param(value = "mEmail") String mEmail);
 
 
 }

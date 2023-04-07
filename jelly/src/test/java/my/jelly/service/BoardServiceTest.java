@@ -6,6 +6,7 @@ import my.jelly.repository.BoardRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -20,13 +21,13 @@ class BoardServiceTest {
 
     @Test
     @Transactional
-    //@Commit
+    @Commit
     void 테스트게시글등록(){
-        IntStream.rangeClosed(1, 50).forEach(i -> {
+        IntStream.rangeClosed(1, 10).forEach(i -> {
             jBoard board = new jBoard();
-            Member member = memberService.findUser(("test" + i + "@kakao.com"));
-            board.setBTitle("글 제목2" + i);
-            board.setBContent("글 내용2" + i);
+            Member member = memberService.findUser(("pizzay@kakao.com"));
+            board.setBTitle("글 제목" + i);
+            board.setBContent("글 내용" + i);
             board.setMemberVO(member);
             boardRepository.save(board);
         });
@@ -36,7 +37,7 @@ class BoardServiceTest {
     @Test
     @Transactional
     void 특정회원작성글조회(){
-        String user = "test1@kakao.com";
+        String user = "pizzay@kakao.com";
         Member member = memberService.findUser(user);
         System.out.println(member);
         List<jBoard> list = boardRepository.findBymEmail(member.getMEmail());
@@ -44,4 +45,8 @@ class BoardServiceTest {
         System.out.println(list);
     }
 
+    @Test
+    void 특정글댓글수(){
+
+    }
 }
