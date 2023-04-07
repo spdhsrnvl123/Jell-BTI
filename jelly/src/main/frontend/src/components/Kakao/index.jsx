@@ -10,14 +10,15 @@ export default function KakaoLogin(){
         const code = url.searchParams.get("code");
         console.log(code)
         axios({
-            method: "GET",
+            method: "POST",
             url: `/oauth/login/kakao?code=${code}`,
           })
             .then((res) => {
               console.log(res); // 토큰이 넘어올 것임
+
             }).catch((err) => {
 
-              console.log("소셜로그인 에러", err);
+              console.log("소셜로그인 에러", err); 착짱죽짱
               })
     },[])
 
