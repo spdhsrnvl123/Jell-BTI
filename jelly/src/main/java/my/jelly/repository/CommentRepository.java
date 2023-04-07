@@ -12,6 +12,7 @@ import java.util.Map;
 @Repository
 public interface CommentRepository extends JpaRepository<jComment, Long> {
     //특정 글 댓글 수 조회
+
     //select (select count(*) from j_comment c where b.b_idx = c.b_idx) as cnt,
     //b.* from j_board b order by b_idx;
 

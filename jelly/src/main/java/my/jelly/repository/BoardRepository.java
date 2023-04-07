@@ -24,8 +24,8 @@ public interface BoardRepository extends JpaRepository<jBoard, Long> {
     @Query(value = "select * from j_Board where m_Email = :mEmail",nativeQuery = true)
     List<jBoard> findBymEmail(@Param(value = "mEmail") String mEmail);
 
+
 //    select (select count(*) from j_comment c where b.b_idx = c.b_idx) as cnt,
 //    b.* from j_board b order by b_idx;
-
 
 }

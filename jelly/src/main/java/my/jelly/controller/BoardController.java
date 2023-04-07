@@ -1,5 +1,6 @@
 package my.jelly.controller;
 
+
 import lombok.RequiredArgsConstructor;
 import my.jelly.entity.jBoard;
 import my.jelly.repository.BoardRepository;
@@ -7,11 +8,7 @@ import my.jelly.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
@@ -42,12 +39,6 @@ public class BoardController {
 //        Map<String, Object> map = new HashMap<>();
 //        map = boardService.testCntComment();
 //        return map;
-//    }
 
 }
-//    @GetMapping("/cnttest")
-//    public int cntTest(@RequestParam(value = "bIdx")long bIdx){
-//        int cnt = boardService.checkCnt(bIdx);
-//        return cnt;
-//    }
 

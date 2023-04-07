@@ -2,7 +2,6 @@ package my.jelly.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.jBoard;
 import my.jelly.repository.BoardRepository;
 import my.jelly.repository.CommentRepository;
@@ -30,9 +29,4 @@ public class BoardService {
 //        return commentRepository.commentCnt();
 //    }
 
-//    public int checkCnt(long bIdx) {
-//        int i = commentRepository.checkCommentCnt(bIdx);
-//        return i;
-//
-//    }
 }
