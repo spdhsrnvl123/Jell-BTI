@@ -45,4 +45,8 @@ class BoardServiceTest {
         System.out.println(list);
     }
 
+    @Test
+    void 특정글댓글수(){
+
+    }
 }

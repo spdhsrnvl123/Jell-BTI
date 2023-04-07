@@ -28,12 +28,12 @@ public class BoardController {
     // 등록 - Post 수정 - Put
 
     // 모든 글 리스트
-    @GetMapping("/board")
-    public List<jBoard> boardAll(){
-       List<jBoard> res = boardService.getBoardAll();
-       //Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-       return res;
-    }
+//    @GetMapping("/board")
+//    public List<jBoard> boardAll(){
+//       List<jBoard> res = boardService.getBoardAll();
+//       //Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//
+//       return res;
+//    }
 
 }

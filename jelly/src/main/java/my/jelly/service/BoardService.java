@@ -20,11 +20,9 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     //전체 글 리스트 조회
-    public List<jBoard> getBoardAll() {
-        List<jBoard> list = boardRepository.findAll();
-        Map<String, Object> map = new HashMap<>();
-
-
-        return list;
-    }
+//    public List<jBoard> getBoardAll() {
+//        List<jBoard> list = boardRepository.findAllList();
+//
+//        return list;
+//    }
 }
