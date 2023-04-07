@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
-@RestController
+@Controller
 public class MainController {
     @GetMapping("/hello")
     public String test(){
