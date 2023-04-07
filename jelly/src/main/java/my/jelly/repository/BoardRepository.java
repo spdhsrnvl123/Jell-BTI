@@ -11,17 +11,15 @@ import java.util.List;
 
 @Repository
 public interface BoardRepository extends JpaRepository<jBoard, Long> {
-//    List<jBoard> findAll();
-//
-//    @Query(value = "select * from j_Board where b_Idx = :bIdx", nativeQuery = true)
-//    jBoard findBybIdx(@Param(value ="bIdx") Long bIdx);
-//
-//
-//    //특정 회원 작성 글 찾아오기
-//    @Query(value = "select * from j_Board where m_Email = :mEmail",nativeQuery = true)
-//    List<jBoard> findBymEmail(@Param(value = "mEmail") String mEmail);
-//
-//    @Query(value = "select * from j_Board",nativeQuery = true)
-//    List<jBoard> findAllList();
+
+    List<jBoard> findAll();
+
+    @Query(value = "select * from j_Board where b_Idx = :bIdx", nativeQuery = true)
+    jBoard findBybIdx(@Param(value ="bIdx") Long bIdx);
+
+
+    //특정 회원 작성 글 찾아오기
+    @Query(value = "select * from j_Board where m_Email = :mEmail",nativeQuery = true)
+    List<jBoard> findBymEmail(@Param(value = "mEmail") String mEmail);
 
 }
