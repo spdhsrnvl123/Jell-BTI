@@ -18,17 +18,15 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final CommentRepository commentRepository;
     //전체 글 리스트 조회
-    public Map<String, Object> getBoardAll() {
+    public List<jBoard> getBoardAll() {
+        //List<jBoard> list = boardRepository.findAll();
         List<jBoard> list = boardRepository.findAll();
-        Map<String, Object> map = new HashMap<>();
-        map.put("allList" , list);
-        System.out.println(map);
-        return map;
+        System.out.println(list);
+        return list;
     }
 
-//    public int checkCnt(long bIdx) {
-//        int i = commentRepository.checkCommentCnt(bIdx);
-//        return i;
-//
+//    public Map<String, Object> testCntComment() {
+//        return commentRepository.commentCnt();
 //    }
+
 }
