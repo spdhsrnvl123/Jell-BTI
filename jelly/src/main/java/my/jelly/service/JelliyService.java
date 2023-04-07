@@ -13,7 +13,7 @@ public interface JelliyService {
 
     public void deleteAllJellyInformation();
 
-    public List<jInfo> findAll();
+    public List<jInfo> findAll(String jellyName);
 
     public void updateJellyInformation(Long jIdx,JellyDTO jellyDTO);
 
