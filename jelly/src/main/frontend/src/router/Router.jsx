@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import LandingPage from "../pages/LandingPage"
+import StartPage from "../pages/StartPage"
 import Home from "../pages/Home"
 import TestPage from "../pages/TestPage"
 import ProfilePage from "../pages/ProfilePage"
@@ -10,7 +10,7 @@ import DetailPage from "../pages/DetailPage"
 const RouterInfo = [
     {
         path : '/',
-        element : <LandingPage />,
+        element : <StartPage />,
         withAuthorization : true,
         label : '시작 페이지'
     },
