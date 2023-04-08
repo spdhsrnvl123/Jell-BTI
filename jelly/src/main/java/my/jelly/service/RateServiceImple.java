@@ -7,12 +7,13 @@ import my.jelly.entity.Member;
 import my.jelly.entity.jInfo;
 import my.jelly.entity.jRate;
 import my.jelly.repository.MemberRepository;
-import my.jelly.repository.RateRepository;
-import my.jelly.repository.SpringDataJpaJellyRepository;
+import my.jelly.repository.RateRepositorySpringDataJpa;
+import my.jelly.repository.JellyRepositorySpringDataJpa;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -20,22 +21,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RateServiceImple implements RateService{
 
-    private final SpringDataJpaJellyRepository springDataJpaJellyRepository;
+    private final JellyRepositorySpringDataJpa springDataJpaJellyRepository;
 
     private final MemberRepository memberRepository;
 
-    private final RateRepository rateRepository;
+    private final RateRepositorySpringDataJpa rateRepositorySpringDataJpa;
 
     // 젤리 평가 정보 저장하는 메서드
     @Override
     public jRate createJellyRate(RateDTO rateDTO) {
         jInfo jInfo = springDataJpaJellyRepository.findById(rateDTO.getJIdx()).orElseThrow();
-        rateDTO.setMEmail(rateDTO.getMEmail()+"@");
         Member member = memberRepository.findBymEmail(rateDTO.getMEmail());
         rateDTO.setJInfo(jInfo);
         rateDTO.setMember(member);
         jRate jRate = new jRate(rateDTO);
-        jRate result = rateRepository.save(jRate);
+        jRate result = rateRepositorySpringDataJpa.save(jRate);
         return result;
     }
 
@@ -46,13 +46,28 @@ public class RateServiceImple implements RateService{
 
     @Override
     public void deleteById(Long rIdx) {
-        rateRepository.deleteById(rIdx);
+        rateRepositorySpringDataJpa.deleteById(rIdx);
     }
 
     @Override
-    public List<jRate> findRatesByEmail(String mEmail) {
-        mEmail+="@";
+    public List<jRate> findRatesByEmail(String email, String domain) {
+
+        String mEmail=email + "@" + domain;
         System.out.println("mEmail = " + mEmail);
-        return rateRepository.findRatesByEmail(mEmail);
+        return rateRepositorySpringDataJpa.findRatesByEmail(mEmail);
     }
+
+    @Override
+    public Optional<jRate> findRateById(Long rIdx) {
+        return rateRepositorySpringDataJpa.findById(rIdx);
+    }
+
+    @Override
+    public jRate updateRate(Long rIdx, RateDTO rateDTO) {
+        jRate jRate = rateRepositorySpringDataJpa.findById(rIdx).orElseThrow();
+        jRate.setJStar(rateDTO.getJStar());
+        jRate.setRContent(rateDTO.getRContent());
+        return jRate;
+    }
+
 }

@@ -7,14 +7,9 @@ import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
-import my.jelly.dto.RateDTO;
-import my.jelly.entity.Member;
 import my.jelly.entity.jInfo;
-import my.jelly.entity.jRate;
 import my.jelly.repository.JellyRepository;
-import my.jelly.repository.MemberRepository;
-import my.jelly.repository.RateRepository;
-import my.jelly.repository.SpringDataJpaJellyRepository;
+import my.jelly.repository.JellyRepositorySpringDataJpa;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +27,7 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class JellyInformationService implements JelliyService{
-    private final SpringDataJpaJellyRepository springDataJpaJellyRepository;
+    private final JellyRepositorySpringDataJpa springDataJpaJellyRepository;
     private final JellyRepository jellyRepository;
 
     // api로 젤리 정보 받아서 db에 저장하는 메서드
@@ -131,8 +126,8 @@ public class JellyInformationService implements JelliyService{
 
     // 모든 젤리 정보를 가져오는 메서드
     @Override
-    public List<jInfo> findAll() {
-        List<jInfo> jellies = springDataJpaJellyRepository.findAll();
+    public List<jInfo> findAll(String jellyName) {
+        List<jInfo> jellies = jellyRepository.findAll(jellyName);
         return jellies;
     }
 

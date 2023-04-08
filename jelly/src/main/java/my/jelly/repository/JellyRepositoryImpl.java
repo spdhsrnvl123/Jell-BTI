@@ -1,17 +1,32 @@
 package my.jelly.repository;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
+import my.jelly.entity.QjInfo;
 import my.jelly.entity.jInfo;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
+
+import javax.persistence.EntityManager;
+import java.util.List;
 
 @Slf4j
 @Repository
-@RequiredArgsConstructor
 public class JellyRepositoryImpl implements JellyRepository{
 
-    private final SpringDataJpaJellyRepository repository;
+    private final JellyRepositorySpringDataJpa repository;
+
+    private final EntityManager em;
+    private final JPAQueryFactory query;
+
+    public JellyRepositoryImpl(JellyRepositorySpringDataJpa repository, EntityManager em) {
+        this.repository = repository;
+        this.em = em;
+        this.query = new JPAQueryFactory(em);
+    }
 
     @Override
     public void update(Long jIdx, JellyDTO jellyDTO) {
@@ -33,5 +48,22 @@ public class JellyRepositoryImpl implements JellyRepository{
         jInfo.setJCholesterol(jellyDTO.getJCholesterol());
     }
 
+    @Override
+    public List<jInfo> findAll(String jellyName) {
+        QjInfo qjInfo = QjInfo.jInfo;
+
+        return query
+                .select(qjInfo)
+                .from(qjInfo)
+                .where(likeJellyName(jellyName))
+                .fetch();
+    }
+
+    private BooleanExpression likeJellyName(String jellyName) {
+        if(StringUtils.hasText(jellyName)){
+            return QjInfo.jInfo.jName.like("%" + jellyName + "%");
+        }
+        return null;
+    }
 
 }
