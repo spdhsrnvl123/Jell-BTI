@@ -1,5 +1,6 @@
 package my.jelly.service;
 
+import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.Member;
 import my.jelly.entity.jBoard;
 import my.jelly.entity.jComment;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -27,12 +29,12 @@ class CommentServiceTest {
     @Transactional
     @Commit
     void 테스트댓글등록(){
-        IntStream.rangeClosed(1,100).forEach(i->{
+        IntStream.rangeClosed(3933,3942).forEach(i->{
             jComment comment = new jComment();
-            long bIdx = 1;
+            long bIdx = i;
             jBoard board = boardRepository.findBybIdx(bIdx);
             
-            Member member = memberService.findUser(("magicofclown@naver.com"));
+            Member member = memberService.findUser(("gohn13@naver.com"));
 
             comment.setBoardVO(board);
             comment.setCContent("테스트 댓글 " + i);
@@ -45,12 +47,22 @@ class CommentServiceTest {
         System.out.println("댓글 등록 완료");
     }
     @Test
+    @Transactional
     void 댓글모두삭제(){
         commentRepository.deleteAll();
     }
 
-    @Test
-    void 글가져오기(){
-        boardRepository.findBybIdx(()1);
-    }
+//    @Test
+//    @Transactional
+//    void 글가져오기(){
+//        List<jBoard> jBoards = boardRepository.findAllList();
+//        System.out.println(jBoards);
+//    }
+//    @Test
+//    @Transactional
+//    void 댓글수출력(){
+//        long i = 3933;
+//        int j = commentRepository.checkCommentCnt(i);
+//        System.out.println(j);
+//    }
 }

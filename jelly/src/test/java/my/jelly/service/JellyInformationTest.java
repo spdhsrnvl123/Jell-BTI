@@ -9,8 +9,8 @@ import my.jelly.dto.JellyDTO;
 import my.jelly.dto.RateDTO;
 import my.jelly.entity.jInfo;
 import my.jelly.entity.jRate;
-import my.jelly.repository.RateRepository;
-import my.jelly.repository.SpringDataJpaJellyRepository;
+import my.jelly.repository.RateRepositorySpringDataJpa;
+import my.jelly.repository.JellyRepositorySpringDataJpa;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,13 +40,13 @@ class JellyInformationTest {
     private JellyInformationService service;
 
     @Autowired
-    private SpringDataJpaJellyRepository repository;
+    private JellyRepositorySpringDataJpa repository;
 
     @Autowired
     private RateService rateService;
 
     @Autowired
-    private RateRepository rateRepository;
+    private RateRepositorySpringDataJpa rateRepository;
 
     @Test
     void getJellyList() throws IOException, ParseException{
@@ -134,8 +134,8 @@ class JellyInformationTest {
 
     @Test
     void 모든젤리영양성분정보가져오기(){
-        List<jInfo> list = service.findAll();
-        assertThat(list.size()).isEqualTo(103);
+        List<jInfo> list = controller.readJellyInformation("맛없는거");
+        assertThat(list.size()).isEqualTo(0);
 
     }
 
@@ -175,9 +175,27 @@ class JellyInformationTest {
 
     @Test
     void 이메일로평가정보가져오기() {
-        List<jRate> results = controller.findRatesByEmail("test1");
-        assertThat(results.size()).isEqualTo(1);
+        List<jRate> results = controller.findRatesByEmail("magicofclown", "naver.com");
+        assertThat(results.size()).isEqualTo(3);
     }
 
-    //커밋 다시 하기
+    @Test
+    void 젤리후기수정하기() {
+        RateDTO dto = new RateDTO();
+        dto.setJStar(3);
+        dto.setRContent("안맛있다");
+        jRate result = controller.updateRate(3802L, dto);
+        assertThat(result.getJStar()).isEqualTo(dto.getJStar());
+        assertThat(result.getRContent()).isEqualTo(dto.getRContent());
+    }
+
+    @Test
+    void 젤리id로후기가져오기() {
+        jRate jRate = controller.findRateById(3802L);
+        assertThat(jRate.getRIdx()).isEqualTo(3802L);
+    }
+
+    @Test
+    void 젤리id로후기정보가져오기(){
+    }
 }

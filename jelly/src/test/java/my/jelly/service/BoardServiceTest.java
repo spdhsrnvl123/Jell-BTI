@@ -37,7 +37,7 @@ class BoardServiceTest {
     @Test
     @Transactional
     void 특정회원작성글조회(){
-        String user = "test1@kakao.com";
+        String user = "pizzay@kakao.com";
         Member member = memberService.findUser(user);
         System.out.println(member);
         List<jBoard> list = boardRepository.findBymEmail(member.getMEmail());
@@ -45,4 +45,8 @@ class BoardServiceTest {
         System.out.println(list);
     }
 
+    @Test
+    void 특정글댓글수(){
+
+    }
 }
