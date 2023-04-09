@@ -29,7 +29,7 @@ class CommentServiceTest {
     @Transactional
     @Commit
     void 테스트댓글등록(){
-        IntStream.rangeClosed(3933,3942).forEach(i->{
+        IntStream.rangeClosed(3933,3934).forEach(i->{
             jComment comment = new jComment();
             long bIdx = i;
             jBoard board = boardRepository.findBybIdx(bIdx);

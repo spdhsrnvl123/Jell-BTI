@@ -15,7 +15,7 @@ public class BoardPrevDTO {
     private Long bIdx; //글 번호
     private String bTitle; //글 제목
     private String mNick; //글 작성자
-    private LocalDateTime bDate; //글 작성시간
-    private int replyCount; //댓글 수
+    private LocalDateTime insertDate;
+    private int cCnt;
 
 }

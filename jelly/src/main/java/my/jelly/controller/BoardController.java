@@ -2,13 +2,16 @@ package my.jelly.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.jBoard;
 import my.jelly.repository.BoardRepository;
 import my.jelly.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,12 +36,23 @@ public class BoardController {
         return list;
         //return gson.toJson(result);
     }
+    //댓글 수랑 게시글 목록 같이 반환
+    @GetMapping("/boardTest")
+    public Map<String, Object> boardPrevDTOList(){
+        List<jBoard> boardPrevDTOList = boardService.getBoardAll();
+        List<Integer> commentCnt = boardService.getBoardCnt();
+        System.out.println(boardPrevDTOList);
+        Map<String,Object> map = new HashMap<>();
+        map.put("board", boardPrevDTOList);
+        map.put("cnt", commentCnt);
+        return map;
+    }
 
-//    @GetMapping("/test/comment")
-//    public Map<String, Object> testcomment(@RequestParam(value = "bIdx") Long bIdx) throws IOException {
-//        Map<String, Object> map = new HashMap<>();
-//        map = boardService.testCntComment();
-//        return map;
+    @GetMapping("/boardTest2")
+    public List<BoardPrevDTO> boardTest(){
+        List<BoardPrevDTO> test2 = boardService.getBoardTest();
+        return test2;
+    }
 
 }
 

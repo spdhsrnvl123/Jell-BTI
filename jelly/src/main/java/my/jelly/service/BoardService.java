@@ -2,6 +2,7 @@ package my.jelly.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.jBoard;
 import my.jelly.repository.BoardRepository;
 import my.jelly.repository.CommentRepository;
@@ -23,6 +24,16 @@ public class BoardService {
         List<jBoard> list = boardRepository.findAll();
         System.out.println(list);
         return list;
+    }
+    //전체 글 댓글 수 조회
+   public List<Integer> getBoardCnt(){
+        List<Integer> list2 = boardRepository.commentCnt();
+        return list2;
+   }
+   //글 댓글 목록 한꺼번에 조회 테스트ㅠㅠ
+    public List<BoardPrevDTO> getBoardTest() {
+        List<BoardPrevDTO> test1 = boardRepository.testCntAndList();
+        return test1;
     }
 
 //    public Map<String, Object> testCntComment() {
