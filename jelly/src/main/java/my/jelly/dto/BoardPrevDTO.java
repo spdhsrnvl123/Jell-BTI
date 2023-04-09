@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class BoardPrevDTO {
     // 글 리스트
     // 글 번호, 글 제목, 글 작성자, 글 작성일자, 댓글 수

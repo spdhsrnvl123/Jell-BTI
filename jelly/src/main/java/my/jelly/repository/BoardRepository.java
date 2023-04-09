@@ -3,6 +3,7 @@ package my.jelly.repository;
 import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.jBoard;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -29,9 +30,9 @@ public interface BoardRepository extends JpaRepository<jBoard, Long> {
     @Query(value = "select (select count(*) from j_comment c where b.b_idx = c.b_idx) as cnt from j_board b order by b_idx", nativeQuery = true)
     List<Integer> commentCnt();
 
-    @Query(value = "select new java.my.jelly.dto.BoardPrevDTO(b.b_Idx, b.b_Title, m.m_Nick, b.insert_date,(select count(*) from j_comment c where b.b_Idx = c.b_Idx)) " +
-            " from j_Board b, member m where b.MemberVO = m", nativeQuery = true)
-    List<BoardPrevDTO> testCntAndList();
+//    @Query(value = "select new my.jelly.dto.BoardPrevDTO(b.bIdx, b.bTitle, m.mNick, b.insertDate,(select count(*) from jComment c where b.bIdx = c.bIdx)) " +
+//            " from jBoard b, Member m where b.MemberVO = m",nativeQuery = false)
+//    List<BoardPrevDTO> testCntAndList();
 
 
 // , (select count(*) from j_Comment c where b.b_idx = c.b_idx))
