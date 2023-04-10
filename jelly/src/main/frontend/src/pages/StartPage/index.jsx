@@ -7,6 +7,7 @@ import Ballon from "../../components/Ballon";
 import Button from "../../components/Button";
 import {Link} from "react-router-dom"
 import BallonThird from "../../components/BallonThird";
+import Logo from "../../components/Logo";
 
 const Container = styled.div`
     max-width: 100%;
@@ -31,19 +32,6 @@ const KakaoBox = styled.div`
     transition: all 1s;
 `
 
-const Title = styled.h1`
-    position: absolute;
-    top:69%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    font-weight: 900;
-    font-size: 96px;
-    line-height: 116px;
-    text-align: center;
-    letter-spacing: -3.9px;
-    font-family: 'Inter';
-    color:rgba(143, 56, 140, 0.45);
-`
 const SubTitle = styled.div`
     position: absolute;
     top:82%;
@@ -71,7 +59,7 @@ const StartPage = ()=>{
         <Container>
             <HariboBox hariboMove={move ? "50%": "31%"}>
                 <MainImage />
-                <Title>HARIBO</Title>
+                <Logo />
                 <SubTitle>Jell-BTI</SubTitle>
             </HariboBox>
             <KakaoBox kakaoMove={move ? "100%":"50%"}>
