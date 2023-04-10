@@ -29,6 +29,8 @@ class CommentServiceTest {
     void 테스트댓글등록(){
         IntStream.rangeClosed(3933,3942).forEach(i->{
             JComment comment = new JComment();
+        IntStream.rangeClosed(3933,3934).forEach(i->{
+            jComment comment = new jComment();
             long bIdx = i;
             JBoard board = boardRepository.findBybIdx(bIdx);
             
