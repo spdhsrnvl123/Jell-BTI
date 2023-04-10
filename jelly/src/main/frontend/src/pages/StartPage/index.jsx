@@ -78,7 +78,7 @@ const StartPage = ()=>{
                 <KakaoBackground />
                 <BallonThird />
                 <Button>
-                    <Link to="/login">카카오톡으로 시작하기</Link>
+                    <Link to="/home">Jell-BTI 시작하기</Link>
                 </Button>
                 <Ballon />
             </KakaoBox>
