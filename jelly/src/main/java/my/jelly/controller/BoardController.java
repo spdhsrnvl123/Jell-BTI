@@ -36,7 +36,6 @@ public class BoardController {
         //Map<String, Object> result = boardService.getBoardAll();
         //Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<JBoard> list = boardService.getBoardAll();
-        System.out.println("==============성공===============");
         System.out.println("==============글만 가져오기 성공===============");
         return list;
         //return gson.toJson(result);
@@ -90,13 +89,17 @@ public class BoardController {
     // D : Delete Board (글 지우기)
     @GetMapping("/delete")
     public void deleteBoard(@RequestParam Long bIdx) throws ParseException{
-        //댓글 먼저 삭제
+        System.out.println("댓글 먼저 지우기");
         commentService.deleteComment(bIdx);
-        //글 삭제
         boardService.deleteBoard(bIdx);
     }
 
 
+//    @GetMapping("/boardTest2")
+//    public List<BoardPrevDTO> boardTest(){
+//        List<BoardPrevDTO> test2 = boardService.getBoardTest();
+//        return test2;
+//    }
 
 }
 

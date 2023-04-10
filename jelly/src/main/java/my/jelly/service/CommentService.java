@@ -23,6 +23,6 @@ public class CommentService {
     }
     public void deleteComment(Long bIdx) {
         System.out.println("========Delete Comment=======");
-        List<JComment> i =commentRepository.findbIdxComment(bIdx);
+        int i = commentRepository.deleteComment(bIdx);
     }
 }

@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "j_comment")
+@Table(name = "JComment")
 public class JComment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bIdx")
