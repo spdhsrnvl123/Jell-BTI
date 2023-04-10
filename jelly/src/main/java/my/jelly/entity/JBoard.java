@@ -3,6 +3,7 @@ package my.jelly.entity;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @DynamicInsert
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "j_board")
 public class JBoard {
     @Id

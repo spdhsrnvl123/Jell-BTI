@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import my.jelly.dto.BoardPrevDTO;
-import my.jelly.entity.jBoard;
+import my.jelly.entity.JBoard;
 import my.jelly.repository.BoardRepository;
 import my.jelly.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +30,10 @@ public class BoardController {
     // R : Read All List (모든 글 리스트 가져오기)
     //@RequestMapping("/board")
     @GetMapping("/boardList")
-    public List<jBoard> boardList() {
+    public List<JBoard> boardList() {
         //Map<String, Object> result = boardService.getBoardAll();
         //Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<jBoard> list = boardService.getBoardAll();
+        List<JBoard> list = boardService.getBoardAll();
         System.out.println("==============성공===============");
         return list;
         //return gson.toJson(result);
@@ -41,7 +41,7 @@ public class BoardController {
     // R : Read All List With Comment Count (댓글 수, 게시글 목록 같이 가져오기)
     @GetMapping("/board")
     public Map<String, Object> readBoardList(){
-        List<jBoard> jBoards = boardService.getBoardAll();
+        List<JBoard> jBoards = boardService.getBoardAll();
         List<Integer> commentCnt = boardService.getBoardCnt();
         System.out.println(jBoards);
         Map<String,Object> map = new HashMap<>();

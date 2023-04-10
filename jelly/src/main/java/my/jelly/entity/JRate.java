@@ -3,6 +3,7 @@ package my.jelly.entity;
 import lombok.*;
 import my.jelly.dto.RateDTO;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "j_rate")
 public class JRate {
     //id문제로 일단 생성

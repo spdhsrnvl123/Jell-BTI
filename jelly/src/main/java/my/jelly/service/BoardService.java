@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import my.jelly.entity.JBoard;
 import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.Member;
-import my.jelly.entity.jBoard;
 import my.jelly.repository.BoardRepository;
 import my.jelly.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +21,20 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final CommentRepository commentRepository;
     //전체 글 리스트 조회
-    public Map<String, Object> getBoardAll() {
-        List<JBoard> list = boardRepository.findAll();
-        Map<String, Object> map = new HashMap<>();
-        map.put("allList" , list);
-        System.out.println(map);
-        return map;
+//    public Map<String, Object> getBoardAll() {
+//        List<JBoard> list = boardRepository.findAll();
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("allList", list);
+//        System.out.println(map);
+//        return map;
+//    }
     @Autowired
     MemberService memberService;
 
     //Read All List : 전체 글 리스트 조회
-    public List<jBoard> getBoardAll() {
+    public List<JBoard> getBoardAll() {
         //List<jBoard> list = boardRepository.findAll();
-        List<jBoard> list = boardRepository.findAll();
+        List<JBoard> list = boardRepository.findAll();
         System.out.println(list);
         return list;
     }
@@ -45,7 +45,7 @@ public class BoardService {
    }
     // Create Board : 글 생성하기
     public void createBoard(Map<String, Object> board) {
-        jBoard j = new jBoard();
+        JBoard j = new JBoard();
         j.setBTitle((String) board.get("boardTitle"));
         j.setBContent((String)board.get("boardContent"));
         Member memberVO = memberService.findUser((String) board.get("memberAccount"));
@@ -53,8 +53,8 @@ public class BoardService {
         boardRepository.save(j);
     }
     // Update Board Before Read : 수정할 글 가져오기
-    public jBoard getBoardBefore(Long bIdx) {
-        jBoard j = new jBoard();
+    public JBoard getBoardBefore(Long bIdx) {
+        JBoard j = new JBoard();
         j = boardRepository.findBybIdx(bIdx);
         System.out.println("=================================");
         System.out.println(j);
@@ -62,7 +62,7 @@ public class BoardService {
     }
     // Update Board : 수정 글 받아와 처리
     public void updateBoard(Map<String, Object> board) {
-        jBoard j = boardRepository.findBybIdx((Long) board.get("boardIdx"));
+        JBoard j = boardRepository.findBybIdx((Long) board.get("boardIdx"));
         j.setBTitle((String) board.get("boardTitle"));
         j.setBContent((String) board.get("boardContent"));
     }
