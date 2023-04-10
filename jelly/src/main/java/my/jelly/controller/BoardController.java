@@ -2,12 +2,12 @@ package my.jelly.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
-import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.jBoard;
+import my.jelly.entity.jComment;
 import my.jelly.repository.BoardRepository;
 import my.jelly.service.BoardService;
+import my.jelly.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +27,9 @@ public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
 
+    @Autowired
+    private CommentService commentService;
+
     // R : Read All List (모든 글 리스트 가져오기)
     //@RequestMapping("/board")
     @GetMapping("/boardList")
@@ -34,12 +37,13 @@ public class BoardController {
         //Map<String, Object> result = boardService.getBoardAll();
         //Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<jBoard> list = boardService.getBoardAll();
-        System.out.println("==============성공===============");
+        System.out.println("==============글만 가져오기 성공===============");
         return list;
         //return gson.toJson(result);
     }
+
     // R : Read All List With Comment Count (댓글 수, 게시글 목록 같이 가져오기)
-    @GetMapping("/board")
+    @GetMapping("/boards")
     public Map<String, Object> readBoardList(){
         List<jBoard> jBoards = boardService.getBoardAll();
         List<Integer> commentCnt = boardService.getBoardCnt();
@@ -47,6 +51,7 @@ public class BoardController {
         Map<String,Object> map = new HashMap<>();
         map.put("boardList", jBoards);
         map.put("commentCnt", commentCnt);
+        System.out.println("=======전체 글 불러오기=======");
         return map;
     }
 
@@ -56,27 +61,37 @@ public class BoardController {
         boardService.createBoard(board);
     }
 
-    // R : Read Board : 글 읽어오기
-    @GetMapping("/board/{bIdx}")
-    public Map<String,Object> readBoard(@PathVariable Long bIdx) throws ParseException{
+    // R : Read Board : 글 읽어오기     =@RequestParam / PathBariable
+    //@GetMapping({"/board", "/modify"})
+    @GetMapping("/board")
+    public Map<String,Object> readBoard(@RequestParam Long bIdx) throws ParseException{
+        System.out.println("========="+ bIdx + "번 글 불러오기 성공==========");
         Map<String, Object> map = new HashMap<>();
-
+        map.put("board",boardService.getBoardBefore(bIdx));
+        List<jComment> list = commentService.getComment(bIdx);
+        map.put("comment", list);
         return map;
     }
 
     // U : Update Board Before (수정할 글 불러오기)
-    @PatchMapping("/board/{bIdx}")
-    public Map<String, Object> beforeBoard(@PathVariable Long bIdx) throws ParseException{
+    @GetMapping ("/modify")
+    public Map<String, Object> beforeBoard(@RequestParam Long bIdx) throws ParseException{
         Map<String, Object> map = new HashMap<>();
         map.put("board", boardService.getBoardBefore(bIdx));
         return map;
     }
 
     // U : Update Board (수정 글 받아와서 수정처리)
-    @PatchMapping("/board")
+    @PutMapping("/board")
     public void updateBoard(@RequestBody Map<String, Object> board) throws ParseException{
         boardService.updateBoard(board);
     }
+
+    // D : Delete Board (글 지우기)
+//    @DeleteMapping("/boardDelete")
+//    public void deleteBoard(@RequestParam Long bIdx) throws ParseException{
+//        boardService.deleteBoard(bIdx);
+//    }
 
 
 //    @GetMapping("/boardTest2")

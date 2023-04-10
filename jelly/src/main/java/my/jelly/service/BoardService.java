@@ -59,6 +59,12 @@ public class BoardService {
         j.setBContent((String) board.get("boardContent"));
     }
 
+    // Delete Board : 글 지우기
+//    public void deleteBoard(Long bIdx) {
+//        //commentRepository.deleteAllComment(bIdx);
+//        //boardRepository.deleteById(bIdx);
+//    }
+
 
     //글 댓글 목록 한꺼번에 조회 테스트ㅠㅠ
 //    public List<BoardPrevDTO> getBoardTest() {

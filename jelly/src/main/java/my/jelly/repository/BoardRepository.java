@@ -31,7 +31,7 @@ public interface BoardRepository extends JpaRepository<jBoard, Long> {
     List<Integer> commentCnt();
 
 //    @Query(value = "select new my.jelly.dto.BoardPrevDTO(b.bIdx, b.bTitle, m.mNick, b.insertDate,(select count(*) from jComment c where b.bIdx = c.bIdx)) " +
-//            " from jBoard b, Member m where b.MemberVO = m",nativeQuery = false)
+//            " from jBoard b, Member m where b.MemberVO = m", nativeQuery = false)
 //    List<BoardPrevDTO> testCntAndList();
 
 

@@ -159,7 +159,6 @@ public class JellyInformationService implements JelliyService{
                 jInfo.getJSugars(),
                 jInfo.getJSalt(),
                 jInfo.getJCholesterol()
-
         );
         return result;
     }
