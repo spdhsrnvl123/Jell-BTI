@@ -23,6 +23,34 @@ class CommentServiceTest {
     @Autowired
     private MemberService memberService;
 
+//    @Test
+//    @Transactional
+//    @Commit
+//    void 테스트댓글등록(){
+//        IntStream.rangeClosed(3933,3942).forEach(i->{
+//            JComment comment = new JComment();
+//        IntStream.rangeClosed(3933,3934).forEach(i->{
+//            jComment comment = new jComment();
+//            long bIdx = i;
+//            JBoard board = boardRepository.findBybIdx(bIdx);
+//
+//            Member member = memberService.findUser(("gohn13@naver.com"));
+//
+//            comment.setBoardVO(board);
+//            comment.setCContent("테스트 댓글 " + i);
+//            comment.setMemberVO(member);
+//            System.out.println(board);
+//            System.out.println(member);
+//            commentRepository.save(comment);
+//
+//        });
+//        System.out.println("댓글 등록 완료");
+//    }
+    @Test
+    @Transactional
+    void 댓글모두삭제() {
+        commentRepository.deleteAll();
+    }
     @Test
     @Transactional
     @Commit

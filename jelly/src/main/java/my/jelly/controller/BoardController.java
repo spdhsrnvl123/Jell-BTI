@@ -36,6 +36,7 @@ public class BoardController {
         //Map<String, Object> result = boardService.getBoardAll();
         //Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<JBoard> list = boardService.getBoardAll();
+        System.out.println("==============성공===============");
         System.out.println("==============글만 가져오기 성공===============");
         return list;
         //return gson.toJson(result);

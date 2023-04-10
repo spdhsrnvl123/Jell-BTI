@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +17,8 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @DynamicInsert
-@Table(name = "JBoard")
+@EntityListeners(AuditingEntityListener.class)
+@Table(name = "j_board")
 public class JBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //mysql에서는 IDENTITY

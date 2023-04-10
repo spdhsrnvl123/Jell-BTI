@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-@Table(name = "JComment")
+@EntityListeners(AuditingEntityListener.class)
+@Table(name = "j_comment")
 public class JComment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bIdx")

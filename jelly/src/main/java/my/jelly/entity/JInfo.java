@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "JInfo")
+@Table(name = "j_info")
 public class JInfo {
 
     @Id
