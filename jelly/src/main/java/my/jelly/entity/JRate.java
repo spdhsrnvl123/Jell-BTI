@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-@Table(name = "JRate")
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "JRate")
 public class JRate {
     //id문제로 일단 생성
     @Id

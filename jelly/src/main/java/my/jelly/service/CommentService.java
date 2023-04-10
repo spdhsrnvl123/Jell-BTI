@@ -7,6 +7,7 @@ import my.jelly.entity.JComment;
 import my.jelly.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Service
@@ -20,9 +21,10 @@ public class CommentService {
         List<JComment> list =  commentRepository.findbIdxComment(bIdx);
         return list;
     }
-
+    //글 삭제를 위해 댓글 먼저 지우기
     public void deleteComment(Long bIdx) {
-        System.out.println("Delete Comment=======");
-        commentRepository.deleteComment(bIdx);
+        System.out.println("========Delete Comment=======");
+        int i = commentRepository.deleteComment(bIdx);
+        System.out.println("삭제한 댓글 수 : " + i);
     }
 }

@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,6 +17,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @DynamicInsert
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "JBoard")
 public class JBoard {
     @Id
