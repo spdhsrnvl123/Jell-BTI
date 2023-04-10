@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, String> {
 
-    @Query("select m from Member m where m.mEmail like :mEmail%")
+    @Query("select m from Member m where m.mEmail like :mEmail")
     Member findBymEmail(@Param(value = "mEmail") String mEmail);
 
 

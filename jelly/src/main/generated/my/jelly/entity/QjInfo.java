@@ -10,14 +10,14 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QjInfo is a Querydsl query type for jInfo
+ * QJInfo is a Querydsl query type for JInfo
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QjInfo extends EntityPathBase<jInfo> {
+public class QJInfo extends EntityPathBase<JInfo> {
 
-    private static final long serialVersionUID = -1607977473L;
+    private static final long serialVersionUID = -1637530145L;
 
-    public static final QjInfo jInfo = new QjInfo("jInfo");
+    public static final QJInfo jInfo = new QJInfo("jInfo");
 
     public final StringPath jCarbohydrate = createString("jCarbohydrate");
 
@@ -53,16 +53,16 @@ public class QjInfo extends EntityPathBase<jInfo> {
 
     public final NumberPath<Long> jSweet = createNumber("jSweet", Long.class);
 
-    public QjInfo(String variable) {
-        super(jInfo.class, forVariable(variable));
+    public QJInfo(String variable) {
+        super(JInfo.class, forVariable(variable));
     }
 
-    public QjInfo(Path<? extends jInfo> path) {
+    public QJInfo(Path<? extends JInfo> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QjInfo(PathMetadata metadata) {
-        super(jInfo.class, metadata);
+    public QJInfo(PathMetadata metadata) {
+        super(JInfo.class, metadata);
     }
 
 }

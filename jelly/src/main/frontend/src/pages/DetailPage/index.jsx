@@ -3,14 +3,14 @@ import { useEffect } from "react";
 
 const DetailPage = ()=>{
     
-    // useEffect(()=>{
-    //     axios({
-    //         method: "get",
-    //         url: "/jellies",
-    //     }).then(function (response) {
-    //         console.log(response)
-    //     });
-    // },[])
+    useEffect(()=>{
+        axios({
+            method: "get",
+            url: "/jellies",
+        }).then(function (response) {
+            console.log(response)
+        });
+    },[])
     useEffect(()=>{
         fetch("/jellies").then((response)=>{
             console.log(response)

@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-public class jInfo {
+@Table(name = "JInfo")
+public class JInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -44,7 +45,7 @@ public class jInfo {
 
     private String jCholesterol; // 콜레스테롤
 
-    public jInfo(JellyDTO jellyDTO){
+    public JInfo(JellyDTO jellyDTO){
         this.jName = jellyDTO.getJName();
         this.jGram = jellyDTO.getJGram();
         this.jKcal = jellyDTO.getJKcal();

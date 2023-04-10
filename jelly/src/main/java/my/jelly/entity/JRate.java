@@ -1,9 +1,13 @@
 package my.jelly.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import my.jelly.dto.RateDTO;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Builder
@@ -12,7 +16,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-public class jRate {
+@Table(name = "JRate")
+@EntityListeners(AuditingEntityListener.class)
+public class JRate {
     //id문제로 일단 생성
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -20,7 +26,7 @@ public class jRate {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "jIdx")
-    private jInfo jInfoVO; //평가할 젤리 정보
+    private JInfo jInfoVO; //평가할 젤리 정보
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mEmail")
@@ -32,7 +38,12 @@ public class jRate {
     // 0331 박의민 추가함
     private String rContent; // 젤리 평가
 
-    public jRate(RateDTO rateDTO) {
+    @CreatedDate
+    @Column(name = "insert_date", updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+    private LocalDateTime insertDate;
+
+    public JRate(RateDTO rateDTO) {
         this.jInfoVO = rateDTO.getJInfo();
         this.MemberVO = rateDTO.getMember();
         this.jStar = rateDTO.getJStar();

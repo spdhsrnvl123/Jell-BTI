@@ -11,18 +11,16 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QjBoard is a Querydsl query type for jBoard
+ * QJBoard is a Querydsl query type for JBoard
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QjBoard extends EntityPathBase<jBoard> {
+public class QJBoard extends EntityPathBase<JBoard> {
 
-    private static final long serialVersionUID = 1685866421L;
+    private static final long serialVersionUID = 769733589L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QjBoard jBoard = new QjBoard("jBoard");
-
-    public final QBaseEntity _super = new QBaseEntity(this);
+    public static final QJBoard jBoard = new QJBoard("jBoard");
 
     public final StringPath bContent = createString("bContent");
 
@@ -30,28 +28,27 @@ public class QjBoard extends EntityPathBase<jBoard> {
 
     public final StringPath bTitle = createString("bTitle");
 
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = createDateTime("insertDate", java.time.LocalDateTime.class);
 
     public final QMember MemberVO;
 
-    public QjBoard(String variable) {
-        this(jBoard.class, forVariable(variable), INITS);
+    public QJBoard(String variable) {
+        this(JBoard.class, forVariable(variable), INITS);
     }
 
-    public QjBoard(Path<? extends jBoard> path) {
+    public QJBoard(Path<? extends JBoard> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QjBoard(PathMetadata metadata) {
+    public QJBoard(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QjBoard(PathMetadata metadata, PathInits inits) {
-        this(jBoard.class, metadata, inits);
+    public QJBoard(PathMetadata metadata, PathInits inits) {
+        this(JBoard.class, metadata, inits);
     }
 
-    public QjBoard(Class<? extends jBoard> type, PathMetadata metadata, PathInits inits) {
+    public QJBoard(Class<? extends JBoard> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.MemberVO = inits.isInitialized("MemberVO") ? new QMember(forProperty("MemberVO")) : null;
     }
