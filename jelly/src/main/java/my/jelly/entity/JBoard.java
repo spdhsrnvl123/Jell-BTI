@@ -1,5 +1,6 @@
 package my.jelly.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,7 +33,7 @@ public class JBoard {
     private Member MemberVO; //작성자 정보
 
     @CreatedDate
+    @Column(name = "insert_date", updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime insertDate;
-
-
 }

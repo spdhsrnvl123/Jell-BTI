@@ -48,9 +48,35 @@ class CommentServiceTest {
 //    }
     @Test
     @Transactional
-    void 댓글모두삭제(){
+    void 댓글모두삭제() {
         commentRepository.deleteAll();
     }
+    @Test
+    @Transactional
+    @Commit
+    void 테스트댓글등록() {
+        IntStream.rangeClosed(4430, 4435).forEach(i -> {
+                JComment comment = new JComment();
+                long bIdx = i;
+                JBoard board = boardRepository.findBybIdx(bIdx);
+
+                Member member = memberService.findUser(("magicofclown@naver.com"));
+
+                comment.setBoardVO(board);
+                comment.setCContent("테스트 댓글 " + i);
+                comment.setMemberVO(member);
+                System.out.println(board);
+                System.out.println(member);
+                commentRepository.save(comment);
+
+            });
+            System.out.println("댓글 등록 완료");
+    }
+//    @Test
+//    @Transactional
+//    void 댓글모두삭제(){
+//        commentRepository.deleteAll();
+//    }
 
 //    @Test
 //    @Transactional
@@ -65,4 +91,4 @@ class CommentServiceTest {
 //        int j = commentRepository.checkCommentCnt(i);
 //        System.out.println(j);
 //    }
-}
+    }

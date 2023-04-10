@@ -1,5 +1,6 @@
 package my.jelly.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import my.jelly.dto.RateDTO;
 import org.springframework.data.annotation.CreatedDate;
@@ -38,6 +39,8 @@ public class JRate {
     private String rContent; // 젤리 평가
 
     @CreatedDate
+    @Column(name = "insert_date", updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime insertDate;
 
     public JRate(RateDTO rateDTO) {
