@@ -31,10 +31,14 @@ public class RateServiceImple implements RateService{
     @Override
     public JRate createJellyRate(RateDTO rateDTO) {
         JInfo jInfo = springDataJpaJellyRepository.findById(rateDTO.getJIdx()).orElseThrow();
+        System.out.println(jInfo);
         Member member = memberRepository.findBymEmail(rateDTO.getMEmail());
+        System.out.println(member);
         rateDTO.setJInfo(jInfo);
         rateDTO.setMember(member);
+        System.out.println("rateDTO = " + rateDTO);
         JRate jRate = new JRate(rateDTO);
+        System.out.println("jRate = " + jRate);
         JRate result = rateRepositorySpringDataJpa.save(jRate);
         return result;
     }
