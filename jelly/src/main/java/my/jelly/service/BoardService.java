@@ -8,6 +8,7 @@ import my.jelly.repository.BoardRepository;
 import my.jelly.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class BoardService {
 
 
     //Read All List : 전체 글 리스트 조회
-    public List<JBoard> getBoardAll () {
+    public List<JBoard> getBoardAll() {
         //List<jBoard> list3 = boardRepository.findAll();
         List<JBoard> list = boardRepository.findAll();
         System.out.println(list);
@@ -61,16 +62,5 @@ public class BoardService {
 //    public void deleteBoard(Long bIdx) {
 //        //commentRepository.deleteAllComment(bIdx);
 //        //boardRepository.deleteById(bIdx);
-//    }
-
-
-    //글 댓글 목록 한꺼번에 조회 테스트ㅠㅠ
-//    public List<BoardPrevDTO> getBoardTest() {
-//        List<BoardPrevDTO> test1 = boardRepository.testCntAndList();
-//        return test1;
-//    }
-
-//    public Map<String, Object> testCntComment() {
-//        return commentRepository.commentCnt();
 //    }
 }

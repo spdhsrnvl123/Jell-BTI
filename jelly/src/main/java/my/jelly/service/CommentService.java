@@ -7,6 +7,7 @@ import my.jelly.entity.JComment;
 import my.jelly.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Service
@@ -19,5 +20,9 @@ public class CommentService {
     public List<JComment> getComment(Long bIdx) {
         List<JComment> list =  commentRepository.findbIdxComment(bIdx);
         return list;
+    }
+    public void deleteComment(Long bIdx) {
+        System.out.println("========Delete Comment=======");
+        List<JComment> i =commentRepository.findbIdxComment(bIdx);
     }
 }

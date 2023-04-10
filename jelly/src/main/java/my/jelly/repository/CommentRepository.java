@@ -2,9 +2,12 @@ package my.jelly.repository;
 
 import my.jelly.entity.JComment;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Repository
@@ -13,8 +16,10 @@ public interface CommentRepository extends JpaRepository<JComment, Long> {
     @Query(value = "select * from JComment where b_Idx = :bIdx", nativeQuery = true)
     List<JComment> findbIdxComment(@Param(value = "bIdx") Long bIdx);
 
-//    @Query(value = "delete from j_Comment where b_Idx = :bIdx",nativeQuery = true)
-//    void deleteAllComment(@Param(value = "bIdx") Long bIdx);
+    @Transactional
+    @Modifying
+    @Query("delete from JComment where b_Idx = :bIdx")
+    int deleteComment(@Param("bIdx") Long bIdx);
 
     //특정 글 댓글 수 조회
 
