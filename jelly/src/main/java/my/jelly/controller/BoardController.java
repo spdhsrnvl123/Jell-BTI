@@ -10,7 +10,6 @@ import my.jelly.service.BoardService;
 import my.jelly.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +60,7 @@ public class BoardController {
         boardService.createBoard(board);
     }
 
-    // R : Read Board : 글 읽어오기     =@RequestParam / PathBariable
+    // R : Read Board : 글 읽어오기     =@RequestParam / PathVariable
     //@GetMapping({"/board", "/modify"})
     @GetMapping("/board")
     public Map<String,Object> readBoard(@RequestParam Long bIdx) throws ParseException{
@@ -88,10 +87,11 @@ public class BoardController {
     }
 
     // D : Delete Board (글 지우기)
-//    @DeleteMapping("/boardDelete")
-//    public void deleteBoard(@RequestParam Long bIdx) throws ParseException{
-//        boardService.deleteBoard(bIdx);
-//    }
+    @DeleteMapping("/delete")
+    public void deleteBoard(@RequestBody Long bIdx) throws ParseException{
+        commentService.deleteComment(bIdx);
+        boardService.deleteBoard(bIdx);
+    }
 
 
 //    @GetMapping("/boardTest2")

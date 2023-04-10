@@ -20,4 +20,9 @@ public class CommentService {
         List<JComment> list =  commentRepository.findbIdxComment(bIdx);
         return list;
     }
+
+    public void deleteComment(Long bIdx) {
+        System.out.println("Delete Comment=======");
+        commentRepository.deleteComment(bIdx);
+    }
 }
