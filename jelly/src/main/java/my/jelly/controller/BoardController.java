@@ -87,18 +87,15 @@ public class BoardController {
     }
 
     // D : Delete Board (글 지우기)
-    @DeleteMapping("/delete")
-    public void deleteBoard(@RequestBody Long bIdx) throws ParseException{
+    @GetMapping("/delete")
+    public void deleteBoard(@RequestParam Long bIdx) throws ParseException{
+        //댓글 먼저 삭제
         commentService.deleteComment(bIdx);
+        //글 삭제
         boardService.deleteBoard(bIdx);
     }
 
 
-//    @GetMapping("/boardTest2")
-//    public List<BoardPrevDTO> boardTest(){
-//        List<BoardPrevDTO> test2 = boardService.getBoardTest();
-//        return test2;
-//    }
 
 }
 

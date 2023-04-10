@@ -64,7 +64,7 @@ public class BoardService {
 
     // Delete Board : 글 지우기
     public void deleteBoard(Long bIdx) {
-        System.out.println("Delete by" + bIdx);
+        System.out.println("Delete by " + bIdx);
         boardRepository.deleteById(bIdx);
     }
 
