@@ -1,9 +1,8 @@
 package my.jelly.service;
 
-import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.Member;
-import my.jelly.entity.jBoard;
-import my.jelly.entity.jComment;
+import my.jelly.entity.JBoard;
+import my.jelly.entity.JComment;
 import my.jelly.repository.BoardRepository;
 import my.jelly.repository.CommentRepository;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -29,10 +27,12 @@ class CommentServiceTest {
     @Transactional
     @Commit
     void 테스트댓글등록(){
+        IntStream.rangeClosed(3933,3942).forEach(i->{
+            JComment comment = new JComment();
         IntStream.rangeClosed(3933,3934).forEach(i->{
             jComment comment = new jComment();
             long bIdx = i;
-            jBoard board = boardRepository.findBybIdx(bIdx);
+            JBoard board = boardRepository.findBybIdx(bIdx);
             
             Member member = memberService.findUser(("gohn13@naver.com"));
 

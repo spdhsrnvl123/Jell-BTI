@@ -3,8 +3,8 @@ package my.jelly.controller;
 import lombok.RequiredArgsConstructor;
 import my.jelly.dto.JellyDTO;
 import my.jelly.dto.RateDTO;
-import my.jelly.entity.jInfo;
-import my.jelly.entity.jRate;
+import my.jelly.entity.JInfo;
+import my.jelly.entity.JRate;
 import my.jelly.service.JelliyService;
 import my.jelly.service.RateService;
 import org.springframework.stereotype.Controller;
@@ -39,10 +39,10 @@ public class JellyController {
     }
 
     // 젤리 영양정보 전체 조회
-    @GetMapping("/jellies/{jellyName}")
+    @GetMapping("/jellies")
     @ResponseBody
-    public List<jInfo> readJellyInformation(@PathVariable String jellyName) {
-        List<jInfo> jellies = jelliyService.findAll(jellyName);
+    public List<JInfo> readJellyInformation(@RequestParam(defaultValue = "") String jellyName) {
+        List<JInfo> jellies = jelliyService.findAll(jellyName);
         return jellies;
     }
 
@@ -67,9 +67,9 @@ public class JellyController {
     // 후기 생성 기능
     @PostMapping("/jellies/rates")
     @ResponseBody
-    public jRate createJellyRate(@RequestBody RateDTO rateDTO) {
+    public JRate createJellyRate(@RequestBody RateDTO rateDTO) {
         System.out.println("rateDTO = " + rateDTO);
-        jRate result = rateService.createJellyRate(rateDTO);
+        JRate result = rateService.createJellyRate(rateDTO);
         return result;
     }
 
@@ -84,18 +84,18 @@ public class JellyController {
     // 사용자 이메일로 후기 정보 가져오는 기능
     @GetMapping("/jellies/rates/email/{email}-{domain}")
     @ResponseBody
-    public List<jRate> findRatesByEmail(@PathVariable String email, @PathVariable String domain) {
+    public List<JRate> findRatesByEmail(@PathVariable String email, @PathVariable String domain) {
         System.out.println("mEmail = " + email);
         System.out.println("domain = " + domain);
-        List<jRate> rates = rateService.findRatesByEmail(email, domain);
+        List<JRate> rates = rateService.findRatesByEmail(email, domain);
         return rates;
     }
 
     // 후기id로 후기 정보 가져오는 기능
     @GetMapping("/jellies/rates/index/{rIdx}")
     @ResponseBody
-    public jRate findRateById(@PathVariable Long rIdx) {
-        Optional<jRate> jRate = rateService.findRateById(rIdx);
+    public JRate findRateById(@PathVariable Long rIdx) {
+        Optional<JRate> jRate = rateService.findRateById(rIdx);
         if (jRate.isPresent()){
             return jRate.get();
         }else {
@@ -106,10 +106,10 @@ public class JellyController {
     // 후기 수정 기능
     @PatchMapping("/jellies/rates/{rIdx}")
     @ResponseBody
-    public jRate updateRate(@PathVariable Long rIdx, @RequestBody RateDTO rateDTO) {
+    public JRate updateRate(@PathVariable Long rIdx, @RequestBody RateDTO rateDTO) {
         System.out.println("rIdx = " + rIdx);
         System.out.println("rateDTO = " + rateDTO);
-        jRate result = rateService.updateRate(rIdx, rateDTO);
+        JRate result = rateService.updateRate(rIdx, rateDTO);
         return result;
     }
 

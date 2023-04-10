@@ -2,6 +2,7 @@ package my.jelly.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import my.jelly.entity.JBoard;
 import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.Member;
 import my.jelly.entity.jBoard;
@@ -20,6 +21,13 @@ import java.util.Map;
 public class BoardService {
     private final BoardRepository boardRepository;
     private final CommentRepository commentRepository;
+    //전체 글 리스트 조회
+    public Map<String, Object> getBoardAll() {
+        List<JBoard> list = boardRepository.findAll();
+        Map<String, Object> map = new HashMap<>();
+        map.put("allList" , list);
+        System.out.println(map);
+        return map;
     @Autowired
     MemberService memberService;
 

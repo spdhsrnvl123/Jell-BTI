@@ -1,8 +1,10 @@
 package my.jelly.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -12,10 +14,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-public class jComment extends BaseEntity {
+@Table(name = "j_comment")
+public class JComment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bIdx")
-    private jBoard BoardVO; //평가할 젤리 정보 //연관 관계 지정
+    private JBoard BoardVO; //평가할 젤리 정보 //연관 관계 지정
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -26,4 +29,7 @@ public class jComment extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mEmail") //name = 생성될 column 명
     private Member MemberVO; //댓글 작성자 정보
+
+    @CreatedDate
+    private LocalDateTime insertDate;
 }

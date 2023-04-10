@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import my.jelly.entity.jInfo;
-
-import javax.persistence.Column;
 
 @Data
 @NoArgsConstructor

@@ -1,16 +1,14 @@
 package my.jelly.repository;
 
-import my.jelly.entity.jComment;
+import my.jelly.entity.JComment;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
 @Repository
-public interface CommentRepository extends JpaRepository<jComment, Long> {
+public interface CommentRepository extends JpaRepository<JComment, Long> {
     //특정 글 댓글 수 조회
 
     //select (select count(*) from j_comment c where b.b_idx = c.b_idx) as cnt,

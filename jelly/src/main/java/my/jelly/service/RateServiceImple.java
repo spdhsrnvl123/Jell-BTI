@@ -3,9 +3,9 @@ package my.jelly.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.RateDTO;
+import my.jelly.entity.JInfo;
+import my.jelly.entity.JRate;
 import my.jelly.entity.Member;
-import my.jelly.entity.jInfo;
-import my.jelly.entity.jRate;
 import my.jelly.repository.MemberRepository;
 import my.jelly.repository.RateRepositorySpringDataJpa;
 import my.jelly.repository.JellyRepositorySpringDataJpa;
@@ -29,13 +29,13 @@ public class RateServiceImple implements RateService{
 
     // 젤리 평가 정보 저장하는 메서드
     @Override
-    public jRate createJellyRate(RateDTO rateDTO) {
-        jInfo jInfo = springDataJpaJellyRepository.findById(rateDTO.getJIdx()).orElseThrow();
+    public JRate createJellyRate(RateDTO rateDTO) {
+        JInfo jInfo = springDataJpaJellyRepository.findById(rateDTO.getJIdx()).orElseThrow();
         Member member = memberRepository.findBymEmail(rateDTO.getMEmail());
         rateDTO.setJInfo(jInfo);
         rateDTO.setMember(member);
-        jRate jRate = new jRate(rateDTO);
-        jRate result = rateRepositorySpringDataJpa.save(jRate);
+        JRate jRate = new JRate(rateDTO);
+        JRate result = rateRepositorySpringDataJpa.save(jRate);
         return result;
     }
 
@@ -50,7 +50,7 @@ public class RateServiceImple implements RateService{
     }
 
     @Override
-    public List<jRate> findRatesByEmail(String email, String domain) {
+    public List<JRate> findRatesByEmail(String email, String domain) {
 
         String mEmail=email + "@" + domain;
         System.out.println("mEmail = " + mEmail);
@@ -58,13 +58,13 @@ public class RateServiceImple implements RateService{
     }
 
     @Override
-    public Optional<jRate> findRateById(Long rIdx) {
+    public Optional<JRate> findRateById(Long rIdx) {
         return rateRepositorySpringDataJpa.findById(rIdx);
     }
 
     @Override
-    public jRate updateRate(Long rIdx, RateDTO rateDTO) {
-        jRate jRate = rateRepositorySpringDataJpa.findById(rIdx).orElseThrow();
+    public JRate updateRate(Long rIdx, RateDTO rateDTO) {
+        JRate jRate = rateRepositorySpringDataJpa.findById(rIdx).orElseThrow();
         jRate.setJStar(rateDTO.getJStar());
         jRate.setRContent(rateDTO.getRContent());
         return jRate;

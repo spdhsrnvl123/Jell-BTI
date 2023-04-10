@@ -1,7 +1,6 @@
 package my.jelly.repository;
 
-import my.jelly.dto.BoardPrevDTO;
-import my.jelly.entity.jBoard;
+import my.jelly.entity.JBoard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,19 +11,19 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface BoardRepository extends JpaRepository<jBoard, Long> {
+public interface BoardRepository extends JpaRepository<JBoard, Long> {
 
     @Transactional
-    List<jBoard> findAll();
+    List<JBoard> findAll();
 
     //글 번호로 글 검색
     @Query(value = "select * from j_Board where b_Idx = :bIdx", nativeQuery = true)
-    jBoard findBybIdx(@Param(value ="bIdx") Long bIdx);
+    JBoard findBybIdx(@Param(value ="bIdx") Long bIdx);
 
 
     //특정 회원 작성 글 찾아오기
     @Query(value = "select * from j_Board where m_Email = :mEmail",nativeQuery = true)
-    List<jBoard> findBymEmail(@Param(value = "mEmail") String mEmail);
+    List<JBoard> findBymEmail(@Param(value = "mEmail") String mEmail);
 
     //전체 글 댓글 수 가져오기
     @Query(value = "select (select count(*) from j_comment c where b.b_idx = c.b_idx) as cnt from j_board b order by b_idx", nativeQuery = true)
