@@ -8,9 +8,9 @@ let userToken = createSlice({
             return state = state + action.payload
         }
     }
-})
+});
 
-export let {userTokenIn} = userToken.actions
+export let { userTokenIn } = userToken.actions
 
 export default configureStore({
     reducer : {
