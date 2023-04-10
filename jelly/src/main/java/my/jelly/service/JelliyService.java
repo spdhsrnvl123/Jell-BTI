@@ -1,9 +1,7 @@
 package my.jelly.service;
 
 import my.jelly.dto.JellyDTO;
-import my.jelly.dto.RateDTO;
-import my.jelly.entity.jInfo;
-import my.jelly.entity.jRate;
+import my.jelly.entity.JInfo;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +11,7 @@ public interface JelliyService {
 
     public void deleteAllJellyInformation();
 
-    public List<jInfo> findAll(String jellyName);
+    public List<JInfo> findAll(String jellyName);
 
     public void updateJellyInformation(Long jIdx,JellyDTO jellyDTO);
 

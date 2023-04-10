@@ -7,7 +7,7 @@ import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
-import my.jelly.entity.jInfo;
+import my.jelly.entity.JInfo;
 import my.jelly.repository.JellyRepository;
 import my.jelly.repository.JellyRepositorySpringDataJpa;
 import org.springframework.stereotype.Service;
@@ -69,7 +69,7 @@ public class JellyInformationService implements JelliyService{
         JsonArray row = (JsonArray) dataArr.get("row");
 //        System.out.println(row.toString());
 
-        List<jInfo> jellies = new ArrayList<>();
+        List<JInfo> jellies = new ArrayList<>();
         int result = 0;
         for(int i = 0; i < row.size(); i++){
             JsonObject tmp = (JsonObject) row.get(i);
@@ -99,7 +99,7 @@ public class JellyInformationService implements JelliyService{
             jelly.setJSalt(replaceQuote(tmp.get("NUTR_CONT6")));
             jelly.setJCholesterol(replaceQuote(tmp.get("NUTR_CONT7")));
 
-            jInfo jInfo = new jInfo(jelly);
+            JInfo jInfo = new JInfo(jelly);
 
             jellies.add(springDataJpaJellyRepository.save(jInfo));
 //            System.out.println("이름 : " + tmp.get("DESC_KOR")
@@ -126,8 +126,8 @@ public class JellyInformationService implements JelliyService{
 
     // 모든 젤리 정보를 가져오는 메서드
     @Override
-    public List<jInfo> findAll(String jellyName) {
-        List<jInfo> jellies = jellyRepository.findAll(jellyName);
+    public List<JInfo> findAll(String jellyName) {
+        List<JInfo> jellies = jellyRepository.findAll(jellyName);
         return jellies;
     }
 
@@ -140,7 +140,7 @@ public class JellyInformationService implements JelliyService{
     // id값으로 젤리 영양성분 정보 검색하기
     @Override
     public JellyDTO findById(Long jIdx) {
-        jInfo jInfo = springDataJpaJellyRepository.findById(jIdx).orElseThrow();
+        JInfo jInfo = springDataJpaJellyRepository.findById(jIdx).orElseThrow();
         JellyDTO result = new JellyDTO(
                 jInfo.getJIdx(),
                 jInfo.getJName(),
@@ -159,7 +159,6 @@ public class JellyInformationService implements JelliyService{
                 jInfo.getJSugars(),
                 jInfo.getJSalt(),
                 jInfo.getJCholesterol()
-
         );
         return result;
     }

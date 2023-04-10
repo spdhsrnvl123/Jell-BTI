@@ -2,11 +2,10 @@ package my.jelly.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
-import my.jelly.entity.QjInfo;
-import my.jelly.entity.jInfo;
+import my.jelly.entity.QJInfo;
+import my.jelly.entity.JInfo;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -30,7 +29,7 @@ public class JellyRepositoryImpl implements JellyRepository{
 
     @Override
     public void update(Long jIdx, JellyDTO jellyDTO) {
-        jInfo jInfo = repository.findById(jIdx).orElseThrow();
+        JInfo jInfo = repository.findById(jIdx).orElseThrow();
         jInfo.setJDetail(jellyDTO.getJDetail());
         jInfo.setJKcal(jellyDTO.getJKcal());
         jInfo.setJGram(jellyDTO.getJGram());
@@ -49,8 +48,8 @@ public class JellyRepositoryImpl implements JellyRepository{
     }
 
     @Override
-    public List<jInfo> findAll(String jellyName) {
-        QjInfo qjInfo = QjInfo.jInfo;
+    public List<JInfo> findAll(String jellyName) {
+        QJInfo qjInfo = QJInfo.jInfo;
 
         return query
                 .select(qjInfo)
@@ -61,7 +60,7 @@ public class JellyRepositoryImpl implements JellyRepository{
 
     private BooleanExpression likeJellyName(String jellyName) {
         if(StringUtils.hasText(jellyName)){
-            return QjInfo.jInfo.jName.like("%" + jellyName + "%");
+            return QJInfo.jInfo.jName.like("%" + jellyName + "%");
         }
         return null;
     }

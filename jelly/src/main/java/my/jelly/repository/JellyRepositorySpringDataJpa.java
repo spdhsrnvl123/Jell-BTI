@@ -1,9 +1,9 @@
 package my.jelly.repository;
 
-import my.jelly.entity.jInfo;
+import my.jelly.entity.JInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface JellyRepositorySpringDataJpa extends JpaRepository<jInfo, Long>{
+public interface JellyRepositorySpringDataJpa extends JpaRepository<JInfo, Long>{
 
 
 }

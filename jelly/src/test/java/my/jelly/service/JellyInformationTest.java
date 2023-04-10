@@ -7,8 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import my.jelly.controller.JellyController;
 import my.jelly.dto.JellyDTO;
 import my.jelly.dto.RateDTO;
-import my.jelly.entity.jInfo;
-import my.jelly.entity.jRate;
+import my.jelly.entity.JInfo;
+import my.jelly.entity.JRate;
 import my.jelly.repository.RateRepositorySpringDataJpa;
 import my.jelly.repository.JellyRepositorySpringDataJpa;
 import org.junit.jupiter.api.Test;
@@ -87,7 +87,7 @@ class JellyInformationTest {
         JsonArray row = (JsonArray) dataArr.get("row");
 //        System.out.println(row.toString());
 
-        List<jInfo> jellies = new ArrayList<>();
+        List<JInfo> jellies = new ArrayList<>();
         int result = 0;
         for(int i = 0; i < row.size(); i++){
             JsonObject tmp = (JsonObject) row.get(i);
@@ -122,7 +122,7 @@ class JellyInformationTest {
     @Test
     void saveData() throws IOException, ParseException {
         int result = service.createJellyInformation();
-        List<jInfo> jellies = repository.findAll();
+        List<JInfo> jellies = repository.findAll();
 
         assertThat(result).isEqualTo(jellies.size());
     }
@@ -134,7 +134,7 @@ class JellyInformationTest {
 
     @Test
     void 모든젤리영양성분정보가져오기(){
-        List<jInfo> list = controller.readJellyInformation("맛없는거");
+        List<JInfo> list = controller.readJellyInformation("맛없는거");
         assertThat(list.size()).isEqualTo(0);
 
     }
@@ -148,7 +148,7 @@ class JellyInformationTest {
 
         controller.updateJellyInformation(3671L, jellyDTO);
 
-        jInfo jInfo = repository.findById(3671L).orElseThrow();
+        JInfo jInfo = repository.findById(3671L).orElseThrow();
 
         assertThat(jellyDTO.getJCarbohydrate()).isEqualTo(jInfo.getJCarbohydrate());
     }
@@ -168,14 +168,14 @@ class JellyInformationTest {
         rateDTO.setMJelly("testJelly");
         rateDTO.setJStar(4);
         rateDTO.setRContent("개마싯다");
-        jRate result = rateService.createJellyRate(rateDTO);
+        JRate result = rateService.createJellyRate(rateDTO);
 
         assertThat(rateDTO.getJStar()).isEqualTo(result.getJStar());
     }
 
     @Test
     void 이메일로평가정보가져오기() {
-        List<jRate> results = controller.findRatesByEmail("magicofclown", "naver.com");
+        List<JRate> results = controller.findRatesByEmail("magicofclown", "naver.com");
         assertThat(results.size()).isEqualTo(3);
     }
 
@@ -184,14 +184,14 @@ class JellyInformationTest {
         RateDTO dto = new RateDTO();
         dto.setJStar(3);
         dto.setRContent("안맛있다");
-        jRate result = controller.updateRate(3802L, dto);
+        JRate result = controller.updateRate(3802L, dto);
         assertThat(result.getJStar()).isEqualTo(dto.getJStar());
         assertThat(result.getRContent()).isEqualTo(dto.getRContent());
     }
 
     @Test
     void 젤리id로후기가져오기() {
-        jRate jRate = controller.findRateById(3802L);
+        JRate jRate = controller.findRateById(3802L);
         assertThat(jRate.getRIdx()).isEqualTo(3802L);
     }
 
