@@ -11,49 +11,46 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QjComment is a Querydsl query type for jComment
+ * QJComment is a Querydsl query type for JComment
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QjComment extends EntityPathBase<jComment> {
+public class QJComment extends EntityPathBase<JComment> {
 
-    private static final long serialVersionUID = 1813401454L;
+    private static final long serialVersionUID = 1878045582L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QjComment jComment = new QjComment("jComment");
+    public static final QJComment jComment = new QJComment("jComment");
 
-    public final QBaseEntity _super = new QBaseEntity(this);
-
-    public final QjBoard BoardVO;
+    public final QJBoard BoardVO;
 
     public final StringPath cContent = createString("cContent");
 
     public final NumberPath<Long> cIdx = createNumber("cIdx", Long.class);
 
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = createDateTime("insertDate", java.time.LocalDateTime.class);
 
     public final QMember MemberVO;
 
-    public QjComment(String variable) {
-        this(jComment.class, forVariable(variable), INITS);
+    public QJComment(String variable) {
+        this(JComment.class, forVariable(variable), INITS);
     }
 
-    public QjComment(Path<? extends jComment> path) {
+    public QJComment(Path<? extends JComment> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QjComment(PathMetadata metadata) {
+    public QJComment(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QjComment(PathMetadata metadata, PathInits inits) {
-        this(jComment.class, metadata, inits);
+    public QJComment(PathMetadata metadata, PathInits inits) {
+        this(JComment.class, metadata, inits);
     }
 
-    public QjComment(Class<? extends jComment> type, PathMetadata metadata, PathInits inits) {
+    public QJComment(Class<? extends JComment> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.BoardVO = inits.isInitialized("BoardVO") ? new QjBoard(forProperty("BoardVO"), inits.get("BoardVO")) : null;
+        this.BoardVO = inits.isInitialized("BoardVO") ? new QJBoard(forProperty("BoardVO"), inits.get("BoardVO")) : null;
         this.MemberVO = inits.isInitialized("MemberVO") ? new QMember(forProperty("MemberVO")) : null;
     }
 

@@ -1,7 +1,7 @@
 package my.jelly.service;
 
+import my.jelly.entity.JBoard;
 import my.jelly.entity.Member;
-import my.jelly.entity.jBoard;
 import my.jelly.repository.BoardRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -24,7 +25,7 @@ class BoardServiceTest {
     @Commit
     void 테스트게시글등록(){
         IntStream.rangeClosed(1, 10).forEach(i -> {
-            jBoard board = new jBoard();
+            JBoard board = new JBoard();
             Member member = memberService.findUser(("pizzay@kakao.com"));
             board.setBTitle("글 제목" + i);
             board.setBContent("글 내용" + i);
@@ -40,7 +41,7 @@ class BoardServiceTest {
         String user = "pizzay@kakao.com";
         Member member = memberService.findUser(user);
         System.out.println(member);
-        List<jBoard> list = boardRepository.findBymEmail(member.getMEmail());
+        List<JBoard> list = boardRepository.findBymEmail(member.getMEmail());
 //리스트에 특정회원이 작성한 글 모두 담아서 가져오기
         System.out.println(list);
     }

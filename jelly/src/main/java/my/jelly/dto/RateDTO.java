@@ -2,8 +2,8 @@ package my.jelly.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import my.jelly.entity.JInfo;
 import my.jelly.entity.Member;
-import my.jelly.entity.jInfo;
 
 @Data
 @ToString
@@ -39,7 +39,7 @@ public class RateDTO {
     @JsonProperty("mAccount")
     private String mAccount; // 이건 뭔지 모르겠는데 멤버 테이블에 있어서 일단 갖고옴
 
-    private my.jelly.entity.jInfo jInfo;
+    private JInfo jInfo;
 
     private Member member;
 }

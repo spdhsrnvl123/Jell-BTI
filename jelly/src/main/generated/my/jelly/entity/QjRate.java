@@ -11,18 +11,20 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QjRate is a Querydsl query type for jRate
+ * QJRate is a Querydsl query type for JRate
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QjRate extends EntityPathBase<jRate> {
+public class QJRate extends EntityPathBase<JRate> {
 
-    private static final long serialVersionUID = -1607721423L;
+    private static final long serialVersionUID = -1637274095L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QjRate jRate = new QjRate("jRate");
+    public static final QJRate jRate = new QJRate("jRate");
 
-    public final QjInfo jInfoVO;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = createDateTime("insertDate", java.time.LocalDateTime.class);
+
+    public final QJInfo jInfoVO;
 
     public final NumberPath<Integer> jStar = createNumber("jStar", Integer.class);
 
@@ -32,25 +34,25 @@ public class QjRate extends EntityPathBase<jRate> {
 
     public final NumberPath<Long> rIdx = createNumber("rIdx", Long.class);
 
-    public QjRate(String variable) {
-        this(jRate.class, forVariable(variable), INITS);
+    public QJRate(String variable) {
+        this(JRate.class, forVariable(variable), INITS);
     }
 
-    public QjRate(Path<? extends jRate> path) {
+    public QJRate(Path<? extends JRate> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QjRate(PathMetadata metadata) {
+    public QJRate(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QjRate(PathMetadata metadata, PathInits inits) {
-        this(jRate.class, metadata, inits);
+    public QJRate(PathMetadata metadata, PathInits inits) {
+        this(JRate.class, metadata, inits);
     }
 
-    public QjRate(Class<? extends jRate> type, PathMetadata metadata, PathInits inits) {
+    public QJRate(Class<? extends JRate> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.jInfoVO = inits.isInitialized("jInfoVO") ? new QjInfo(forProperty("jInfoVO")) : null;
+        this.jInfoVO = inits.isInitialized("jInfoVO") ? new QJInfo(forProperty("jInfoVO")) : null;
         this.MemberVO = inits.isInitialized("MemberVO") ? new QMember(forProperty("MemberVO")) : null;
     }
 

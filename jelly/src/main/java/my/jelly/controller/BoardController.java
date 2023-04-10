@@ -3,8 +3,8 @@ package my.jelly.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import my.jelly.entity.jBoard;
-import my.jelly.entity.jComment;
+import my.jelly.entity.JBoard;
+import my.jelly.entity.JComment;
 import my.jelly.repository.BoardRepository;
 import my.jelly.service.BoardService;
 import my.jelly.service.CommentService;
@@ -33,10 +33,10 @@ public class BoardController {
     // R : Read All List (모든 글 리스트 가져오기)
     //@RequestMapping("/board")
     @GetMapping("/boardList")
-    public List<jBoard> boardList() {
+    public List<JBoard> boardList() {
         //Map<String, Object> result = boardService.getBoardAll();
         //Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<jBoard> list = boardService.getBoardAll();
+        List<JBoard> list = boardService.getBoardAll();
         System.out.println("==============글만 가져오기 성공===============");
         return list;
         //return gson.toJson(result);
@@ -45,7 +45,7 @@ public class BoardController {
     // R : Read All List With Comment Count (댓글 수, 게시글 목록 같이 가져오기)
     @GetMapping("/boards")
     public Map<String, Object> readBoardList(){
-        List<jBoard> jBoards = boardService.getBoardAll();
+        List<JBoard> jBoards = boardService.getBoardAll();
         List<Integer> commentCnt = boardService.getBoardCnt();
         System.out.println(jBoards);
         Map<String,Object> map = new HashMap<>();
@@ -68,7 +68,7 @@ public class BoardController {
         System.out.println("========="+ bIdx + "번 글 불러오기 성공==========");
         Map<String, Object> map = new HashMap<>();
         map.put("board",boardService.getBoardBefore(bIdx));
-        List<jComment> list = commentService.getComment(bIdx);
+        List<JComment> list = commentService.getComment(bIdx);
         map.put("comment", list);
         return map;
     }

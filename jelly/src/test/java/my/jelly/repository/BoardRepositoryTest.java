@@ -1,15 +1,12 @@
 package my.jelly.repository;
 
-import my.jelly.entity.jBoard;
-import my.jelly.service.BoardService;
+import my.jelly.entity.JBoard;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BoardRepositoryTest {
@@ -19,8 +16,8 @@ class BoardRepositoryTest {
     @Test
     @Transactional
     void 테스트글모두조회(){
-        List<jBoard> board = boardRepository.findAll();
-        for(jBoard i : board){
+        List<JBoard> board = boardRepository.findAll();
+        for(JBoard i : board){
             System.out.println(i);
         }
     }
