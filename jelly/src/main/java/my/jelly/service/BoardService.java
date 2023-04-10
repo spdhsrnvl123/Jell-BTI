@@ -2,7 +2,7 @@ package my.jelly.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import my.jelly.entity.jBoard;
+import my.jelly.entity.JBoard;
 import my.jelly.repository.BoardRepository;
 import my.jelly.repository.CommentRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class BoardService {
     private final CommentRepository commentRepository;
     //전체 글 리스트 조회
     public Map<String, Object> getBoardAll() {
-        List<jBoard> list = boardRepository.findAll();
+        List<JBoard> list = boardRepository.findAll();
         Map<String, Object> map = new HashMap<>();
         map.put("allList" , list);
         System.out.println(map);

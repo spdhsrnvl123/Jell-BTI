@@ -2,8 +2,10 @@ package my.jelly.entity;
 
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Builder
@@ -13,7 +15,8 @@ import javax.persistence.*;
 @Getter
 @ToString
 @DynamicInsert
-public class jBoard extends BaseEntity {
+@Table(name = "j_board")
+public class JBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //mysql에서는 IDENTITY
     private Long bIdx; //글 번호
@@ -26,6 +29,9 @@ public class jBoard extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mEmail") //name = 생성될 column 명
     private Member MemberVO; //작성자 정보
+
+    @CreatedDate
+    private LocalDateTime insertDate;
 
 
 }
