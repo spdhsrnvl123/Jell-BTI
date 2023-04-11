@@ -3,8 +3,10 @@ import styled from "styled-components"
 
 const MenuBox = styled.ul`
     display: flex;
+    padding-top: 31px;
     justify-content: center;
-    margin-top: 47px;
+    margin: 0 auto;
+    padding-right: 88px;
 `
 
 const MenuList = styled.li`
@@ -12,7 +14,7 @@ const MenuList = styled.li`
     font-weight: 700;
     font-style : normal;
     line-height : 24px;
-    padding-left: 61px;
+    padding-left: 81px;
     :nth-child(1){
         color : #00A3FF;
     }
@@ -28,8 +30,7 @@ const Navigation = ()=>{
             <MenuList><Link to="/home">Home</Link></MenuList>
             <MenuList><Link to="">Jell Test</Link></MenuList>
             <MenuList><Link>Community</Link></MenuList>
-            <MenuList><Link to="/mypage">MyPage</Link></MenuList>
-            <Link to="/login">카카오로그인</Link>
+            <MenuList><Link to="/mypage">Mypage</Link></MenuList>
         </MenuBox>
     )
 }

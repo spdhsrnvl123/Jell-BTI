@@ -10,13 +10,13 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "JComment")
 public class JComment {
     @ManyToOne(fetch = FetchType.LAZY)
