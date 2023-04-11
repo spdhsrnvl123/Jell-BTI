@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @ToString
 @DynamicInsert
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "j_board")
+@Table(name = "JBoard")
 public class JBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //mysql에서는 IDENTITY

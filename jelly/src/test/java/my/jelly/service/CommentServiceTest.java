@@ -51,6 +51,7 @@ class CommentServiceTest {
     void 댓글모두삭제() {
         commentRepository.deleteAll();
     }
+
     @Test
     @Transactional
     @Commit
@@ -72,11 +73,7 @@ class CommentServiceTest {
             });
             System.out.println("댓글 등록 완료");
     }
-//    @Test
-//    @Transactional
-//    void 댓글모두삭제(){
-//        commentRepository.deleteAll();
-//    }
+
 
 //    @Test
 //    @Transactional

@@ -21,8 +21,10 @@ public class CommentService {
         List<JComment> list =  commentRepository.findbIdxComment(bIdx);
         return list;
     }
+    //글 삭제를 위해 댓글 먼저 지우기
     public void deleteComment(Long bIdx) {
         System.out.println("========Delete Comment=======");
-        List<JComment> i =commentRepository.findbIdxComment(bIdx);
+        int i = commentRepository.deleteComment(bIdx);
+        System.out.println("삭제한 댓글 수 : " + i);
     }
 }
