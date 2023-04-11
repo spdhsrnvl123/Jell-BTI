@@ -92,8 +92,8 @@ public class BoardController {
     public void deleteBoard(@RequestParam Long bIdx) throws ParseException{
         //댓글 먼저 삭제
         commentService.deleteComment(bIdx);
-        //글 삭제
-        boardService.deleteBoard(bIdx);
+//        //글 삭제
+//        boardService.deleteBoard(bIdx);
     }
 
 
