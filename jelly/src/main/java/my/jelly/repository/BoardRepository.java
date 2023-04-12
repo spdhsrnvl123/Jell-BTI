@@ -13,6 +13,7 @@ import java.util.List;
 public interface BoardRepository extends JpaRepository<JBoard, Long> {
 
     @Transactional
+    @Query(value = "select * from JBoard order by b_Idx desc", nativeQuery = true)
     List<JBoard> findAll();
 
     //글 번호로 글 검색
@@ -25,7 +26,7 @@ public interface BoardRepository extends JpaRepository<JBoard, Long> {
     List<JBoard> findBymEmail(@Param(value = "mEmail") String mEmail);
 
     //전체 글 댓글 수 가져오기
-    @Query(value = "select (select count(*) from JComment c where b.b_idx = c.b_idx) as cnt from JBoard b order by b_idx", nativeQuery = true)
+    @Query(value = "select (select count(*) from JComment c where b.b_idx = c.b_idx) as cnt from JBoard b order by b_idx asc", nativeQuery = true)
     List<Integer> commentCnt();
 
 //    @Query(value = "select new my.jelly.dto.BoardPrevDTO(b.bIdx, b.bTitle, m.mNick, b.insertDate,(select count(*) from jComment c where b.bIdx = c.bIdx)) " +
