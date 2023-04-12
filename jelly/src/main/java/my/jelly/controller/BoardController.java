@@ -3,6 +3,8 @@ package my.jelly.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import my.jelly.dto.BoardPrevDTO;
+import my.jelly.dto.CommentDTO;
 import my.jelly.entity.JBoard;
 import my.jelly.entity.JComment;
 import my.jelly.repository.BoardRepository;

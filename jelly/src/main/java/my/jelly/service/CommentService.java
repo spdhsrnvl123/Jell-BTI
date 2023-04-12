@@ -3,11 +3,13 @@ package my.jelly.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import my.jelly.dto.CommentDTO;
 import my.jelly.entity.JComment;
 import my.jelly.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,4 +29,5 @@ public class CommentService {
         int i = commentRepository.deleteComment(bIdx);
         System.out.println("삭제한 댓글 수 : " + i);
     }
+
 }
