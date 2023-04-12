@@ -10,10 +10,9 @@ import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 
 function Board() {
-
     const [boardList, setBoardList] = useState([]);
     const [commentCnt, setCommentCnt] = useState([]);
-
+    
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString();

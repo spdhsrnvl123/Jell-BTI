@@ -2,11 +2,12 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const MenuBox = styled.ul`
+    position: absolute;
+    top:27%;
+    left:50%;
+    transform: translate(-50%,-20%);
     display: flex;
-    padding-top: 31px;
     justify-content: center;
-    margin: 0 auto;
-    padding-right: 88px;
 `
 
 const MenuList = styled.li`
@@ -14,7 +15,8 @@ const MenuList = styled.li`
     font-weight: 700;
     font-style : normal;
     line-height : 24px;
-    padding-left: 81px;
+    width: 110px;
+    padding-left: 51px;
     :nth-child(1){
         color : #00A3FF;
     }

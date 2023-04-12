@@ -16,11 +16,8 @@ const Router = () => {
                 <Route path="/login" element={<KakaoLogin />} />
                 <Route path="/detail" element={<DetailPage />} />
                 <Route path="/mypage" element={<MyPage />} />
-
                 <Route path="/home" element={<Home />} />
                 <Route path="/board" element={<Board />} />
-
-
             </Routes>
         </BrowserRouter>
     )

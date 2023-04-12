@@ -24,7 +24,7 @@ const Input = styled.input`
     color: #979797;
 `
 const Button = styled.button`
-position: absolute;
+    position: absolute;
     top:34.7%;
     transform: translate(132%,0);
     left: 50%;
@@ -37,6 +37,7 @@ position: absolute;
     font-size: 18px;
     border: 0;
     color: #00A3FF;
+    cursor: pointer;
 `
 
 const Search = ()=>{
