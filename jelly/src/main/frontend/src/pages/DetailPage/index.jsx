@@ -11,11 +11,7 @@ const DetailPage = ()=>{
             console.log(response)
         });
     },[])
-    useEffect(()=>{
-        fetch("/jellies").then((response)=>{
-            console.log(response)
-        })
-    },[])
+
 
     return(
         <>

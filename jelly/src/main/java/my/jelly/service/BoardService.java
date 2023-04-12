@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -34,8 +35,13 @@ public class BoardService {
 
     //Read All List : 전체 글 댓글 수 조회
     public List<Integer> getBoardCnt() {
-        List<Integer> list1 = boardRepository.commentCnt();
-        return list1;
+        List<JBoard> jBoards = boardRepository.findAll();
+        List<Integer> commentCnt = boardRepository.commentCnt();
+        for (int i = 0; i < jBoards.size() - commentCnt.size(); i++) {
+            commentCnt.add(0, 0);
+        }
+        Collections.reverse(commentCnt);
+        return commentCnt;
     }
 
     // Create Board : 글 생성하기
