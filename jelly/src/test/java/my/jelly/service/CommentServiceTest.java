@@ -48,6 +48,7 @@ class CommentServiceTest {
 //    }
     @Test
     @Transactional
+    @Commit
     void 댓글모두삭제() {
         commentRepository.deleteAll();
     }
@@ -56,12 +57,12 @@ class CommentServiceTest {
     @Transactional
     @Commit
     void 테스트댓글등록() {
-        IntStream.rangeClosed(4430, 4435).forEach(i -> {
+        IntStream.rangeClosed(23, 26).forEach(i -> {
                 JComment comment = new JComment();
                 long bIdx = i;
                 JBoard board = boardRepository.findBybIdx(bIdx);
 
-                Member member = memberService.findUser(("magicofclown@naver.com"));
+                Member member = memberService.findUser(("pizzay@kakao.com"));
 
                 comment.setBoardVO(board);
                 comment.setCContent("테스트 댓글 " + i);

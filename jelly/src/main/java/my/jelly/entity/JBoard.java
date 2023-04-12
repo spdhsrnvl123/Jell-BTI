@@ -21,8 +21,9 @@ import java.time.LocalDateTime;
 @Table(name = "JBoard")
 public class JBoard {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE) //mysql에서는 IDENTITY
-    private Long bIdx; //글 번호
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_generator")
+    @SequenceGenerator(name="seq_generator", sequenceName = "seq_name", allocationSize = 1, initialValue = 1)
+    private Long bIdx;
     //테스트
     @Column(nullable = false, length = 300)
     private String bTitle; //글 제목
