@@ -18,6 +18,6 @@ public class BoardPrevDTO {
     private String bTitle; //글 제목
     private String mNick; //글 작성자
     private LocalDateTime insertDate; // 날짜
-    private int cCnt; //댓글수
+    private int Cnt; //댓글수
 
 }

@@ -2,6 +2,7 @@ package my.jelly.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import my.jelly.dto.CommentDTO;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -37,4 +38,6 @@ public class JComment {
     @Column(name = "insert_date", updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime insertDate;
+
+
 }
