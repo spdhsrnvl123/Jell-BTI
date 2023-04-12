@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -70,12 +72,21 @@ const CardBox = styled.div`
 `
 
 const HariboResult = ()=>{
+    useEffect(()=>{
+        axios({
+            method : "get",
+            url : "/jellies",
+        }).then(function(response){
+            console.log(response)
+        })
+    },[])
+
     return(
         <>
             <Content />
             <Circle />
             <Circle2 />
-            <CardBox />
+            <CardBox></CardBox>
         </>
     )
 }

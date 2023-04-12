@@ -5,10 +5,13 @@ import Navigation from "../../components/Navigation";
 import Search from "../../components/Search";
 import HariboResult from "../../components/HariboResult";
 import styled from "styled-components";
+import LoginButton from "../../components/LoginButton";
 
 const Home = ()=>{
+
     return(
         <>
+            <LoginButton />
             <Header />
             <Navigation />
             <Search />
