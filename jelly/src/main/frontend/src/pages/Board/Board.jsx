@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import Header from "../../components/Header";
-import Navigation from "../../components/Navigation";
+import Header from "../../components/domain/Header";
+import Navigation from "../../components/domain/Navigation";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,10 +10,9 @@ import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 
 function Board() {
-
     const [boardList, setBoardList] = useState([]);
     const [commentCnt, setCommentCnt] = useState([]);
-
+    
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString();
