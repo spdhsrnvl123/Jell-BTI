@@ -1,6 +1,4 @@
 import styled from "styled-components"
-import MainImage from "../MainImage"
-import Logo from "../Logo"
 
 const Container = styled.div`
     max-width: 100%;
