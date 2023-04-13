@@ -3,8 +3,6 @@ package my.jelly.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import my.jelly.dto.BoardPrevDTO;
-import my.jelly.dto.CommentDTO;
 import my.jelly.entity.JBoard;
 import my.jelly.entity.JComment;
 import my.jelly.repository.BoardRepository;
@@ -98,13 +96,6 @@ public class BoardController {
 
         System.out.println("글 삭제 성공");
     }
-
-
-//    @GetMapping("/boardTest2")
-//    public List<BoardPrevDTO> boardTest(){
-//        List<BoardPrevDTO> test2 = boardService.getBoardTest();
-//        return test2;
-//    }
-
+    
 }
 
