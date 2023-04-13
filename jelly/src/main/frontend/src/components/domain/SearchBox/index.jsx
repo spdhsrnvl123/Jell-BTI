@@ -71,7 +71,19 @@ const CardBox = styled.div`
     border-top-left-radius: 41px;
 `
 
-const HariboResult = ()=>{
+const Search = styled.div`
+position: absolute;
+top:50%;
+left: 50%;
+transform: translate(-50%,-50%);
+    color: white;
+    font-size: 56px;
+    font-weight: 800;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`
+
+const SearchBox = ({boolean})=>{
+    console.log(boolean)
     useEffect(()=>{
         axios({
             method : "get",
@@ -86,9 +98,13 @@ const HariboResult = ()=>{
             <Content />
             <Circle />
             <Circle2 />
-            <CardBox></CardBox>
+            <CardBox>
+                {
+                    boolean ? null :<Search>Search...</Search>
+                }
+            </CardBox>
         </>
     )
 }
 
-export default HariboResult;
+export default SearchBox;

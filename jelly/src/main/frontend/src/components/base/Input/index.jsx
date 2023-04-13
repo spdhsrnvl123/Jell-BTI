@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import SearchBox from "../../domain/SearchBox"
 
 const Container = styled.div`
     display: flex;
@@ -6,7 +8,7 @@ const Container = styled.div`
     align-items: center;    
 `
 
-const Input = styled.input`
+const InputStyle = styled.input`
     position: absolute;
     top:34%;
     transform: translate(-60%,0);
@@ -21,7 +23,6 @@ const Input = styled.input`
     padding-left: 2%;
     padding-top: 1%;
     padding-bottom: 1%;
-    color: #979797;
 `
 const Button = styled.button`
     position: absolute;
@@ -40,13 +41,33 @@ const Button = styled.button`
     cursor: pointer;
 `
 
-const Search = ()=>{
+const Input = ()=>{
+    const [value, setValue] = useState("");
+    const [boolean, setBoolean] = useState(true)
+
+    const onChange = (e)=>{
+        setValue(e.target.value);
+        setBoolean(false);
+    }
+    
+    useEffect(()=>{
+        if(value === ""){
+            setBoolean(true)
+        }
+    },[value])
+
+
     return(
+        <>
         <Container>
-            <Input placeholder="Search for the jelly you want..." />
-            <Button>SEARCH</Button>
+            <InputStyle value={value} onChange={onChange} placeholder="Search for the jelly you want..." />
+            <Button>
+                Search
+            </Button>
         </Container>
+        <SearchBox boolean={boolean} />
+        </>
     )
 }
 
-export default Search;
+export default Input;
