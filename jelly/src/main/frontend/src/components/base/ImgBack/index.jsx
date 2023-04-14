@@ -6,10 +6,10 @@ const KakaoBackgroundImg = styled.img.attrs({alt:"카카오버튼 배경이미�
     width: 100%;
 `
 
-const KakaoBackground = ()=>{
+const ImgBack = ()=>{
     return (
         <KakaoBackgroundImg src="./kakaoBackground.png" />
     )
 }
 
-export default KakaoBackground;
+export default ImgBack;

@@ -1,13 +1,13 @@
-import MainImage from "../../components/MainImage";
-import KakaoBackground from "../../components/KakaoBackground";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import Ballon from "../../components/Ballon";
-import Button from "../../components/Button";
-import {Link} from "react-router-dom"
-import BallonThird from "../../components/BallonThird";
-import Logo from "../../components/Logo";
+import Haribo from "../../components/base/Haribo";
+import Ballon from "../../components/base/Ballon";
+import Button from "../../components/base/Button";
+import Logo from "../../components/base/Logo";
+import BallonThird from "../../components/base/BallonThird";
+import {Link} from "react-router-dom";
+import ImgBack from "../../components/base/ImgBack";
 
 const Container = styled.div`
     max-width: 100%;
@@ -58,12 +58,12 @@ const StartPage = ()=>{
     return(
         <Container>
             <HariboBox hariboMove={move ? "50%": "31%"}>
-                <MainImage />
+                <Haribo />
                 <Logo />
                 <SubTitle>Jell-BTI</SubTitle>
             </HariboBox>
             <KakaoBox kakaoMove={move ? "100%":"50%"}>
-                <KakaoBackground />
+                <ImgBack />
                 <BallonThird />
                 <Button>
                     <Link to="/home">Jell-BTI 시작하기</Link>

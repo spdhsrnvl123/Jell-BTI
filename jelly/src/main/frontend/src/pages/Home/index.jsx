@@ -1,18 +1,15 @@
-import axios from "axios";
-import { useEffect } from "react";
-import Header from "../../components/Header";
-import Navigation from "../../components/Navigation";
-import Search from "../../components/Search";
-import HariboResult from "../../components/HariboResult";
-import styled from "styled-components";
+import Header from "../../components/domain/Header";
+import Navigation from "../../components/domain/Navigation";
+import Input from "../../components/base/Input";
+import LoginButton from "../../components/base/Login";
 
 const Home = ()=>{
     return(
         <>
+            <LoginButton />
             <Header />
             <Navigation />
-            <Search />
-            <HariboResult />
+            <Input />
         </>
     )
 }
