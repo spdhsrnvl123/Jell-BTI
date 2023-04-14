@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -20,6 +21,9 @@ import java.net.URL;
 public class KakaoService {
     @Autowired
     MemberRepository memberRepository;
+
+    @Value("#jellyProperty['kakao.client-id']")
+    private String clientId;
 
     // (카카오 로그인)
     // 프론트에서 보내준 코드로 카카오에서 인증 토큰 얻어오기
@@ -40,7 +44,7 @@ public class KakaoService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=aae56b5a75ed41619c033ab689aea475");
+            sb.append("&client_id="+clientId);
             sb.append("&redirect_uri=http://localhost:4000/oauth/login/kakao"); //프 서버로 바꾸기
             sb.append("&code=" + code);
 

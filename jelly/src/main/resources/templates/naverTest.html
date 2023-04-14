@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a th:href="@{https://nid.naver.com/oauth2.0/authorize(response_type='code',client_id=${clientId},state='STATE_STRING',redirect_uri='http://localhost:8080/oauth2/authorization/naver')}">네이버 로그인 테스트</a>
+</body>
+</html>
