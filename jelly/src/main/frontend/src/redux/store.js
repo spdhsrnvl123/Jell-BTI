@@ -10,11 +10,22 @@ let userToken = createSlice({
     }
 });
 
+let jellyInfo = createSlice({
+    name : 'jellyInfo',
+    initialState : [],
+    reducers : {
+        jellyInfoGet(state,action){
+            console.log(action.payload)
+        }
+    }
+});
+
+export let { jellyInfoGet } = jellyInfo.actions
 export let { userTokenIn } = userToken.actions
 
 export default configureStore({
     reducer : {
-        userToken : userToken.reducer
+        userToken : userToken.reducer,
+        jellyInfo : jellyInfo.reducer
     }
 })
-

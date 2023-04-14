@@ -1,7 +1,7 @@
 import Header from "../../components/domain/Header";
 import Navigation from "../../components/domain/Navigation";
-import Input from "../../components/base/Input";
 import LoginButton from "../../components/base/Login";
+import Search from "../../components/domain/Search";
 
 const Home = ()=>{
     return(
@@ -9,7 +9,7 @@ const Home = ()=>{
             <LoginButton />
             <Header />
             <Navigation />
-            <Input />
+            <Search />
         </>
     )
 }
