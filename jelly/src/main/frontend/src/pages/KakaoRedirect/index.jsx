@@ -15,12 +15,10 @@ export default function KakaoRedirect(){
           })
             .then((res) => {
               console.log(res); // 토큰이 넘어올 것임
-
             }).catch((err) => {
-
               console.log("소셜로그인 에러", err);
-              })
+            })
     },[])
-
+    
     return <div>Kakao Login Redirect URL Page</div>
 }

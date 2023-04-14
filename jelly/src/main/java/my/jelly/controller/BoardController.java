@@ -3,8 +3,6 @@ package my.jelly.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import my.jelly.dto.BoardPrevDTO;
-import my.jelly.dto.CommentDTO;
 import my.jelly.entity.JBoard;
 import my.jelly.entity.JComment;
 import my.jelly.repository.BoardRepository;
@@ -93,18 +91,13 @@ public class BoardController {
     public void deleteBoard(@RequestParam Long bIdx) throws ParseException{
         System.out.println("댓글 지우기 호출");
         commentService.deleteComment(bIdx);
+//        //글 삭제
+//        boardService.deleteBoard(bIdx);
         System.out.println("글 지우기 호출");
         boardService.deleteBoard(bIdx);
 
         System.out.println("글 삭제 성공");
     }
-
-
-//    @GetMapping("/boardTest2")
-//    public List<BoardPrevDTO> boardTest(){
-//        List<BoardPrevDTO> test2 = boardService.getBoardTest();
-//        return test2;
-//    }
-
+    
 }
 

@@ -14,7 +14,6 @@ const MyPage = ()=>{
         }).then((res)=>{
             console.log(res);
         })
-
     },[])
 
     return(

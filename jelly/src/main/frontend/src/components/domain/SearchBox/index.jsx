@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -82,16 +83,38 @@ transform: translate(-50%,-50%);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
-const SearchBox = ({boolean})=>{
-    console.log(boolean)
-    useEffect(()=>{
-        axios({
-            method : "get",
-            url : "/jellies",
-        }).then(function(response){
-            console.log(response)
-        })
-    },[])
+const SearchBox = ({boolean,jelly})=>{
+    // console.log(boolean)
+
+    // const productAll = ()=>{
+        const [productList, setProductList] = useState([]);
+        const [query, setQuery] = useSearchParams();
+        let [error, setError] = useState("");
+
+        useEffect(()=>{
+            let searchQuery = query.get('jellyName') || "";
+            console.log(searchQuery);
+    
+            let url = `/jellies?jellyName=${searchQuery}`
+
+            console.log(url)
+            let result = axios({
+                    method: "get",
+                    url: url
+                }).then((response)=>{
+                    console.log(response.data.slice(0,12))
+                    setProductList(response.data.slice(0,12))
+                });
+        },[query])
+    
+        // console.log(productList)
+
+        // let real = jelly.map((v)=>{
+        //     console.log(v.jname)
+        //     return v
+        // })
+
+        // console.log(real)
 
     return(
         <>
@@ -100,7 +123,13 @@ const SearchBox = ({boolean})=>{
             <Circle2 />
             <CardBox>
                 {
-                    boolean ? null :<Search>Search...</Search>
+                    <>{
+                        productList.map((v,i)=>{
+                            return (
+                                <p key={i}>{v.jname}</p>
+                            )
+                        })
+                    }</>
                 }
             </CardBox>
         </>

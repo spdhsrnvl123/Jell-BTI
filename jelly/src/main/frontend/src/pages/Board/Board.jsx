@@ -65,3 +65,7 @@ function Board() {
 }
 
 export default Board;
+
+
+
+// 글제목, 글내용 , = > console
