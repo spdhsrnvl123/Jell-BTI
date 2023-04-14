@@ -25,7 +25,8 @@ public class JComment {
     private JBoard BoardVO; //평가할 젤리 정보 //연관 관계 지정
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_generator")
+    @SequenceGenerator(name="seq_generator", sequenceName = "seq_name", allocationSize = 1, initialValue = 1)
     private Long cIdx; //댓글 번호
 
     private String cContent; //댓글 내용
