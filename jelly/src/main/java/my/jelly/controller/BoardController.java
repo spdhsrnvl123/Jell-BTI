@@ -91,15 +91,12 @@ public class BoardController {
     public void deleteBoard(@RequestParam Long bIdx) throws ParseException{
         System.out.println("댓글 지우기 호출");
         commentService.deleteComment(bIdx);
-<<<<<<< HEAD
 //        //글 삭제
 //        boardService.deleteBoard(bIdx);
-=======
         System.out.println("글 지우기 호출");
         boardService.deleteBoard(bIdx);
 
         System.out.println("글 삭제 성공");
->>>>>>> 22203f28cdbf2d159c23a207fb7ccb5fab4f1c78
     }
 
 
