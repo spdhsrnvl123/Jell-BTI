@@ -16,8 +16,9 @@ import javax.persistence.*;
 public class JInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long jIdx; //젤리 번호
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_generator")
+    @SequenceGenerator(name="seq_generator", sequenceName = "seq_name", allocationSize = 1, initialValue = 1)
+    private Long jIdx; //젤리번호
 
     @Column(nullable = false, length = 100)
     private String jName; //젤리 이름

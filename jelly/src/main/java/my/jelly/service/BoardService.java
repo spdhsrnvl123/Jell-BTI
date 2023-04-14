@@ -2,6 +2,7 @@ package my.jelly.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import my.jelly.dto.BoardPrevDTO;
 import my.jelly.entity.JBoard;
 import my.jelly.entity.Member;
 import my.jelly.repository.BoardRepository;
@@ -9,6 +10,8 @@ import my.jelly.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -32,8 +35,13 @@ public class BoardService {
 
     //Read All List : 전체 글 댓글 수 조회
     public List<Integer> getBoardCnt() {
-        List<Integer> list1 = boardRepository.commentCnt();
-        return list1;
+        List<JBoard> jBoards = boardRepository.findAll();
+        List<Integer> commentCnt = boardRepository.commentCnt();
+        for (int i = 0; i < jBoards.size() - commentCnt.size(); i++) {
+            commentCnt.add(0, 0);
+        }
+        Collections.reverse(commentCnt);
+        return commentCnt;
     }
 
     // Create Board : 글 생성하기
@@ -68,14 +76,4 @@ public class BoardService {
         boardRepository.deleteById(bIdx);
     }
 
-
-    //글 댓글 목록 한꺼번에 조회 테스트ㅠㅠ
-//    public List<BoardPrevDTO> getBoardTest() {
-//        List<BoardPrevDTO> test1 = boardRepository.testCntAndList();
-//        return test1;
-//    }
-
-//    public Map<String, Object> testCntComment() {
-//        return commentRepository.commentCnt();
-//    }
 }

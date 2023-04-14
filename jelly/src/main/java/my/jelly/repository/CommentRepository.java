@@ -21,6 +21,7 @@ public interface CommentRepository extends JpaRepository<JComment, Long> {
     @Query("delete from JComment where b_Idx = :bIdx")
     int deleteComment(@Param("bIdx") Long bIdx);
 
+
     //특정 글 댓글 수 조회
 
     //select (select count(*) from j_comment c where b.b_idx = c.b_idx) as cnt,

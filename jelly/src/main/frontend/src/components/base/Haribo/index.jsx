@@ -15,10 +15,10 @@ const HriboImage = styled.img.attrs({ alt : 'hribo' })`
     }
 `
 
-const MainImage = ()=>{
+const Haribo = ()=>{
     return (
         <HriboImage src="./haribo.png" />
     )
 }
 
-export default MainImage;
+export default Haribo;

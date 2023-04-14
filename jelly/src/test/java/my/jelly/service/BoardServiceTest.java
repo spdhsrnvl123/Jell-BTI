@@ -24,7 +24,7 @@ class BoardServiceTest {
     @Transactional
     @Commit
     void 테스트게시글등록(){
-        IntStream.rangeClosed(1, 10).forEach(i -> {
+        IntStream.rangeClosed(1, 15).forEach(i -> {
             JBoard board = new JBoard();
             Member member = memberService.findUser(("pizzay@kakao.com"));
             board.setBTitle("글 제목" + i);

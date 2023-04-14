@@ -98,13 +98,6 @@ public class BoardController {
 
         System.out.println("글 삭제 성공");
     }
-
-
-//    @GetMapping("/boardTest2")
-//    public List<BoardPrevDTO> boardTest(){
-//        List<BoardPrevDTO> test2 = boardService.getBoardTest();
-//        return test2;
-//    }
-
+    
 }
 

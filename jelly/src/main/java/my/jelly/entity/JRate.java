@@ -21,7 +21,8 @@ import java.time.LocalDateTime;
 public class JRate {
     //id문제로 일단 생성
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_generator")
+    @SequenceGenerator(name="seq_generator", sequenceName = "seq_name", allocationSize = 1, initialValue = 1)
     private Long rIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)

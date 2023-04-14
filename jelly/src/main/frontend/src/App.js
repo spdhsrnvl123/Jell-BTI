@@ -5,16 +5,15 @@ import GlobalStyle from './styles/GlobalStyle';
 import axios from 'axios';
 
 function App() {
-
     useEffect(()=>{
         axios({
             method: "get",
             url: "/hello",
-        }).then(function (response) {
+        }).then((response)=>{
             console.log(response)
         });
     },[])
-
+    
     return (
         <>
             <GlobalStyle />
