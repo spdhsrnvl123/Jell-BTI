@@ -5,6 +5,7 @@ import MyPage from "../pages/MyPage"
 import KakaoRedirect from "../pages/KakaoRedirect"
 import KakaoLogin from "../pages/KakaoLoginPage"
 import Board from "../pages/Board/Board"
+import Write from "../pages/Board/Write"
 
 const Router = () => {
     return (
@@ -16,6 +17,7 @@ const Router = () => {
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/board" element={<Board />} />
+                <Route path="/write" element={<Write />} />
             </Routes>
         </BrowserRouter>
     )
