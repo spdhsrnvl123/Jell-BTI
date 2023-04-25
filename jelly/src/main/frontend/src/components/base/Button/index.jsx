@@ -14,13 +14,9 @@ const Button = styled.button`
     a{
         text-decoration: none;
         color : inherit;
-        font-size : 2.6vw;
         font-weight: bold;
+        font-size: 30px;
         display: block;
-        height: 90%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
     &:hover{
         background-color: #f7d604;
