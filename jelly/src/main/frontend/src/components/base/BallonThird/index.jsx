@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 const BallonBox = styled.div`
-    position: relative;
+    /* position: relative; */
     width: 100%;
     height: 100%;
 `
@@ -40,7 +40,6 @@ const Thrid = styled.img.attrs({alt:"풍선이미지3"})`
     width:13%;
     animation: ${UpDownAnimation} 3s linear infinite alternate;
 `
-
 
 const BallonThird = ()=>{
     return (
