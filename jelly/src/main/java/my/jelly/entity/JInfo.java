@@ -46,6 +46,8 @@ public class JInfo {
 
     private String jCholesterol; // 콜레스테롤
 
+    private String imageUrl; // 이미지 주소
+
     public JInfo(JellyDTO jellyDTO){
         this.jName = jellyDTO.getJName();
         this.jGram = jellyDTO.getJGram();
@@ -56,6 +58,7 @@ public class JInfo {
         this.jSugars = jellyDTO.getJSugars();
         this.jSalt = jellyDTO.getJSalt();
         this.jCholesterol = jellyDTO.getJCholesterol();
+        this.imageUrl = jellyDTO.getImageUrl();
     }
 
 }

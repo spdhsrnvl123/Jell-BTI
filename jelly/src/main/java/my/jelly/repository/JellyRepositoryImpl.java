@@ -30,21 +30,22 @@ public class JellyRepositoryImpl implements JellyRepository{
     @Override
     public void update(Long jIdx, JellyDTO jellyDTO) {
         JInfo jInfo = repository.findById(jIdx).orElseThrow();
-        jInfo.setJDetail(jellyDTO.getJDetail());
-        jInfo.setJKcal(jellyDTO.getJKcal());
-        jInfo.setJGram(jellyDTO.getJGram());
-        jInfo.setJPrice(jellyDTO.getJPrice());
+//        jInfo.setJDetail(jellyDTO.getJDetail());
+//        jInfo.setJKcal(jellyDTO.getJKcal());
+//        jInfo.setJGram(jellyDTO.getJGram());
+//        jInfo.setJPrice(jellyDTO.getJPrice());
         jInfo.setJSweet(jellyDTO.getJSweet());
         jInfo.setJSour(jellyDTO.getJSour());
         jInfo.setJHard(jellyDTO.getJHard());
         jInfo.setJSoft(jellyDTO.getJSoft());
         jInfo.setJSalty(jellyDTO.getJSalty());
-        jInfo.setJCarbohydrate(jellyDTO.getJCarbohydrate());
-        jInfo.setJProtein(jellyDTO.getJProtein());
-        jInfo.setJFat(jellyDTO.getJFat());
-        jInfo.setJSugars(jellyDTO.getJSugars());
-        jInfo.setJSalt(jellyDTO.getJSalt());
-        jInfo.setJCholesterol(jellyDTO.getJCholesterol());
+//        jInfo.setJCarbohydrate(jellyDTO.getJCarbohydrate());
+//        jInfo.setJProtein(jellyDTO.getJProtein());
+//        jInfo.setJFat(jellyDTO.getJFat());
+//        jInfo.setJSugars(jellyDTO.getJSugars());
+//        jInfo.setJSalt(jellyDTO.getJSalt());
+//        jInfo.setJCholesterol(jellyDTO.getJCholesterol());
+        jInfo.setImageUrl(jellyDTO.getImageUrl());
     }
 
     @Override
