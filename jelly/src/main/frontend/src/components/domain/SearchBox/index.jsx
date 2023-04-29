@@ -1,17 +1,20 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+import { jellyInfoGet, jellyInfoReset } from "../../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
 
 const Content = styled.div`
     position: absolute;
     z-index: 20;
-    bottom:-26%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    height: 50vh;
+    bottom:0;
+    left: 50%;
+    transform: translate(-50%,0%);
     background: #FBA0C4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 60%;
-    height: 52vh;
     border-top-right-radius: 161px;
     border-top-left-radius: 161px;
     ::before{
@@ -69,6 +72,7 @@ const CardBox = styled.div`
     background: #FB82B1;
     border-top-right-radius: 41px;
     border-top-left-radius: 41px;
+    overflow: hidden;
 `
 
 const Search = styled.div`
@@ -82,16 +86,30 @@ transform: translate(-50%,-50%);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
-const SearchBox = ({boolean})=>{
-    console.log(boolean)
-    useEffect(()=>{
-        axios({
-            method : "get",
-            url : "/jellies",
-        }).then(function(response){
-            console.log(response)
-        })
-    },[])
+const Box = styled.div`
+    height: 100%;
+    background-color: red;
+    align-items: center;
+`
+
+const SearchBox = ({boolean,jelly})=>{
+        const [productList, setProductList] = useState([]);
+        const [query, setQuery] = useSearchParams();
+
+        useEffect(()=>{
+            let searchQuery = query.get('jellyName') || "";
+            console.log(searchQuery);
+            let url = `/jellies?jellyName=${searchQuery}`
+
+            console.log(url)
+            axios({
+                    method: "get",
+                    url: url
+                }).then((response)=>{
+                    setProductList(response.data)
+                });
+        },[query])
+
 
     return(
         <>
@@ -99,8 +117,14 @@ const SearchBox = ({boolean})=>{
             <Circle />
             <Circle2 />
             <CardBox>
-                {
-                    boolean ? null :<Search>Search...</Search>
+            {
+                    <>{
+                        productList.map((v,i)=>{
+                            return (
+                                <p key={i}>{v.jname}</p>
+                            )
+                        })
+                    }</>
                 }
             </CardBox>
         </>

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import img from "../Header/haribo.png"
 
 const Container = styled.div`
     max-width: 100%;
@@ -9,20 +10,20 @@ const Container = styled.div`
 `
 
 const HomeHriboImage = styled.img.attrs({ alt : 'HomeHribo' })`
-    width:158px;
-    height:158px;
+    width:170px;
+    height:170px;
     filter: drop-shadow(4px 6px 4px rgba(0, 0, 0, 0.25));
 `
 
 const HomeLogoImage = styled.img.attrs({ alt : 'HomeLogo' })`
-    width:300px;
-    height:150px;
+    width:360px;
+    height:180px;
 `
 
 const Header = ()=>{
     return(
         <Container>
-            <HomeHriboImage src="./haribo.png" />
+            <HomeHriboImage src={img} />
             <HomeLogoImage src="./logo.png" />
         </Container>
     )

@@ -5,14 +5,15 @@ import GlobalStyle from './styles/GlobalStyle';
 import axios from 'axios';
 
 function App() {
-    useEffect(()=>{
-        axios({
-            method: "get",
-            url: "/hello",
-        }).then((response)=>{
-            console.log(response)
-        });
-    },[])
+    // useEffect(()=>{
+    //     axios({
+    //         method: "get",
+    //         url: "/hello",
+    //     }).then((response)=>{
+    //         console.log(response)
+    //     });
+    // },[])
+
     
     return (
         <>

@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import StartPage from "../pages/StartPage"
-import Home from "../pages/Home"
-import MyPage from "../pages/MyPage"
-import KakaoRedirect from "../pages/KakaoRedirect"
-import KakaoLogin from "../pages/KakaoLoginPage"
-import Board from "../pages/Board/Board"
+import StartPage from "@/pages/StartPage"
+import Home from "@/pages/Home";
+import MyPage from "@/pages/MyPage"
+import KakaoRedirect from "@/pages/KakaoRedirect"
+import KakaoLogin from "@/pages/KakaoLoginPage"
+import Board from "@/pages/Board/Board"
 
 const Router = () => {
     return (
@@ -17,6 +17,7 @@ const Router = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path="/board" element={<Board />} />
             </Routes>
+
         </BrowserRouter>
     )
 }

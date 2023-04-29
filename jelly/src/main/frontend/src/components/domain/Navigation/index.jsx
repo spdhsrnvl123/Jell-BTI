@@ -2,21 +2,15 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const MenuBox = styled.ul`
-    position: absolute;
-    top:27%;
-    left:50%;
-    transform: translate(-50%,-20%);
     display: flex;
     justify-content: center;
 `
 
 const MenuList = styled.li`
-    font-size: 20px;
-    font-weight: 700;
-    font-style : normal;
-    line-height : 24px;
-    width: 110px;
+    font-size: 22px;
+    font-weight: 600;
     padding-left: 51px;
+    padding: 20px 48px;
     :nth-child(1){
         color : #00A3FF;
     }
@@ -31,7 +25,7 @@ const Navigation = ()=>{
         <MenuBox>
             <MenuList><Link to="/home">Home</Link></MenuList>
             <MenuList><Link to="">Jell Test</Link></MenuList>
-            <MenuList><Link>Community</Link></MenuList>
+            <MenuList><Link to="/board">Community</Link></MenuList>
             <MenuList><Link to="/mypage">Mypage</Link></MenuList>
         </MenuBox>
     )
