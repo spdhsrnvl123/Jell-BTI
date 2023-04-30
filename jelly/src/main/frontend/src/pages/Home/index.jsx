@@ -5,6 +5,7 @@ import Search from "@/components/domain/Search";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBox from "components/domain/SearchBox";
 import styled from "styled-components";
+import Button from "components/base/Button";
 
 const Container = styled.div`
     height: 43vh;
