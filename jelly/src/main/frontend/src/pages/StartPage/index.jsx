@@ -64,7 +64,7 @@ const StartPage = ()=>{
             <KakaoBox>
                 <ImgBack /> 
                 <BallonThird />
-                    <Button onClick={()=>navigate("/home")}>Jell-BTI 시작하기</Button>
+                    <Button fontSize={4} padding={"0px 24px"} bgColor={"#DFF7F9"} onClick={()=>navigate("/home")}>Jell-BTI 시작하기</Button>
                 <Ballon />
             </KakaoBox>
         </Container>
