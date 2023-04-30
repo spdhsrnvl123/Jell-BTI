@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const LogoImage = styled.img.attrs({ alt : 'logo' })`
-    width:300px;
+    width:250px;
 `
 
 const Logo = ()=>{

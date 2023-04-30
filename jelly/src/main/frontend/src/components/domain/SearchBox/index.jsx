@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { jellyInfoGet, jellyInfoReset } from "../../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 
-const Content = styled.div`
+export const Content = styled.div`
     position: absolute;
     z-index: 20;
     height: 50vh;
@@ -38,7 +38,8 @@ const Content = styled.div`
         background: #FB82B1;
     }
 `
-const Circle = styled.div`
+
+export const Circle = styled.div`
     position: absolute;
     z-index: -1;
     border-radius: 50%;
@@ -49,7 +50,7 @@ const Circle = styled.div`
     width: 150px;
     height: 150px;
 `
-const Circle2 = styled.div`
+export const Circle2 = styled.div`
     position: absolute;
     top:43%;
     right:16%;
@@ -74,6 +75,9 @@ const CardBox = styled.div`
     border-top-left-radius: 41px;
     overflow: hidden;
 `
+
+
+
 
 const Search = styled.div`
 position: absolute;
@@ -106,6 +110,7 @@ const SearchBox = ({boolean,jelly})=>{
                     method: "get",
                     url: url
                 }).then((response)=>{
+                    console.log(response.data)
                     setProductList(response.data)
                 });
         },[query])
