@@ -5,6 +5,9 @@ const GlobalStyle = createGlobalStyle`
    v2.0 | 20110126
    License: none (public domain)
 */
+*{
+	font-family: 'Dongle', sans-serif;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -25,6 +28,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: 'Dongle', sans-serif;
 }
 body{
     background-color: #F4E6D0;

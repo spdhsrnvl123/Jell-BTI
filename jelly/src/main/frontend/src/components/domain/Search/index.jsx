@@ -16,8 +16,8 @@ const InputStyle = styled.input`
     border-bottom-left-radius: 40px;
     font-weight: 700;
     width: 412px;
-    font-size: 20px;
-    padding: 12px 40px;
+    font-size: 23px;
+    padding: 12px 35px;
     z-index: 99;
 `
 const Button = styled.button`
@@ -25,7 +25,7 @@ const Button = styled.button`
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
     z-index: 1;
-    font-size: 20px;
+    font-size: 23px;
     padding : 15px 16px;
     border: 0;
     cursor: pointer;
@@ -40,10 +40,10 @@ const Search = ()=>{
                     <InputStyle 
                         value={inputValue} 
                         onChange={handleChange} 
-                        placeholder="Search for the jelly you want..." 
+                        placeholder="원하는 젤리를 검색해주세요!" 
                     />
                     <Button type="submit">
-                        Search
+                        검색
                     </Button>
                 </form>
             </Container>

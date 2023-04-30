@@ -57,7 +57,7 @@ const Modals = ({open,close})=>{
         {
             open ? (                            
             <ModalSection>
-                <ModalTextarea>SIGN IN<YellowHaribo /></ModalTextarea>
+                <ModalTextarea>로그인하기<YellowHaribo /></ModalTextarea>
                 <KakaoBtn />
                 <NaverBtn />
                 <ModalButton onClick={close}>

@@ -5,7 +5,10 @@ import com.google.gson.GsonBuilder;
 import lombok.RequiredArgsConstructor;
 import my.jelly.entity.Member;
 import my.jelly.service.NaverService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +32,8 @@ public class NaverController {
     // naver로그인 api 클라이언트 id
     @Value("#{jellyProperty['naver.client-id']}")
     private String clientId;
+
+
 
     // 기능 구현 때문에 임시로 만들어놓은 탬플릿
     @GetMapping("/naverTest")
