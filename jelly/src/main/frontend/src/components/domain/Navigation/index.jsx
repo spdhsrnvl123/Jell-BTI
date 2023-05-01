@@ -7,7 +7,7 @@ const MenuBox = styled.ul`
 `
 
 const MenuList = styled.li`
-    font-size: 22px;
+    font-size: 37px;
     font-weight: 600;
     padding-left: 51px;
     padding: 20px 48px;
@@ -23,10 +23,10 @@ const MenuList = styled.li`
 const Navigation = ()=>{
     return(
         <MenuBox>
-            <MenuList><Link to="/home">Home</Link></MenuList>
-            <MenuList><Link to="">Jell Test</Link></MenuList>
-            <MenuList><Link to="/board">Community</Link></MenuList>
-            <MenuList><Link to="/mypage">Mypage</Link></MenuList>
+            <MenuList><Link to="/home">홈</Link></MenuList>
+            <MenuList><Link to="">젤리 테스트</Link></MenuList>
+            <MenuList><Link to="/board">커뮤니티</Link></MenuList>
+            <MenuList><Link to="/mypage">마이페이지</Link></MenuList>
         </MenuBox>
     )
 }

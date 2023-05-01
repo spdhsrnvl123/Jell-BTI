@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Haribo from "@/components/base/Haribo";
 import Ballon from "@/components/base/Ballon";
-import Button from "@/components/base/Button";
 import Logo from "@/components/base/Logo";
 import BallonThird from "@/components/base/BallonThird";
-import {Link} from "react-router-dom";
 import ImgBack from "@/components/base/ImgBack";
+import Button from "components/base/Button";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
     height: 100vh;
@@ -28,15 +28,23 @@ const KakaoBox = styled.div`
     position: relative;
     /* left : ${(props) => props.kakaoMove}; */
     transition: all 2s;
+    button{
+        position: absolute;
+        top:43%;
+        left: 34%;
+    }
 `
 
 const SubTitle = styled.div`
-    font-size: 52px;
+    font-size: 82px;
     font-family: 'Inter';
+	font-family: 'Dongle', sans-serif;
 `
 
 const StartPage = ()=>{
     const [move, setMove] = useState(true)
+
+    const navigate = useNavigate()
 
     useEffect(()=>{
         setTimeout(()=>{
@@ -56,9 +64,7 @@ const StartPage = ()=>{
             <KakaoBox>
                 <ImgBack /> 
                 <BallonThird />
-                <Button>
-                    <Link to="/home">Jell-BTI 시작하기</Link>
-                </Button>
+                    <Button fontSize={4} padding={"0px 24px"} bgColor={"#DFF7F9"} onClick={()=>navigate("/home")}>Jell-BTI 시작하기</Button>
                 <Ballon />
             </KakaoBox>
         </Container>
