@@ -55,7 +55,7 @@ public class JellyRepositoryImpl implements JellyRepository{
         return query
                 .select(qjInfo)
                 .from(qjInfo)
-                .where(likeJellyName(jellyName))
+                .where(likeJellyName(jellyName),qjInfo.imageUrl.isNotNull())
                 .fetch();
     }
 
