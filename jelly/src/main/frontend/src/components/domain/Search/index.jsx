@@ -17,7 +17,7 @@ const InputStyle = styled.input`
     font-weight: 700;
     width: 412px;
     font-size: 23px;
-    padding: 12px 35px;
+    padding: 4px 35px;
     z-index: 99;
 `
 const Button = styled.button`
@@ -26,7 +26,7 @@ const Button = styled.button`
     border-bottom-right-radius: 40px;
     z-index: 1;
     font-size: 23px;
-    padding : 15px 16px;
+    padding : 6px 16px;
     border: 0;
     cursor: pointer;
 `
