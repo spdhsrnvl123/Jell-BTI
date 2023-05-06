@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import img from "../Header/haribo.png"
 import { useNavigate } from "react-router-dom"
+import Logo from "components/base/Logo"
 
 const Container = styled.div`
     max-width: 100%;
@@ -15,19 +16,13 @@ const HomeHriboImage = styled.img.attrs({ alt : 'HomeHribo' })`
     height:170px;
     filter: drop-shadow(4px 6px 4px rgba(0, 0, 0, 0.25));
 `
-
-const HomeLogoImage = styled.img.attrs({ alt : 'HomeLogo' })`
-    width:360px;
-    height:180px;
-    cursor: pointer;
-`
-
 const Header = ()=>{
     const navigate= useNavigate()
     return(
         <Container>
             <HomeHriboImage src={img} />
-            <HomeLogoImage onClick={()=>navigate("/")} src="./logo.png" />
+            {/* <HomeLogoImage onClick={()=>navigate("/")} src="./logo.png" /> */}
+            <Logo />
         </Container>
     )
 }

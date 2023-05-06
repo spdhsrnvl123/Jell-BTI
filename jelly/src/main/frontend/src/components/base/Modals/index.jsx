@@ -66,7 +66,7 @@ const Modals = ({open,close})=>{
             </ModalSection>
             ) : null
         }
-    </ModalCotainer>
+        </ModalCotainer>
     )
 }
 

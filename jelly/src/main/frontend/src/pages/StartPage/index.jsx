@@ -39,6 +39,8 @@ const SubTitle = styled.div`
     font-size: 82px;
     font-family: 'Inter';
 	font-family: 'Dongle', sans-serif;
+    -webkit-text-stroke-width: 2px;
+     -webkit-text-stroke-color: black;
 `
 
 const StartPage = ()=>{
@@ -64,7 +66,7 @@ const StartPage = ()=>{
             <KakaoBox>
                 <ImgBack /> 
                 <BallonThird />
-                    <Button fontSize={4} padding={"0px 24px"} bgColor={"#DFF7F9"} onClick={()=>navigate("/home")}>Jell-BTI 시작하기</Button>
+                    <Button fontSize={4} padding={"0px 44px"} bgColor={"#16f916"} onClick={()=>navigate("/home")}>Jell-BTI 시작하기</Button>
                 <Ballon />
             </KakaoBox>
         </Container>
