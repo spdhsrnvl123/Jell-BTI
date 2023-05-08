@@ -1,5 +1,4 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit"
-import counterSlice from "./countSlice";
 
 let userToken = createSlice({
     name : 'userToken',
@@ -11,27 +10,23 @@ let userToken = createSlice({
     }
 });
 
-let jellyInfo = createSlice({
-    name : 'jellyInfo',
-    initialState : [],
+export let { userTokenIn } = userToken.actions;
+
+let modalAppear = createSlice({
+    name : 'modalAppear',
+    initialState : false,
     reducers : {
-        jellyInfoGet(state,action){
-            console.log(action.payload)
-            state = state.push(...action.payload)
-        },
-        jellyInfoReset(state, action){
-            state = action.payload
+        modalChange(state){
+            return !state
         }
     }
-});
+})
 
-export let { jellyInfoGet, jellyInfoReset } = jellyInfo.actions
-export let { userTokenIn } = userToken.actions
+export let { modalChange } = modalAppear.actions;
 
 export default configureStore({
     reducer : {
         userToken : userToken.reducer,
-        jellyInfo : jellyInfo.reducer,
-        counter:counterSlice.reducer
+        modalAppear : modalAppear.reducer,
     }
 })
