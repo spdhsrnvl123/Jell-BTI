@@ -150,20 +150,20 @@ const Logo = ()=>{
         <>
         {/* <LogoImage src="./logo.png" /> */}
         <Title>
-        <div class="stage">
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
+        <div className="stage">
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
+            <div className="layer"></div>
             {/* <div class="layer"></div>
             <div class="layer"></div>
             <div class="layer"></div>
