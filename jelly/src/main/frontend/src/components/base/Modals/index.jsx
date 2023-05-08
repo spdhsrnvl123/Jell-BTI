@@ -1,7 +1,6 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { modalChange } from 'redux/store';
 import styled from 'styled-components';
-import KakaoBtn from '../KakaoBtn';
-import NaverBtn from '../NaverBtn';
-import YellowHaribo from '../YellowHaribo';
 
 
 const ModalCotainer = styled.div`
@@ -51,16 +50,16 @@ const ModalButton = styled.button`
     background-color: transparent;
 `
 
-const Modals = ({open,close})=>{
+const Modals = ()=>{
+    const modal = useSelector((state)=>state.modalAppear);
+    const dispatch = useDispatch()
+
     return(
-        <ModalCotainer change={open ? "flex":"none"}>
+        <ModalCotainer change={modal ? "flex":"none"}>
         {
-            open ? (                            
+            modal ? (                            
             <ModalSection>
-                <ModalTextarea>로그인하기<YellowHaribo /></ModalTextarea>
-                <KakaoBtn />
-                <NaverBtn />
-                <ModalButton onClick={close}>
+                <ModalButton onClick={()=>dispatch(modalChange())}>
                     &times;
                 </ModalButton>
             </ModalSection>

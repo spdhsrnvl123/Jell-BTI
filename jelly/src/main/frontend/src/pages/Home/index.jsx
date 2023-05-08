@@ -1,6 +1,6 @@
 import Header from "@/components/domain/Header";
 import Navigation from "@/components/domain/Navigation";
-import LoginButton from "@/components/base/Login";
+import Login from "@/components/base/Login";
 import Search from "@/components/domain/Search";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBox from "components/domain/SearchBox";
@@ -22,10 +22,10 @@ const Home = ()=>{
 
     return(
             <Container>
-                <LoginButton />
-                    <Header />
-                    <Navigation />
-                    <Search />           
+                <Login />
+                <Header />
+                <Navigation />
+                <Search />           
                 <SearchBox />
             </Container>
     )

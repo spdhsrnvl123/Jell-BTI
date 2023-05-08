@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import { jellyInfoGet, jellyInfoReset } from "../../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "components/base/Card";
+import Modals from "components/base/Modals";
 
 export const Content = styled.div`
     position: relative;
@@ -15,26 +15,6 @@ export const Content = styled.div`
     width: 55%;
     height: 70vh;
     border-radius: 161px;
-    /* ::before{
-        content: "";
-        position: absolute;
-        left: 30%;
-        top: 14%;
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        background: #FB82B1;
-    }
-    ::after{
-        content: "";
-        position: absolute;
-        right: 30%;
-        top: 14%;
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        background: #FB82B1;
-    } */
 `
 
 export const Circle = styled.div`
@@ -93,22 +73,20 @@ const Box = styled.div`
 const SearchBox = ({boolean,jelly})=>{
         const [productList, setProductList] = useState([]);
         const [query, setQuery] = useSearchParams();
+        const modal = useSelector((state)=>state.modalAppear);
 
         useEffect(()=>{
             let searchQuery = query.get('jellyName') || "";
-            console.log(searchQuery);
             let url = `/jellies?jellyName=${searchQuery}`
 
-            console.log(url)
             axios({
                     method: "get",
                     url: url
                 }).then((response)=>{
-                    // console.log(response.data)
+                    console.log(response.data)
                     setProductList(response.data)
                 });
         },[query])
-
 
     return(
         <>
@@ -118,6 +96,7 @@ const SearchBox = ({boolean,jelly})=>{
             <CardBox>
                 <Card productList={productList} />
             </CardBox>
+            <Modals open={modal}></Modals>
             </Content>
         </>
     )
