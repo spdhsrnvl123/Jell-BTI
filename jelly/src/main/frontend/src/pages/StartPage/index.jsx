@@ -60,7 +60,7 @@ const StartPage = ()=>{
             <HariboBox>
                 <Haribo />
                 <Logo />
-                <SubTitle>Jell-BTI</SubTitle>
+                <SubTitle>HARIBO</SubTitle>
             </HariboBox>
             {/* kakaoMove={move ? "100%":"50%"} */}
             <KakaoBox>

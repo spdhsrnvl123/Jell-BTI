@@ -24,7 +24,7 @@ const Title = styled.h1`
 
 .layer:after {
   font: 150px/0.65 "Dongle", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
-  content: "HARIBO";
+  content: "JELL-BTI";
   white-space: pre;
   text-align: center;
   height: 100%;
