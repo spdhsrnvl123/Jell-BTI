@@ -61,5 +61,8 @@ public class JellyDTO {
     @JsonProperty("jCholesterol")
     private String jCholesterol; // 콜레스테롤
 
+    @JsonProperty("imageUrl")
+    private String imageUrl; // 이미지 주소
+
 
 }

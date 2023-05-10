@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
-import Header from "../../components/domain/Header";
-import Navigation from "../../components/domain/Navigation";
+import Header from "@/components/domain/Header";
+import Navigation from "@/components/domain/Navigation";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
