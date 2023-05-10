@@ -30,12 +30,17 @@ function Board() {
         <div>
             <Header />
             <Navigation />
-            <h1 style={{
-                color: "yellow",
-                backgroundColor: "black",
-                fontSize: "5rem",
-            }}>게시판 목록</h1>
             <br />
+            <br />
+            <br />
+            <br />
+            <h1 style={{
+                color: "#F0E68C",
+                backgroundColor: "#FFFFE0",
+                fontSize: "3rem",
+                textAlign: "center"
+            }}>게시판 목록</h1>
+            
             <Table>
                 <TableHead>
                     <TableRow>
@@ -56,7 +61,11 @@ function Board() {
                     ))}
                 </TableBody>
             </Table>
-            <Button variant="contained" color="primary">
+            <Button
+            variant="contained"
+            color="primary"
+                style={{ float: 'right' }}
+            >
                 글작성하기
             </Button>
         </div>
