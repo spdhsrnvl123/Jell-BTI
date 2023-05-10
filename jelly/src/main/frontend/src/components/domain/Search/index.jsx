@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { useInput } from "hooks/useInput";
 
 const Container = styled.div`
@@ -20,6 +19,7 @@ const InputStyle = styled.input`
     padding: 4px 35px;
     z-index: 99;
 `
+
 const Button = styled.button`
     background: rgba(0, 163, 255, 0.2);
     border-top-right-radius: 40px;
@@ -51,3 +51,4 @@ const Search = ()=>{
 }
 
 export default Search;
+
