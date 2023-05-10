@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { asyncUpFetch } from 'redux/jellyInfo';
 import { modalChange } from 'redux/store';
 import styled from 'styled-components';
 
@@ -52,7 +54,14 @@ const ModalButton = styled.button`
 
 const Modals = ()=>{
     const modal = useSelector((state)=>state.modalAppear);
+    const state = useSelector((state)=> state);
     const dispatch = useDispatch()
+
+    console.log(state.jellyInfo.status)
+
+    useEffect(()=>{
+        dispatch(asyncUpFetch());
+    },[]) //모달창이 열리면 젤리정보 가져오기
 
     return(
         <ModalCotainer change={modal ? "flex":"none"}>
