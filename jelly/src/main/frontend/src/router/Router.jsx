@@ -19,6 +19,7 @@ const Router = () => {
                 <Route path="/board" element={<Board />} />
                 <Route path="/write" element={<Write />} />
             </Routes>
+
         </BrowserRouter>
     )
 }

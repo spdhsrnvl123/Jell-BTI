@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncUpFetch } from 'redux/jellyInfo';
+import { modalChange } from 'redux/store';
 import styled from 'styled-components';
-import KakaoBtn from '../KakaoBtn';
-import NaverBtn from '../NaverBtn';
-import YellowHaribo from '../YellowHaribo';
 
 
 const ModalCotainer = styled.div`
@@ -51,22 +52,29 @@ const ModalButton = styled.button`
     background-color: transparent;
 `
 
-const Modals = ({open,close})=>{
+const Modals = ()=>{
+    const modal = useSelector((state)=>state.modalAppear);
+    const state = useSelector((state)=> state);
+    const dispatch = useDispatch()
+
+    console.log(state.jellyInfo.status)
+
+    useEffect(()=>{
+        dispatch(asyncUpFetch());
+    },[]) //모달창이 열리면 젤리정보 가져오기
+
     return(
-        <ModalCotainer change={open ? "flex":"none"}>
+        <ModalCotainer change={modal ? "flex":"none"}>
         {
-            open ? (                            
+            modal ? (                            
             <ModalSection>
-                <ModalTextarea>SIGN IN<YellowHaribo /></ModalTextarea>
-                <KakaoBtn />
-                <NaverBtn />
-                <ModalButton onClick={close}>
+                <ModalButton onClick={()=>dispatch(modalChange())}>
                     &times;
                 </ModalButton>
             </ModalSection>
             ) : null
         }
-    </ModalCotainer>
+        </ModalCotainer>
     )
 }
 
