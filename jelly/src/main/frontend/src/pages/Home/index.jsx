@@ -2,24 +2,27 @@ import Header from "@/components/domain/Header";
 import Navigation from "@/components/domain/Navigation";
 import Login from "@/components/base/Login";
 import Search from "@/components/domain/Search";
-import { useDispatch, useSelector } from "react-redux";
 import SearchBox from "components/domain/SearchBox";
 import styled from "styled-components";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Container = styled.div`
-    /* background-color: red; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-`
+`;
 
 const Home = ()=>{
-    const dispatch = useDispatch();
-    const count = useSelector(state=>{
-      return state;
-    });
-
+    // useEffect(()=>{
+    //     axios({
+    //         method: "get",
+    //         url: "/jellies",
+    //       }).then((response) => {
+    //         console.log(response.data);
+    //       });
+    // })
     return(
             <Container>
                 <Login />
