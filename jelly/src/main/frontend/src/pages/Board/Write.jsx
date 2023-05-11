@@ -1,72 +1,52 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Header from '../../components/domain/Header';
-import Navigation from '../../components/domain/Navigation';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import axios from "axios"
+import { useState } from "react"
+import styled from "styled-components"
 
-function Write() {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+const Title = styled.h1`
+    font-size : 24px;
+    text-align: center;
+`
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            await axios.post('/boards', { btitle: title, bcontent: content });
-            alert('게시글 작성이 완료되었습니다.');
-            setTitle('');
-            setContent('');
-        } catch (error) {
-            console.error(error);
-        }
-    };
+const Write = () => {
+    const [value, setValue] = useState('')
+    const [subMitData, setSubmitData] = useState('')
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(e.target[0].value)
+        setSubmitData(e.target[0].value);
+
+        axios({
+            url: '/board',
+            method: 'post',
+            data: {
+                boardTitle: subMitData,
+                boardContent: subMitData,
+                memberAccount: subMitData
+            }
+        }).then((response) => {
+            console.log(response)
+        })
+    }
+    // console.log(value);
 
     return (
-        <div>
-            <Header />
-            <Navigation />
-            <br />
-            <br />
-            <br />
-            <br />
-            <h1 style={{
-                color: '#F0E68C',
-                backgroundColor: '#FFFFE0',
-                fontSize: '3rem',
-                textAlign: "center"
-                }}>글 작성하기</h1>
-            <br />
+        <>
+            <Title>글 목록 등록</Title>
             <form onSubmit={handleSubmit}>
-                <TextField
-                    required
-                    label="제목"
-                    fullWidth
-                    margin="normal"
-                    value={title}
-                    onChange={(event) => setTitle(event.target.value)}
+                <input
+                    type="text"
+                    onChange={handleChange}
+                    value={value}
                 />
-                <TextField
-                    required
-                    label="내용"
-                    fullWidth
-                    margin="normal"
-                    multiline
-                    rows={10}
-                    value={content}
-                    onChange={(event) => setContent(event.target.value)}
-                />
-                <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    style={{ float: 'right' }}
-                >
-                    등록하기
-                </Button>
-
+                <button type="submit">제출</button>
             </form>
-        </div>
-    );
+        </>
+    )
 }
 
-export default Write;
+export default Write
