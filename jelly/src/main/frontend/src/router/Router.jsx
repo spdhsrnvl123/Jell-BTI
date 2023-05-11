@@ -5,7 +5,6 @@ import MyPage from "../pages/MyPage"
 import KakaoRedirect from "../pages/KakaoRedirect"
 import KakaoLogin from "../pages/KakaoLoginPage"
 import Board from "../pages/Board/Board"
-import Write from "../pages/Board/Write"
 import Writing from "../pages/Board/Writing"
 
 
