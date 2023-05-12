@@ -72,7 +72,7 @@ const Writing = () => {
                 <Button>
                     <Button1
                         type="submit"
-                        onClick={handleButtonClick}
+                        // onClick={handleButtonClick}
                     >    
                     제출 
                     </Button1>
