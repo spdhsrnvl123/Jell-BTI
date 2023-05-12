@@ -19,6 +19,8 @@ public class QJInfo extends EntityPathBase<JInfo> {
 
     public static final QJInfo jInfo = new QJInfo("jInfo");
 
+    public final StringPath imageUrl = createString("imageUrl");
+
     public final StringPath jCarbohydrate = createString("jCarbohydrate");
 
     public final StringPath jCholesterol = createString("jCholesterol");
