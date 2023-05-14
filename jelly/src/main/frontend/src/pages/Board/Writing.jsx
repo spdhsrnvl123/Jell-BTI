@@ -29,6 +29,7 @@ const Writing = () => {
     }
 
     const handleAccountChange = (e) => {
+        //이거 근데 필요한가요? 지금 저희는 Account가 고정값으로 들어가는데 음음음
         setMemberAccount(e.target.value);
     }
 
@@ -56,19 +57,28 @@ const Writing = () => {
             <Navigation />
             <Topic>글 쓰기</Topic>
                 <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        onChange={handleTitleChange}
+                <Title
+                    type="text"
+                    placeholder="*제목"
+                    onChange={handleTitleChange}
                     value={boardTitle}
-                    />
-                    <input
-                        type="text"
-                        onChange={handleContentChange}
-                        value={boardContent}
-                    />
-                <button type="submit" >제출</button>
-                </form>
-            <Button2 onClick={handleButtonClick}>취소하기</Button2>
+                />
+                <Content
+                    type="text"
+                    placeholder="*글 내용"
+                    onChange={handleContentChange}
+                    value={boardContent}
+                />
+                <Button>
+                    <Button1
+                        type="submit"
+                        // onClick={handleButtonClick}
+                    >    
+                    제출 
+                    </Button1>
+                    <Button2 onClick={handleButtonClick}>취소하기</Button2>
+                </Button>
+            </form>
         </>
     );
 }
@@ -79,7 +89,8 @@ const Topic = Styled.div`
     background-color: #FFFFE0;
     text-align: center;
     font-size: 3rem;
-    margin-top: 8rem;
+    border: 3px solid #F5DA81;
+    /* margin-top: 1rem; */
     /* 마진이 기준이 계속 바뀌는데 수정해야함 */
 `
 
@@ -90,7 +101,7 @@ const Title = Styled.input`
     border-radius: 15px;
     margin-top: 1rem;
     background-color: #F4E6D0;
-    font-size: 1rem;
+    font-size: 3rem;
 `
 
 const Content = Styled.input`
@@ -100,7 +111,7 @@ const Content = Styled.input`
     border-radius: 15px;
     margin-top: 2rem;
     background-color: #F4E6D0;
-    font-size: 1rem;
+    font-size: 3rem;
     /* 여기도 위에서 부터 시작하면 깔끔할 것 같은데 textarea align 다 해봤는데 좀 더 찾아서 수정해야함 */
 `
 
@@ -112,17 +123,31 @@ const Button1 = Styled.button`
     width: 5rem;
     height: 3rem;
     margin-top: 2rem;
+    border-radius: 10px;
+    border: 2px solid black;
     background-color: skyblue;
+    &:hover{  
+    background-color : #FFFFE0;
+  }
     cursor: pointer;
+    font-size: 2rem;
 `
+// #16f916 다른 버튼 색상
+//#F5DA81
 
 const Button2 = Styled.button`
     width: 5rem;
     height: 3rem;
     margin-top: 2rem;
     margin-left: 1rem;
+    border-radius: 10px;
+    border: 2px solid black;
     background-color: skyblue;
+    &:hover{  
+    background-color : #FFFFE0;
+  }
     cursor: pointer;
+    font-size: 2rem;
 `
 export default Writing;
 
