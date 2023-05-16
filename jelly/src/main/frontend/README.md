@@ -7,3 +7,12 @@
 2. component/Kakao/index.jsx 에서 axios 아래 15번째 줄 서버 url 설정
 
 3. 로그인 결과 확인
+
+    // useEffect(()=>{
+    //     axios({
+    //         method: "get",
+    //         url: "/jellies",
+    //       }).then((response) => {
+    //         console.log(response.data);
+    //       });
+    // })

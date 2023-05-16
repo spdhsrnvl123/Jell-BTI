@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "components/base/Card";
@@ -73,7 +73,6 @@ const Box = styled.div`
 const SearchBox = ({ boolean, jelly }) => {
   const [productList, setProductList] = useState([]);
   const [query, setQuery] = useSearchParams();
-  const modal = useSelector((state) => state.modalAppear);
 
   useEffect(() => {
     let searchQuery = query.get("jellyName") || "";
@@ -83,7 +82,6 @@ const SearchBox = ({ boolean, jelly }) => {
       method: "get",
       url: url,
     }).then((response) => {
-      console.log(response.data);
       setProductList(response.data);
     });
   }, [query]);
@@ -96,7 +94,7 @@ const SearchBox = ({ boolean, jelly }) => {
         <CardBox>
           <Card productList={productList} />
         </CardBox>
-        <Modals open={modal}></Modals>
+        <Outlet />
       </Content>
     </>
   );
