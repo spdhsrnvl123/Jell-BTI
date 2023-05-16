@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { useInput } from "hooks/useInput";
+import { asyncUpFetch } from "redux/jellyInfo";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
     display: flex;
@@ -33,7 +35,6 @@ const Button = styled.button`
 
 const Search = ()=>{
     const [inputValue, handleChange, boolean, handleSubmit] = useInput('');
-
     return(
             <Container>
                 <form onSubmit={handleSubmit}>

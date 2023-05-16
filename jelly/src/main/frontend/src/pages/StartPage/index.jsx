@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import Haribo from "@/components/base/Haribo";
 import Ballon from "@/components/base/Ballon";
 import Logo from "@/components/base/Logo";
 import BallonThird from "@/components/base/BallonThird";
-import ImgBack from "@/components/base/ImgBack";
 import Button from "components/base/Button";
 import { useNavigate } from "react-router-dom";
+import Img from "components/base/Img";
 
 const Container = styled.div`
     height: 100vh;
@@ -58,15 +57,15 @@ const StartPage = ()=>{
         <Container>
              {/* hariboMove={move ? "50%": "31%"} */}
             <HariboBox>
-                <Haribo />
-                <Logo />
+                <Img src="./haribo.png" width={321} height={325} />
+                <Logo fontSize={200} />
                 <SubTitle>HARIBO</SubTitle>
             </HariboBox>
             {/* kakaoMove={move ? "100%":"50%"} */}
             <KakaoBox>
-                <ImgBack /> 
+                <Img src="./kakaoBackground.png" width={640} height={1080}/>
                 <BallonThird />
-                    <Button fontSize={4} padding={"0px 44px"} bgColor={"#16f916"} onClick={()=>navigate("/home")}>Jell-BTI 시작하기</Button>
+                    <Button fontSize={70} fontWeight={600} padding={"0px 44px"} bgColor={"#16f916"} onClick={()=>navigate("/home")}>Jell-BTI 시작하기</Button>
                 <Ballon />
             </KakaoBox>
         </Container>
