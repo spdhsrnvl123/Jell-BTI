@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from 'prop-types'
 
 const Root = styled.button`
     padding: ${({padding})=>padding};
@@ -10,11 +10,10 @@ const Root = styled.button`
     border: 0;
     width: ${({width})=> width};
     color: ${({color})=> color};
-    font-size: ${({fontSize})=>`${fontSize}rem`};
+    font-size: ${({fontSize})=>`${fontSize}px`};
     cursor: pointer;
     font-weight:${({fontWeight})=>(fontWeight)};
 `
-    /* font-size: 2.9rem; */
 
 const Button = ({fontSize, fontWeight, padding, margin, bgColor, color, width, children,...props})=>{
     return (
@@ -31,6 +30,16 @@ const Button = ({fontSize, fontWeight, padding, margin, bgColor, color, width, c
             {children}
         </Root>
     )
+}
+
+Button.propType = {
+    fontSize : PropTypes.number,
+    fontWeight : PropTypes.number,
+    padding : PropTypes.string,
+    margin : PropTypes.string,
+    bgColor : PropTypes.string,
+    color : PropTypes.string,
+    width : PropTypes.number
 }
 
 export default Button;
