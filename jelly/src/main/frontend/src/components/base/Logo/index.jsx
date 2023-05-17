@@ -4,6 +4,8 @@ const LogoImage = styled.img.attrs({ alt : 'logo' })`
     width:250px;
 `
 const Title = styled.h1`
+  font: ${({fontSize})=>`${fontSize}px`}/0.65 "Dongle", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
+
 .stage {
   height: 200px;
   width: 300px;
@@ -23,7 +25,6 @@ const Title = styled.h1`
 }
 
 .layer:after {
-  font: 150px/0.65 "Dongle", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
   content: "JELL-BTI";
   white-space: pre;
   text-align: center;
@@ -31,6 +32,7 @@ const Title = styled.h1`
   width: 100%;
   position: absolute;
   top: 50px;
+  left: -70px;
   color: white;
   letter-spacing: -2px;
   text-shadow: 4px 0 10px #FB82B1;
@@ -145,11 +147,11 @@ const Title = styled.h1`
 }
 `
 
-const Logo = ()=>{
+const Logo = ({fontSize, ...props})=>{
     return (
         <>
         {/* <LogoImage src="./logo.png" /> */}
-        <Title>
+        <Title fontSize={fontSize} style={{...props}}>
         <div className="stage">
             <div className="layer"></div>
             <div className="layer"></div>

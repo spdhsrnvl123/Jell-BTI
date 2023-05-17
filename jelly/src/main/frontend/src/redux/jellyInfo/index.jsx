@@ -28,5 +28,6 @@ const jellyInfoSlice = createSlice({
     })
   }
 });
+
 export default jellyInfoSlice;
 export {asyncUpFetch}

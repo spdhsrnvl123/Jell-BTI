@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { asyncUpFetch } from 'redux/jellyInfo';
-import { modalChange } from 'redux/store';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Img from '../Img';
+import Button from '../Button';
 
 
 const ModalCotainer = styled.div`
-    display: ${props => props.change};
+    display: flex;
     align-items: center;
     justify-content: center;
     position:fixed;
@@ -19,63 +20,89 @@ const ModalCotainer = styled.div`
 `
 const ModalSection = styled.section`
     position: absolute;
-    top:53%;
-    left: 50%;
+    top:50%;
+    left: 64%;
     transform: translate(-50%,-50%);
-    width: 33%;
-    height: 65%;
+    width: 566px;
+    height: 507px;
     background: #F7FEF7;
-    border-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-`
-
-const ModalTextarea = styled.div`
-    position: relative;
-    display: flex;
-    font-weight: 700;
-    font-size: 50px;
-    top: 35%;
-    left: 66%;
-    transform: translate(-50%,-50%);
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
 const ModalButton = styled.button`
     position: absolute;
-    top:2%;
-    right:6%;
+    top:-6%;
+    right:7%;
     width: 30px;
-    font-size: 51px;
+    font-size: 101px;
     font-weight: 300;
     border: 0;
     cursor: pointer;
     background-color: transparent;
 `
+const ImgBox = styled.div`
+    position: absolute;
+    top:-1.4%;
+    left:-64.5%;
+`
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const Title = styled.div`
+    font-size: 70px;
+    margin-top: 60px;
+`
+
+const Chart = styled.div`
+    height: 300px;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 
 const Modals = ()=>{
-    const modal = useSelector((state)=>state.modalAppear);
-    const state = useSelector((state)=> state);
-    const dispatch = useDispatch()
-
-    console.log(state.jellyInfo.status)
+    const navigate = useNavigate();
+    const data = useSelector((state)=>state.jellyInfo);
+    const {id} = useParams();
+    const [value, setValue] = useState([])
 
     useEffect(()=>{
-        dispatch(asyncUpFetch());
-    },[]) //모달창이 열리면 젤리정보 가져오기
+        if(data.status === 'complete'){
+            let item = data.value.filter((v)=>{
+                return Number(id) === v.jidx
+            })
+            setValue(...item);
+        }
+    },[data])
 
     return(
-        <ModalCotainer change={modal ? "flex":"none"}>
-        {
-            modal ? (                            
+        <ModalCotainer>
             <ModalSection>
-                <ModalButton onClick={()=>dispatch(modalChange())}>
+                <ImgBox>
+                    <Img src={value.imageUrl} width={380} />
+                </ImgBox>
+                <Content>
+                    <Title>{value.jname}</Title>
+                    <Chart>Chart Test...</Chart>
+                    <Button 
+                        fontSize={40}
+                        bgColor={"#16f916"}
+                        fontWeight={600}
+                        padding={"1px 14px"}
+                    >후기 작성하기</Button>
+                </Content>
+                <ModalButton onClick={()=>navigate("/home")}>
                     &times;
                 </ModalButton>
             </ModalSection>
-            ) : null
-        }
         </ModalCotainer>
     )
 }
 
-export default Modals
+export default Modals;

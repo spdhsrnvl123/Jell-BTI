@@ -6,15 +6,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./style.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 import styled from "styled-components";
 import Button from "../Button";
 import Img from "../Img";
-import { modalChange } from "redux/store";
-import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ImgBox = styled.div`
   position: relative;
@@ -37,14 +35,13 @@ const CardContent = styled.div`
 `
 
 const JellyTitle = styled.div`
-  font-size : 23px;
+  font-size : 26px;
   color :#ffffff;
   padding-bottom: 10px;
 `
 
-
 export default function Card({ productList }) {
-  const dispatch = useDispatch()
+  const navigate = useNavigate()
   return (
     <>
       <Swiper
@@ -54,6 +51,7 @@ export default function Card({ productList }) {
           delay: 3000,
           disableOnInteraction: false,
         }}
+        style={{width: "100%",height: "100%"}}
         pagination={{
           clickable: true,
         }}
@@ -63,12 +61,18 @@ export default function Card({ productList }) {
       >
         {productList.map((v, i) => {
           return (
-            <SwiperSlide key={v.jidx}>
+            <SwiperSlide key={v.jidx} style={{
+              textAlign: "center",
+              fontSize: "18px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
               <ImgBox>
                 <Img src = {v.imageUrl} width={200} height={280} />              
                 <CardContent>
                   <JellyTitle>{v.jname}</JellyTitle>
-                  <Button onClick={()=>dispatch(modalChange())} fontSize={1.1} bgColor={"#16f916"} padding={"2px 10px"}>상세보기</Button>
+                  <Button onClick={()=>navigate(`/home/modals/${v.jidx}`)} fontSize={20} bgColor={"#16f916"} padding={"2px 10px"}>상세보기</Button>
                 </CardContent>
               </ImgBox>
             </SwiperSlide>

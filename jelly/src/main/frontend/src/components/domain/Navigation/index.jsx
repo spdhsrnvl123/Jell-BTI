@@ -7,8 +7,8 @@ const MenuBox = styled.ul`
 `
 
 const MenuList = styled.li`
-    font-size: 37px;
-    font-weight: 600;
+    font-size: 48px;
+    font-weight: 700;
     padding-left: 51px;
     padding: 20px 48px;
     :nth-child(1){
@@ -17,6 +17,9 @@ const MenuList = styled.li`
     a{
         text-decoration: none;
         color: inherit;
+        display: block;
+        border-radius: 30px;
+        padding: 7px 20px;
     }
 `
 
