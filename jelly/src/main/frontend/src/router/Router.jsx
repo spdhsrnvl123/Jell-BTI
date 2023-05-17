@@ -8,6 +8,7 @@ import Board from "@/pages/Board/Board"
 import Writing from "@/pages/Board/Writing"
 import Modals from "components/base/Modals"
 import Modal from "components/base/Modal"
+import Read from "pages/Board/Read"
 
 const Router = () => {
     return (
@@ -18,11 +19,13 @@ const Router = () => {
                 <Route path="/login" element={<KakaoLogin />} />
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/home" element={<Home />}>
-                    <Route path="modals/:id" element={<Modals />} />
-                    <Route path="Modal" element={<Modal />} />
+                <Route path="modals/:id" element={<Modals />} />
+                <Route path="Modal" element={<Modal />} />
                 </Route>
                 <Route path="/board" element={<Board />} />
                 <Route path="/writing" element={<Writing />} />
+                <Route path="/read" element={<Read />} />
+
             </Routes>
         </BrowserRouter>
     )
