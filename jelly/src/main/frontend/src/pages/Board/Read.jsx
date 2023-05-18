@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import Header from "../../components/domain/Header";
@@ -29,6 +29,11 @@ const Read = () => {
         navigate("/board");
     };
 
+    const goToModify = () => {
+        const bIdx = new URLSearchParams(location.search).get('bIdx');
+        navigate(`/modify?bIdx=${bIdx}`);
+    };
+
     return (
         <>
             <Header />
@@ -42,12 +47,16 @@ const Read = () => {
             ) : (
                 <Loading>Loading...</Loading>
             )}
-            <Button onClick={goToBoard}>글 보기</Button>
+            <Button>
+                <Button1 onClick={goToBoard}>글 보기</Button1>
+                <Button2 onClick={goToModify}>수정하기</Button2>
+                <Button3>삭제하기</Button3>
+            </Button>
         </>
     );
 };
 
-const Topic = styled.div`
+const Topic = Styled.div`
     width: 100%;
     height: 3rem;
     background-color: #FFFFE0;
@@ -56,7 +65,7 @@ const Topic = styled.div`
     border: 3px solid #F5DA81;
 `;
 
-const Title = styled.div`
+const Title = Styled.div`
     width: 100%;
     height: 5rem;
     font-size: 3rem;
@@ -68,7 +77,7 @@ const Title = styled.div`
     /* justify-content: center; */
 `;
 
-const List = styled.div`
+const List = Styled.div`
     width: 100%;
     height: 35rem;
     font-size: 3rem;
@@ -80,23 +89,57 @@ const List = styled.div`
     /* justify-content: center; */
 `;
 
-const Button = styled.button`
+const Button = Styled.div`
+    float: right;
+`
+
+const Button1 = Styled.button`
     width: 6rem;
     height: 3rem;
     margin-top: 2rem;
-    cursor: pointer;
-    float: right;
     border-radius: 10px;
     border: 2px solid black;
     background-color: skyblue;
-    &:hover {
-        background-color: #FFFFE0;
-    }
+    &:hover{  
+    background-color : #FFFFE0;
+  }
     cursor: pointer;
     font-size: 2rem;
-`;
+`
+// #16f916 다른 버튼 색상
+//#F5DA81
 
-const Loading = styled.div`
+const Button2 = Styled.button`
+    width: 6rem;
+    height: 3rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: skyblue;
+    &:hover{  
+    background-color : #FFFFE0;
+  }
+    cursor: pointer;
+    font-size: 2rem;
+`
+
+const Button3 = Styled.button`
+    width: 6rem;
+    height: 3rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: skyblue;
+    &:hover{  
+    background-color : #FFFFE0;
+  }
+    cursor: pointer;
+    font-size: 2rem;
+`
+
+const Loading = Styled.div`
     width: 100%;
     height: 40rem;
     display: flex;
