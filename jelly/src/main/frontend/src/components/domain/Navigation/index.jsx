@@ -1,3 +1,5 @@
+import Button from "components/base/Button"
+import useAuth from "hooks/useAuth"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
@@ -23,13 +25,15 @@ const MenuList = styled.li`
     }
 `
 
+
 const Navigation = ()=>{
+
     return(
         <MenuBox>
             <MenuList><Link to="/home">홈</Link></MenuList>
             <MenuList><Link to="">젤리 테스트</Link></MenuList>
             <MenuList><Link to="/board">커뮤니티</Link></MenuList>
-            <MenuList><Link to="/mypage">마이페이지</Link></MenuList>
+            <MenuList><Button>마이페이지</Button></MenuList>
         </MenuBox>
     )
 }
