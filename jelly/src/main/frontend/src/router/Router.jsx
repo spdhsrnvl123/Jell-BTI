@@ -27,7 +27,6 @@ const Router = () => {
                 <Route path="/writing" element={<Writing />} />
                 <Route path="/read" element={<Read />} />
                 <Route path="/modify" element={<Modify />} />
-
             </Routes>
         </BrowserRouter>
     )

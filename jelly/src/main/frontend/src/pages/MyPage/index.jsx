@@ -143,7 +143,6 @@ const MyPage = ()=>{
     const userToken = useSelector((state)=> state);
     const navigate = useNavigate()
     let token = userToken.userToken
-    console.log(token)
 
     useEffect(()=>{
         axios({
