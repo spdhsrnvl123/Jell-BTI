@@ -94,7 +94,7 @@ const Title = styled.div`
 `;
 
 const Button = styled.button`
-  width: 5rem;
+  width: 6rem;
   height: 3rem;
   margin-top: 2rem;
   cursor: pointer;
