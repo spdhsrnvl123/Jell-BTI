@@ -8,7 +8,6 @@ const ImgStyle = styled.img`
 `
 
 const Img = ({src, width, height, ...props})=>{
-    console.log(props)
     return(
         <ImgStyle src={src} width={width} height={height} style={{...props}} />
     )
