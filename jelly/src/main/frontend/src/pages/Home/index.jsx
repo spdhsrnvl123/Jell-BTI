@@ -36,15 +36,14 @@ const Home = () => {
   }, []);
   const navigate=useNavigate()
 
-
   return (
     <Container>
-      <MyPageBallonBlue src="../balloonBlue.png" />
-      <MyPageBallonRed src="../balloonRed.png" />
-      <MyPageBallonRed_2 src="../balloonRed.png" />
-      <MyPageBallonGreen src="../balloonGreen.png" />
-      <MyPageBallonGreen_2 src="../balloonGreen.png" />
-      <MyPageBallonSkyblue_2 src="../ballonSkyblue.png" />
+      <MyPageBallonBlue src="/balloonBlue.png" />
+      <MyPageBallonRed src="/balloonRed.png" />
+      <MyPageBallonRed_2 src="/balloonRed.png" />
+      <MyPageBallonGreen src="/balloonGreen.png" />
+      <MyPageBallonGreen_2 src="/balloonGreen.png" />
+      <MyPageBallonSkyblue_2 src="/ballonSkyblue.png" />
       <LoginBox>
         <Button onClick={()=>navigate("/home/modal")} fontSize={30} fontWeight={700} padding={"0.6em 0.7em"} bgColor={"rgba(0, 163, 255, 0.2)"}>로그인하기</Button>
       </LoginBox>

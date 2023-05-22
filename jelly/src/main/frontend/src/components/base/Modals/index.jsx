@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Img from '../Img';
 import Button from '../Button';
-
+import Chart from '../Chart';
 
 const ModalCotainer = styled.div`
     display: flex;
@@ -58,7 +58,7 @@ const Title = styled.div`
     margin-top: 60px;
 `
 
-const Chart = styled.div`
+const ChartContainer = styled.div`
     height: 300px;
     font-size: 100px;
     display: flex;
@@ -69,7 +69,7 @@ const Chart = styled.div`
 const Modals = ()=>{
     const navigate = useNavigate();
     const data = useSelector((state)=>state.jellyInfo);
-    const {id} = useParams();
+    const { id } = useParams();
     const [value, setValue] = useState([])
 
     useEffect(()=>{
@@ -81,6 +81,9 @@ const Modals = ()=>{
         }
     },[data])
 
+    //value의 데이터가 없으면 props로 전달 안해주겠다.
+
+    console.log(value)
     return(
         <ModalCotainer>
             <ModalSection>
@@ -89,7 +92,11 @@ const Modals = ()=>{
                 </ImgBox>
                 <Content>
                     <Title>{value.jname}</Title>
-                    <Chart>Chart Test...</Chart>
+                    <ChartContainer>
+                    {
+                        value.length === 0 ? "Loading...":<Chart value={value} />
+                    }
+                    </ChartContainer>
                     <Button 
                         fontSize={40}
                         bgColor={"#16f916"}
