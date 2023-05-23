@@ -11,7 +11,7 @@ const Modify = () => {
     const location = useLocation();
     const [board, setBoard] = useState(null);
     const bIdx = new URLSearchParams(location.search).get('bIdx');
-    
+  
     useEffect(() => {
         const fetchData = async () => {
             try {
