@@ -10,6 +10,7 @@ import Modals from "components/base/Modals"
 import Modal from "components/base/Modal"
 import Read from "pages/Board/Read"
 import Modify from "pages/Board/Modify"
+import Question from "pages/Questions/Question"
 
 const Router = () => {
     return (
@@ -19,14 +20,14 @@ const Router = () => {
                 <Route path="/oauth/login/kakao" element={<KakaoRedirect />} />
                 <Route path="/login" element={<KakaoLogin />} />
                 <Route path="/mypage" element={<MyPage />} />
-                <Route path="/home" element={<Home />}>
+                <Route path="/home" element={<Home />} />
                 <Route path="modals/:id" element={<Modals />} />
                 <Route path="Modal" element={<Modal />} />
-                </Route>
                 <Route path="/board" element={<Board />} />
                 <Route path="/writing" element={<Writing />} />
                 <Route path="/read" element={<Read />} />
                 <Route path="/modify" element={<Modify />} />
+                <Route path="/question" element={<Question />} />
             </Routes>
         </BrowserRouter>
     )
