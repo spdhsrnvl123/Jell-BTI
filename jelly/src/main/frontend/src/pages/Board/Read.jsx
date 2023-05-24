@@ -50,7 +50,7 @@ const Read = () => {
             <Button>
                 <Button1 onClick={goToBoard}>글 보기</Button1>
                 <Button2 onClick={goToModify}>수정하기</Button2>
-                <Button3>삭제하기</Button3>
+                {/* <Button3>삭제하기</Button3> */}
             </Button>
         </>
     );
@@ -123,22 +123,6 @@ const Button2 = Styled.button`
     cursor: pointer;
     font-size: 2rem;
 `
-
-const Button3 = Styled.button`
-    width: 6rem;
-    height: 3rem;
-    margin-top: 2rem;
-    margin-left: 1rem;
-    border-radius: 10px;
-    border: 2px solid black;
-    background-color: skyblue;
-    &:hover{  
-    background-color : #FFFFE0;
-  }
-    cursor: pointer;
-    font-size: 2rem;
-`
-
 const Loading = Styled.div`
     width: 100%;
     height: 40rem;

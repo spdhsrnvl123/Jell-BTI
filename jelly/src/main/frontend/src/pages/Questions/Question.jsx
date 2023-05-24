@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Styled from "styled-components";
 import Header from "components/domain/Header";
 import Navigation from "components/domain/Navigation";
@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 const Question = () => {
     const navigate = useNavigate();
 
-    const QuestionClick = () => {
-        navigate("/board");
-    };
+    const [ask, setAsk] = useState();
+
+    // const QuestionClick = () => {
+    //     navigate("/board");
+    // };
 
     return (
         <>
@@ -23,7 +25,7 @@ const Question = () => {
             </TopTitle>
 
             <Quest>
-                <Que onClick={QuestionClick}>질문 1</Que>
+                <Que>질문 1</Que>
                 <Que>질문 2</Que>
             </Quest>
         </>
@@ -49,7 +51,8 @@ const Title = Styled.div`
     width: 40%;
     height: 10rem;
     font-size: 3rem;
-    border: 3px solid red;
+    border: 3px solid black;
+    background-color: #EFEFFB;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +70,7 @@ const Que = Styled.button`
     height: 10rem;
     font-size: 3rem;
     border: 3px solid black;
+    background-color: #EFEFFB;
     text-align: center;
     cursor: pointer;
 `
