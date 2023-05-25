@@ -10,6 +10,7 @@ import my.jelly.dto.JellyDTO;
 import my.jelly.entity.JInfo;
 import my.jelly.repository.JellyRepository;
 import my.jelly.repository.JellyRepositorySpringDataJpa;
+import my.jelly.repository.RateRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +20,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -29,6 +32,8 @@ import java.util.List;
 public class JellyInformationService implements JelliyService{
     private final JellyRepositorySpringDataJpa springDataJpaJellyRepository;
     private final JellyRepository jellyRepository;
+
+    private final RateRepository rateRepository;
 
     // api로 젤리 정보 받아서 db에 저장하는 메서드
     public int createJellyInformation() throws IOException {
@@ -141,6 +146,15 @@ public class JellyInformationService implements JelliyService{
     @Override
     public JellyDTO findById(Long jIdx) {
         JInfo jInfo = springDataJpaJellyRepository.findById(jIdx).orElseThrow();
+        Optional<Double> resultScore = rateRepository.getScore(jIdx);
+        Double score;
+        if (resultScore.isPresent()) {
+            score = Math.round(resultScore.get() * 10.0) / 10.0;
+        } else {
+            score = 0.0;
+        }
+
+
         JellyDTO result = new JellyDTO(
                 jInfo.getJIdx(),
                 jInfo.getJName(),
@@ -159,7 +173,8 @@ public class JellyInformationService implements JelliyService{
                 jInfo.getJSugars(),
                 jInfo.getJSalt(),
                 jInfo.getJCholesterol(),
-                jInfo.getImageUrl()
+                jInfo.getImageUrl(),
+                score
         );
         return result;
     }
