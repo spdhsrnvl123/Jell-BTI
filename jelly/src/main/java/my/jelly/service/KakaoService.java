@@ -22,7 +22,7 @@ public class KakaoService {
     @Autowired
     MemberRepository memberRepository;
 
-    @Value("#jellyProperty['kakao.client-id']")
+    @Value("#{jellyProperty['kakao.client-id']}")
     private String clientId;
 
     // (카카오 로그인)
