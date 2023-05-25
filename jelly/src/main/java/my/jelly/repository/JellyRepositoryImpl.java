@@ -46,7 +46,7 @@ public class JellyRepositoryImpl implements JellyRepository{
 //        jInfo.setJSugars(jellyDTO.getJSugars());
 //        jInfo.setJSalt(jellyDTO.getJSalt());
 //        jInfo.setJCholesterol(jellyDTO.getJCholesterol());
-        jInfo.setImageUrl(jellyDTO.getImageUrl());
+//        jInfo.setImageUrl(jellyDTO.getImageUrl());
     }
 
     @Override

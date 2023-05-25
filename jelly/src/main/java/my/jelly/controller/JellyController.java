@@ -1,6 +1,7 @@
 package my.jelly.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
 import my.jelly.dto.RateDTO;
 import my.jelly.entity.JInfo;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class JellyController {
@@ -51,7 +54,7 @@ public class JellyController {
     @PatchMapping("/jellies/{jIdx}")
     @ResponseBody
     public String updateJellyInformation(@PathVariable Long jIdx, @RequestBody JellyDTO jellyDTO) {
-        System.out.println("jellyDTO = " + jellyDTO);
+        log.info("jellyDTO ={}" + jellyDTO);
         jelliyService.updateJellyInformation(jIdx, jellyDTO);
         return "200 update OK";
     }
@@ -59,8 +62,8 @@ public class JellyController {
     //젤리 영양 정보 하나만 가져오기
     @GetMapping("/jellies/{jIdx}")
     @ResponseBody
-    public JellyDTO readJellyInformationById(@PathVariable Long jIdx) {
-        JellyDTO result = jelliyService.findById(jIdx);
+    public Map<String, Object> readJellyInformationById(@PathVariable Long jIdx) {
+        Map<String, Object> result = jelliyService.findById(jIdx);
         return result;
     }
 
@@ -68,7 +71,7 @@ public class JellyController {
     @PostMapping("/jellies/rates")
     @ResponseBody
     public JRate createJellyRate(@RequestBody RateDTO rateDTO) {
-        System.out.println("rateDTO = " + rateDTO);
+        log.info("rateDTO ={}" + rateDTO);
         JRate result = rateService.createJellyRate(rateDTO);
         return result;
     }
@@ -85,8 +88,8 @@ public class JellyController {
     @GetMapping("/jellies/rates/email/{email}-{domain}")
     @ResponseBody
     public List<JRate> findRatesByEmail(@PathVariable String email, @PathVariable String domain) {
-        System.out.println("mEmail = " + email);
-        System.out.println("domain = " + domain);
+        log.info("mEmail ={}" + email);
+        log.info("domain ={}" + domain);
         List<JRate> rates = rateService.findRatesByEmail(email, domain);
         return rates;
     }
@@ -107,8 +110,8 @@ public class JellyController {
     @PatchMapping("/jellies/rates/{rIdx}")
     @ResponseBody
     public JRate updateRate(@PathVariable Long rIdx, @RequestBody RateDTO rateDTO) {
-        System.out.println("rIdx = " + rIdx);
-        System.out.println("rateDTO = " + rateDTO);
+        log.info("rIdx ={}" + rIdx);
+        log.info("rateDTO ={}" + rateDTO);
         JRate result = rateService.updateRate(rIdx, rateDTO);
         return result;
     }

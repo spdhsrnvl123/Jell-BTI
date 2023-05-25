@@ -2,10 +2,12 @@ package my.jelly.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import my.jelly.entity.JRate;
 import my.jelly.entity.QJRate;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -32,6 +34,19 @@ public class RateRepositoryImpl implements RateRepository{
                 .from(qjRate)
                 .where(qjRate.jInfoVO.jIdx.eq(jIdx))
                 .fetchFirst());
+    }
+
+    public List<JRate> findByJIdx(Long jIdx) {
+        QJRate qjRate = QJRate.jRate;
+
+        return query
+                .select(qjRate)
+                .from(qjRate)
+                .where(qjRate.jInfoVO.jIdx.eq(jIdx))
+                .orderBy(qjRate.rIdx.desc())
+                .limit(5)
+                .fetch();
+
     }
 
 }
