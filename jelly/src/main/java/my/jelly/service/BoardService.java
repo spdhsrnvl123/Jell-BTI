@@ -63,11 +63,17 @@ public class BoardService {
         return j;
     }
 
-    // Update Board : 수정 글 받아와 처리
+    // Update Board: 수정 글 받아와 처리
     public void updateBoard(Map<String, Object> board) {
-        JBoard j = boardRepository.findBybIdx((Long) board.get("boardIdx"));
-        j.setBTitle((String) board.get("boardTitle"));
-        j.setBContent((String) board.get("boardContent"));
+        String bIdxString = (String) board.get("bIdx");
+        Long bIdx = Long.parseLong(bIdxString);
+
+        String bTitle = (String) board.get("bTitle");
+        String bContent = (String) board.get("bContent");
+        JBoard jBoard = boardRepository.findBybIdx(bIdx);
+        jBoard.setBTitle(bTitle);
+        jBoard.setBContent(bContent);
+        boardRepository.save(jBoard);
     }
 
     // Delete Board : 글 지우기
