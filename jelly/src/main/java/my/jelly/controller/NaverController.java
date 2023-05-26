@@ -3,12 +3,14 @@ package my.jelly.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import my.jelly.entity.Member;
 import my.jelly.service.NaverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @Controller
 public class NaverController {
 
@@ -52,14 +56,24 @@ public class NaverController {
 
     @RequestMapping("/oauth/login/naver/userInfo")
     @ResponseBody
-    public String userInfo(@RequestParam(value = "token",required = false) String token) throws Exception {
-        Member userInfo = naverService.getUserInfo(token);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    public String userInfo(
+            @RequestParam(value = "token",required = false) String token,
+            HttpServletRequest request
+    ) throws Exception {
+        Member loginMember = naverService.getUserInfo(token);
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Map<String, Object> map = new HashMap<String, Object>();
 
-        map.put("userInfo", userInfo);
+        log.info("loginMember ={}", loginMember);
 
-        return gson.toJson(map);
+        if (loginMember != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("loginMember", loginMember);
+            return HttpStatus.OK.toString();
+        }
+//        map.put("userInfo", userInfo);
+
+        return "Failed";
     }
     
 }

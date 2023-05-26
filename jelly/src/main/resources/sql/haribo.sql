@@ -1,10 +1,10 @@
---alter table j_info modify j_detail null;
+commit;
 
+** jinfo 테이블 확인하기
 select * from jinfo order by j_idx desc;
-
-select * from jinfo where j_name = '하리보 해피 그레이프';
-
 select * from jinfo where image_url is not null;
+select * from jinfo where image_url is null;
+select * from jinfo a, jrate b where a.j_idx = b.j_idx;
 
 ** 중복 값 제거
 delete from jinfo where j_name = '하리보 웜즈' and j_gram = '200g';
@@ -12,7 +12,11 @@ delete from jinfo where j_name = '하리보 스타믹스' and j_gram = '275g';
 delete from jinfo where j_name = '하리보 웜즈 사우어' and j_idx=4695;
 delete from jinfo where j_name = '하리보해피콜라사우어' and j_idx=4692;
 
-commit;
+** 이미지 url 없는 데이터 제거
+delete from jinfo where image_url is null;
+
+** 젤리 평점 구하기 test
+select a.* ,(select avg(b.j_star) from jrate b) as total_score  from jrate a;
 
 ** url이 필요한 행 업데이트
 update jinfo set image_url = 'https://assets.haribo.com/image/upload/s--wAREUl8J--/ar_1452:1914,c_fill,f_auto,q_60/w_1120/v1/consumer-sites/ko-kr/Products/Goldbaeren_100g_4001686301555.png'
@@ -34,23 +38,19 @@ where j_name = '하리보 해피 그레이프' and j_idx = 4727;
 
 --drop table j_info;
 
-desc j_info;
-
-
+** 제약사항 확인
 SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME = "tabnam";
-
 alter table j_rate drop constraint FKAFLAL52F0RM4FF5DNHC3PJC9V;
 
---FKIVJ87KTC3KUXQWNMGYUAJOHFR
+select * from jrate;
 
-select * from member;
-
-select * from j_comment;
-
-select * from j_rate;
-
-select m from member m where m.m_email like '';
-
-delete from j_rate;
-
+** 젤리 후기 더미데이터 삽입
 commit;
+
+select * from(select rownum, a.* from jrate a order by r_idx desc);
+
+insert into jrate(r_idx, insert_date, j_star, r_content, m_email, j_idx)
+values(
+(select r_idx from(select rownum, a.* from jrate a order by r_idx desc) where rownum = 1 )+1,
+sysdate, 2, '그냥저냥 젤리 맛이에요', 'magicofclown@naver.com', 4739
+);

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
 import my.jelly.entity.JInfo;
+import my.jelly.entity.JRate;
 import my.jelly.repository.JellyRepository;
 import my.jelly.repository.JellyRepositorySpringDataJpa;
 import my.jelly.repository.RateRepository;
@@ -21,9 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -144,7 +143,7 @@ public class JellyInformationService implements JelliyService{
 
     // id값으로 젤리 영양성분 정보 검색하기
     @Override
-    public JellyDTO findById(Long jIdx) {
+    public Map<String, Object> findById(Long jIdx) {
         JInfo jInfo = springDataJpaJellyRepository.findById(jIdx).orElseThrow();
         Optional<Double> resultScore = rateRepository.getScore(jIdx);
         Double score;
@@ -155,7 +154,7 @@ public class JellyInformationService implements JelliyService{
         }
 
 
-        JellyDTO result = new JellyDTO(
+        JellyDTO jelly = new JellyDTO(
                 jInfo.getJIdx(),
                 jInfo.getJName(),
                 jInfo.getJDetail(),
@@ -176,6 +175,12 @@ public class JellyInformationService implements JelliyService{
                 jInfo.getImageUrl(),
                 score
         );
+
+        List<JRate> rates = rateRepository.findByJIdx(jIdx);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("jelly", jelly);
+        result.put("rates", rates);
         return result;
     }
 
