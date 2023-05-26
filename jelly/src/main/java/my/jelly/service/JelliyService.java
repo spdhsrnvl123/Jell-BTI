@@ -5,6 +5,7 @@ import my.jelly.entity.JInfo;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public interface JelliyService {
     public int createJellyInformation()throws IOException;
@@ -15,5 +16,5 @@ public interface JelliyService {
 
     public void updateJellyInformation(Long jIdx,JellyDTO jellyDTO);
 
-    public JellyDTO findById(Long jIdx);
+    public Map<String, Object> findById(Long jIdx);
 }
