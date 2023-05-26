@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import my.jelly.config.PropertiesConfig;
 import my.jelly.entity.Member;
 import my.jelly.repository.MemberRepository;
@@ -16,6 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.UUID;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class NaverService {
@@ -73,7 +75,7 @@ public class NaverService {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body = " + result);
+            log.info("response body ={}", result);
 
             //Json 파싱 : Gson라이브러리에 포함된 클래스로 JSON 파싱 객체 생성
             JsonParser parser = new JsonParser();
@@ -82,8 +84,8 @@ public class NaverService {
             access_token = elem.getAsJsonObject().get("access_token").getAsString();
             refresh_token = elem.getAsJsonObject().get("refresh_token").getAsString();
 
-            System.out.println("refresh_token = " + refresh_token);
-            System.out.println("access_token = " + access_token);
+            log.info("refresh_token ={}", refresh_token);
+            log.info("access_token ={}", access_token);
 
             br.close();
             bw.close();
@@ -118,7 +120,7 @@ public class NaverService {
             while((line = br.readLine()) != null){
                 result += line;
             }
-            System.out.println("respone body 확인 : " + result);
+            log.info("respone body ={}", result);
 
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
@@ -135,7 +137,7 @@ public class NaverService {
             // 유저 이메일로 유저 객체 검색해보고 등록안된 회원이라면 회원가입 처리
             Member findUser = memberRepository.findBymEmail(userInfo.getMEmail());
             if(findUser == null){
-                System.out.println("네이버로 처음 로그인하였습니다.");
+                log.info("네이버로 처음 로그인하였습니다.");
                 memberRepository.save(userInfo);
             }
 
