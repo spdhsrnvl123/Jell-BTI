@@ -81,11 +81,12 @@ public class BoardController {
     }
 
     // U : Update Board (수정 글 받아와서 수정처리)
-    @PutMapping("/board")
-    public void updateBoard(@RequestBody Map<String, Object> board) throws ParseException{
+    @PutMapping("/Insert")
+    public void updateBoard(@RequestBody Map<String, Object> board) throws ParseException {
+        System.out.printf("테스트입니다");
         boardService.updateBoard(board);
     }
-
+    
     // D : Delete Board (글 지우기)
     @GetMapping("/delete")
     public void deleteBoard(@RequestParam Long bIdx) throws ParseException{

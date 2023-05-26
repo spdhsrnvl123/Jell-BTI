@@ -101,65 +101,72 @@ const Modify = () => {
 
 
 const Topic = styled.div`
-  width: 100%;
-  height: 3rem;
-  background-color: #ffffe0;
-  text-align: center;
-  font-size: 3rem;
-  border: 3px solid #f5da81;
+    width: 100%;
+    height: 3rem;
+    background-color: #ffffe0;
+    text-align: center;
+    font-size: 3rem;
+    border: 3px solid #f5da81;
 `;
 
 const Title = styled.input`
-  width: 100%;
-  height: 4rem;
-  border: 2px solid black;
-  border-radius: 15px;
-  margin-top: 1rem;
-  background-color: #f4e6d0;
-  font-size: 3rem;
+    width: 90%;
+    height: 4rem;
+    font-size: 4rem;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    background-color: #f4e6d0;
+    display: flex;
+    align-items: center;
 `;
 
 const Content = styled.input`
-  width: 100%;
-  height: 30rem;
-  border: 2px solid black;
-  border-radius: 15px;
-  margin-top: 2rem;
-  background-color: #f4e6d0;
-  font-size: 3rem;
+    width: 90%;
+    height: 35rem;
+    font-size: 4rem;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    background-color: #f4e6d0;
+    display: flex;
+    align-items: center;
 `;
 
 const Button = styled.div`
-  float: right;
-`;
+    float: right;
+    margin-right: 4.5rem;
+`
 
 const Button1 = styled.button`
-  width: 6rem;
-  height: 3rem;
-  margin-top: 2rem;
-  border-radius: 10px;
-  border: 2px solid black;
-  background-color: skyblue;
-  &:hover {
-    background-color: #ffffe0;
-  }
-  cursor: pointer;
-  font-size: 2rem;
-`;
+    width: 6rem;
+    height: 3rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: skyblue;
+    &:hover {
+        background-color: #ffffe0;
+    }
+    cursor: pointer;
+    font-size: 2rem;
+    `;
 
 const Button2 = styled.button`
-  width: 6rem;
-  height: 3rem;
-  margin-top: 2rem;
-  margin-left: 1rem;
-  border-radius: 10px;
-  border: 2px solid black;
-  background-color: skyblue;
-  &:hover {
-    background-color: #ffffe0;
-  }
-  cursor: pointer;
-  font-size: 2rem;
+    width: 6rem;
+    height: 3rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: skyblue;
+    &:hover {
+        background-color: #ffffe0;
+    }
+    cursor: pointer;
+    font-size: 2rem;
 `;
 
 const Button3 = styled.button`
@@ -178,12 +185,12 @@ const Button3 = styled.button`
 `
 
 const Loading = styled.div`
-  width: 100%;
-  height: 40rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
 `;
 
 export default Modify;

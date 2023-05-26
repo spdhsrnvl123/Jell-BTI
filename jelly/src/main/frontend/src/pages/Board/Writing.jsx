@@ -83,32 +83,37 @@ const Topic = Styled.div`
     text-align: center;
     font-size: 3rem;
     border: 3px solid #F5DA81;
-    /* margin-top: 1rem; */
-    /* 마진이 기준이 계속 바뀌는데 수정해야함 */
 `
 
 const Title = Styled.input`
-    width: 100%;
+    width: 90%;
     height: 4rem;
+    font-size: 4rem;
     border: 2px solid black;
     border-radius: 15px;
+    margin: 0 auto;
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
     background-color: #F4E6D0;
-    font-size: 3rem;
 `
 
 const Content = Styled.input`
-    width: 100%;
-    height: 30rem;
+    width: 90%;
+    height: 35rem;
+    font-size: 4rem;
     border: 2px solid black;
     border-radius: 15px;
+    margin: 0 auto;
     margin-top: 2rem;
+    display: flex;
+    align-items: center;
     background-color: #F4E6D0;
-    font-size: 3rem;
 `
 
 const Button = Styled.div`
     float: right;
+    margin-right: 4.5rem;
 `
 
 const Button1 = Styled.button`
