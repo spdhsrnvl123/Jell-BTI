@@ -52,6 +52,18 @@ const Read = () => {
                 <Button2 onClick={goToModify}>수정하기</Button2>
                 {/* <Button3>삭제하기</Button3> */}
             </Button>
+
+            <CommentList />
+
+            <CommentBind>
+
+                <Comment
+                    placeholder="*댓글 남기기"
+                />
+                <PassButton>남기기</PassButton>
+
+            </CommentBind>
+
         </>
     );
 };
@@ -66,31 +78,33 @@ const Topic = Styled.div`
 `;
 
 const Title = Styled.div`
-    width: 100%;
-    height: 5rem;
-    font-size: 3rem;
-    margin-top: 2rem;
-    border: 2px solid #B6D014;
+    width: 90%;
+    height: 4rem;
+    font-size: 4rem;
+    border: 2px solid black;
     border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 2rem;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
 `;
 
+// #B6D014
+
 const List = Styled.div`
-    width: 100%;
+    width: 90%;
     height: 35rem;
-    font-size: 3rem;
-    margin-top: 2rem;
-    border: 2px solid #B0D534;
+    font-size: 4rem;
+    border: 2px solid black;
     border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 2rem;
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
 `;
 
 const Button = Styled.div`
     float: right;
+    margin-right: 4.5rem;
 `
 
 const Button1 = Styled.button`
@@ -131,5 +145,44 @@ const Loading = Styled.div`
     justify-content: center;
     font-size: 2rem;
 `;
+
+const CommentBind = Styled.div`
+`
+
+const Comment = Styled.input`
+    width: 60%;
+    height: 3rem;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    font-size: 3rem;
+    background-color: #F4E6D0;
+`
+
+const PassButton = Styled.button`
+    width: 6rem;
+    height: 3rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    font-size: 2rem;
+    background-color: skyblue;
+    &:hover{  
+    background-color : #FFFFE0;
+  }
+`
+
+const CommentList = Styled.div`
+    width: 90%;
+    height: 35rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 7rem;
+`
 
 export default Read;

@@ -81,15 +81,16 @@
     `;
 
     const Title = styled.div`
-    width: 100%;
-    height: 3rem;
-    font-size: 2rem;
+    width: 90%;
+    height: 4rem;
+    font-size: 3rem;
     border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 1rem;
-    border: 3px solid black;
     cursor: pointer;
     `;
 
@@ -97,6 +98,7 @@
     width: 6rem;
     height: 3rem;
     margin-top: 2rem;
+    margin-right: 4.5rem;
     cursor: pointer;
     float: right;
     border-radius: 10px;
