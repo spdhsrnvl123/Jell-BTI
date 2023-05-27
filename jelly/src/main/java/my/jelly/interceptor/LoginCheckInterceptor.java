@@ -23,7 +23,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         if (!request.getMethod().equals("GET")) {
             if (session == null || session.getAttribute("loginMember") == null) {
                 log.info("비로그인 사용자");
-                response.sendRedirect("/naverTest");
+                response.sendRedirect("/naverTest?redirectURL="+requestURI);
 
                 return false;
             }

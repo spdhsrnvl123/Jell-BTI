@@ -31,7 +31,6 @@ public class NaverService {
     private String clientPassword;
 
     public String getToken(String code, HttpSession session) {
-        System.out.println("client_id = " + clientId);
         String host = "https://nid.naver.com/oauth2.0/token";
         String access_token = "";
         String refresh_token = "";
@@ -41,7 +40,6 @@ public class NaverService {
 
         /* 생성한 난수 값을 session에 저장 */
         session.setAttribute("state",state);
-        System.out.println("try전은 됨");
         try {
             URL url = new URL(host);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -65,7 +63,7 @@ public class NaverService {
             System.out.println("통신 요청 전");
             //결과 코드 200이면 통신 성공임!
             int responseCode = urlConnection.getResponseCode();
-            System.out.println("responseCode = " + responseCode);
+            log.info("responseCode = ", responseCode);
 
             //요청 통해 얻은 JSON타입 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -111,7 +109,7 @@ public class NaverService {
 
             // 키값, 속성 적용
             int responseCode = conn.getResponseCode();  // 서버에서 보낸 http 상태 코드 반환
-            System.out.println("responseCode 확인 : " + responseCode);
+            log.info("responseCode 확인 ={}", responseCode);
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
             // 버퍼를 사용하여 읽은 것

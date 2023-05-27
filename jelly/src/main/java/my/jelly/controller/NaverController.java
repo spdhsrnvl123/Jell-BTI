@@ -48,32 +48,38 @@ public class NaverController {
     }
 
     @RequestMapping("/oauth2/authorization/naver")
-    public String login(@RequestParam(value = "code")String code, HttpSession session)throws Exception {
-        System.out.println("code = " + code);
+    public String login(@RequestParam(value = "code")String code, HttpSession session,
+                        @RequestParam(defaultValue = "/") String redirectURL
+    )throws Exception {
+        log.info("code ={}", code);
+        log.info("redirectURL = {}", redirectURL);
         String accecc_token = naverService.getToken(code,session);
-        return "redirect:/oauth/login/naver/userInfo?token="+accecc_token;
+        return "redirect:/oauth/login/naver/userInfo?token="+accecc_token+"&redirectURL="+redirectURL;
     }
 
     @RequestMapping("/oauth/login/naver/userInfo")
     @ResponseBody
-    public String userInfo(
+    public Map<String, String> userInfo(
             @RequestParam(value = "token",required = false) String token,
-            HttpServletRequest request
+            HttpServletRequest request,
+            @RequestParam(defaultValue = "/") String redirectURL
     ) throws Exception {
         Member loginMember = naverService.getUserInfo(token);
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, String> map = new HashMap<>();
 
+        log.info("redirectURL = {}", redirectURL);
         log.info("loginMember ={}", loginMember);
 
         if (loginMember != null) {
             HttpSession session = request.getSession();
             session.setAttribute("loginMember", loginMember);
-            return HttpStatus.OK.toString();
+            map.put("status", HttpStatus.OK.toString());
+            map.put("redirectURL", redirectURL);
+            return map;
         }
-//        map.put("userInfo", userInfo);
+        map.put("status", HttpStatus.BAD_REQUEST.toString());
 
-        return "Failed";
+        return map;
     }
     
 }
