@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
 import my.jelly.entity.QJInfo;
 import my.jelly.entity.JInfo;
+import my.jelly.entity.QJRate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -45,7 +46,7 @@ public class JellyRepositoryImpl implements JellyRepository{
 //        jInfo.setJSugars(jellyDTO.getJSugars());
 //        jInfo.setJSalt(jellyDTO.getJSalt());
 //        jInfo.setJCholesterol(jellyDTO.getJCholesterol());
-        jInfo.setImageUrl(jellyDTO.getImageUrl());
+//        jInfo.setImageUrl(jellyDTO.getImageUrl());
     }
 
     @Override
@@ -58,6 +59,8 @@ public class JellyRepositoryImpl implements JellyRepository{
                 .where(likeJellyName(jellyName),qjInfo.imageUrl.isNotNull())
                 .fetch();
     }
+
+
 
     private BooleanExpression likeJellyName(String jellyName) {
         if(StringUtils.hasText(jellyName)){

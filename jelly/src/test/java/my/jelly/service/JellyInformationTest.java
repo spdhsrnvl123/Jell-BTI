@@ -25,6 +25,7 @@ import java.net.URLEncoder;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -155,9 +156,18 @@ class JellyInformationTest {
 
     @Test
     void 젤리정보하나만가져오기() {
-        JellyDTO result = controller.readJellyInformationById(3671L);
+        Map<String, Object> result = controller.readJellyInformationById(4739L);
 
-        assertThat(result.getJIdx()).isEqualTo(3671L);
+        JellyDTO jelly = (JellyDTO) result.get("jelly");
+        List<JRate> rates = (List<JRate>) result.get("rates");
+
+        assertThat(jelly.getJIdx()).isEqualTo(4739L);
+
+        for (JRate rate : rates) {
+            assertThat(rate.getJInfoVO().getJIdx()).isEqualTo(4739L);
+        }
+
+
     }
 
     @Test

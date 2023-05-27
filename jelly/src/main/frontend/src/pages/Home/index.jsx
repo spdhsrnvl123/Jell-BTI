@@ -35,7 +35,7 @@ const Home = () => {
     dispatch(asyncUpFetch());
   }, []);
   const navigate=useNavigate()
-
+  
   return (
     <Container>
       <MyPageBallonBlue src="/balloonBlue.png" />

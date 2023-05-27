@@ -8,8 +8,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.jelly.dto.JellyDTO;
 import my.jelly.entity.JInfo;
+import my.jelly.entity.JRate;
 import my.jelly.repository.JellyRepository;
 import my.jelly.repository.JellyRepositorySpringDataJpa;
+import my.jelly.repository.RateRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +21,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DecimalFormat;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -29,6 +31,8 @@ import java.util.List;
 public class JellyInformationService implements JelliyService{
     private final JellyRepositorySpringDataJpa springDataJpaJellyRepository;
     private final JellyRepository jellyRepository;
+
+    private final RateRepository rateRepository;
 
     // api로 젤리 정보 받아서 db에 저장하는 메서드
     public int createJellyInformation() throws IOException {
@@ -139,9 +143,18 @@ public class JellyInformationService implements JelliyService{
 
     // id값으로 젤리 영양성분 정보 검색하기
     @Override
-    public JellyDTO findById(Long jIdx) {
+    public Map<String, Object> findById(Long jIdx) {
         JInfo jInfo = springDataJpaJellyRepository.findById(jIdx).orElseThrow();
-        JellyDTO result = new JellyDTO(
+        Optional<Double> resultScore = rateRepository.getScore(jIdx);
+        Double score;
+        if (resultScore.isPresent()) {
+            score = Math.round(resultScore.get() * 10.0) / 10.0;
+        } else {
+            score = 0.0;
+        }
+
+
+        JellyDTO jelly = new JellyDTO(
                 jInfo.getJIdx(),
                 jInfo.getJName(),
                 jInfo.getJDetail(),
@@ -159,8 +172,15 @@ public class JellyInformationService implements JelliyService{
                 jInfo.getJSugars(),
                 jInfo.getJSalt(),
                 jInfo.getJCholesterol(),
-                jInfo.getImageUrl()
+                jInfo.getImageUrl(),
+                score
         );
+
+        List<JRate> rates = rateRepository.findByJIdx(jIdx);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("jelly", jelly);
+        result.put("rates", rates);
         return result;
     }
 

@@ -22,7 +22,7 @@ public class KakaoService {
     @Autowired
     MemberRepository memberRepository;
 
-    @Value("#jellyProperty['kakao.client-id']")
+    @Value("#{jellyProperty['kakao.client-id']}")
     private String clientId;
 
     // (카카오 로그인)
@@ -44,7 +44,7 @@ public class KakaoService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id="+clientId);
+            sb.append("&client_id=aae56b5a75ed41619c033ab689aea475");
             sb.append("&redirect_uri=http://localhost:4000/oauth/login/kakao"); //프 서버로 바꾸기
             sb.append("&code=" + code);
 

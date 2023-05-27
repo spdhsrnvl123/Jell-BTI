@@ -64,5 +64,7 @@ public class JellyDTO {
     @JsonProperty("imageUrl")
     private String imageUrl; // 이미지 주소
 
+    // 0525 박의민 추가
+    private Double score; // 별점 총점
 
 }

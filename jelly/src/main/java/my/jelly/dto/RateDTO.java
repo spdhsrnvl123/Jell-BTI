@@ -39,6 +39,7 @@ public class RateDTO {
     @JsonProperty("mAccount")
     private String mAccount; // 이건 뭔지 모르겠는데 멤버 테이블에 있어서 일단 갖고옴
 
+
     private JInfo jInfo;
 
     private Member member;
