@@ -10,20 +10,29 @@ const Read = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [board, setBoard] = useState(null);
+    const [comment, setComment] = useState([]);
+    const [memberAccount, setMemberAccount] = useState("pizzay@kakao.com");
+    const [cComment, setCComment] = useState("");
+
+    const fetchData = async () => {
+        try {
+            const bIdx = new URLSearchParams(location.search).get('bIdx');
+            const response = await axios.get(`/board?bIdx=${bIdx}`);
+            setBoard(response.data.board);
+            setComment(response.data.comment);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const bIdx = new URLSearchParams(location.search).get('bIdx');
-                const response = await axios.get(`/board?bIdx=${bIdx}`);
-                setBoard(response.data.board);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
         fetchData();
     }, [location.search]);
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString();
+    };
 
     const goToBoard = () => {
         navigate("/board");
@@ -32,6 +41,30 @@ const Read = () => {
     const goToModify = () => {
         const bIdx = new URLSearchParams(location.search).get('bIdx');
         navigate(`/modify?bIdx=${bIdx}`);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const bIdx = new URLSearchParams(location.search).get('bIdx');
+        const cContent = cComment; // 댓글 내용이 입력 필드인지 확인 필요
+
+        axios({
+            url: "/comment",
+            method: "post",
+            data: {
+                bIdx,
+                memberAccount,
+                cContent,
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                fetchData(); // 댓글 작성 후 해당 게시글 다시 불러오기
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
@@ -53,23 +86,34 @@ const Read = () => {
                 {/* <Button3>삭제하기</Button3> */}
             </Button>
 
-            <CommentList />
+            <CommentList>
+                <span>댓글 내용</span>
+                <span>작성자</span>
+                <span>작성일</span>
+            </CommentList>
+
+            {comment.map((board) => (
+                <CommentLists key={board.cidx}>
+                    <div>{board.ccontent}</div>
+                    <div>{board.memberVO && board.memberVO.mnick}</div>
+                    <div>{formatDate(board.insertDate)}</div>
+                </CommentLists>
+            ))}
 
             <CommentBind>
-
                 <Comment
                     placeholder="*댓글 남기기"
+                    value={cComment}
+                    onChange={(e) => setCComment(e.target.value)}
                 />
-                <PassButton>남기기</PassButton>
-
+                <PassButton onClick={handleSubmit}>남기기</PassButton>
             </CommentBind>
-
         </>
     );
 };
 
 const Topic = Styled.div`
-    width: 100%;
+    width: 100%;    
     height: 3rem;
     background-color: #FFFFE0;
     text-align: center;
@@ -146,7 +190,36 @@ const Loading = Styled.div`
     font-size: 2rem;
 `;
 
+const CommentList = Styled.div`
+    width: 90%;
+    height: 4rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    `;
+
+const CommentLists = Styled.div`
+    width: 90%;
+    height: 4rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    `;
+
+
+
 const CommentBind = Styled.div`
+    margin-bottom: 3rem;
 `
 
 const Comment = Styled.input`
@@ -172,17 +245,6 @@ const PassButton = Styled.button`
     &:hover{  
     background-color : #FFFFE0;
   }
-`
-
-const CommentList = Styled.div`
-    width: 90%;
-    height: 35rem;
-    font-size: 3rem;
-    border: 2px solid black;
-    border-radius: 15px;
-    display: flex;
-    margin: 0 auto;
-    margin-top: 7rem;
 `
 
 export default Read;

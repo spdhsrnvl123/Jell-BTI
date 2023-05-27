@@ -11,7 +11,6 @@ import Modal from "components/base/Modal"
 import Read from "pages/Board/Read"
 import Modify from "pages/Board/Modify"
 import Question from "pages/Questions/Question"
-import Practice from "pages/Questions/Practice"
 
 const Router = () => {
     return (
@@ -29,7 +28,6 @@ const Router = () => {
                 <Route path="/read" element={<Read />} />
                 <Route path="/modify" element={<Modify />} />
                 <Route path="/question" element={<Question />} />
-                {/* <Route path="/Practice" element={<Practice />} /> */}
             </Routes>
         </BrowserRouter>
     )
