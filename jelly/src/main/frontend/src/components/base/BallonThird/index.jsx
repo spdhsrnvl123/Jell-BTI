@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 const BallonBox = styled.div`
-    position: relative;
+    /* position: relative; */
     width: 100%;
     height: 100%;
 `
@@ -18,7 +18,7 @@ export const UpDownAnimation = keyframes`
     }
 `
 
-const First = styled.img.attrs({alt:"풍선이미지"})`
+export const BalloonBlue = styled.img.attrs({alt:"파란풍선"})`
     position: absolute;
     left: 35%;
     top:23%;
@@ -26,28 +26,33 @@ const First = styled.img.attrs({alt:"풍선이미지"})`
     animation: ${UpDownAnimation} 3s linear infinite alternate;
 
 `
-const Second = styled.img.attrs({alt:"풍선이미지2"})`
+export const BalloonGreen = styled.img.attrs({alt:"초록색풍선"})`
     position: absolute;
     top:8%;
     width:15%;
     left: 60%;
     animation: ${UpDownAnimation} 3s linear infinite alternate;
 `
-const Thrid = styled.img.attrs({alt:"풍선이미지3"})`
+export const BalloonRed = styled.img.attrs({alt:"빨간풍선"})`
     position: absolute;
     right: 9%;
     top:26%;
     width:13%;
     animation: ${UpDownAnimation} 3s linear infinite alternate;
 `
+export const BalloonSkyblue = styled.img.attrs({alt:"파란풍선"})`
+    position: absolute;
+    width:15%;
+    animation: ${UpDownAnimation} 3s linear infinite alternate;
 
+`
 
 const BallonThird = ()=>{
     return (
         <BallonBox>
-            <First src="./balloonFirst.png" />
-            <Second src="./balloonSecond.png" />
-            <Thrid src="./balloonThird.png" />
+            <BalloonBlue src="./balloonBlue.png" />
+            <BalloonGreen src="./balloonGreen.png" />
+            <BalloonRed src="./balloonRed.png" />
         </BallonBox>
     )
 }

@@ -1,38 +1,39 @@
+import Button from "components/base/Button"
+import useAuth from "hooks/useAuth"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const MenuBox = styled.ul`
-    position: absolute;
-    top:27%;
-    left:50%;
-    transform: translate(-50%,-20%);
     display: flex;
     justify-content: center;
 `
 
 const MenuList = styled.li`
-    font-size: 20px;
+    font-size: 48px;
     font-weight: 700;
-    font-style : normal;
-    line-height : 24px;
-    width: 110px;
     padding-left: 51px;
+    padding: 20px 48px;
     :nth-child(1){
         color : #00A3FF;
     }
     a{
         text-decoration: none;
         color: inherit;
+        display: block;
+        border-radius: 30px;
+        padding: 7px 20px;
     }
 `
 
+
 const Navigation = ()=>{
+
     return(
         <MenuBox>
-            <MenuList><Link to="/home">Home</Link></MenuList>
-            <MenuList><Link to="">Jell Test</Link></MenuList>
-            <MenuList><Link>Community</Link></MenuList>
-            <MenuList><Link to="/mypage">Mypage</Link></MenuList>
+            <MenuList><Link to="/home">홈</Link></MenuList>
+            <MenuList><Link to="">젤리 테스트</Link></MenuList>
+            <MenuList><Link to="/board">커뮤니티</Link></MenuList>
+            <MenuList><Link to="/mypage">마이페이지</Link></MenuList>
         </MenuBox>
     )
 }

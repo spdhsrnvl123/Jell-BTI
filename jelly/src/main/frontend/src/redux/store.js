@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit"
+import jellyInfoSlice from "./jellyInfo";
 
 let userToken = createSlice({
     name : 'userToken',
@@ -10,11 +11,11 @@ let userToken = createSlice({
     }
 });
 
-export let { userTokenIn } = userToken.actions
+export let { userTokenIn } = userToken.actions;
 
 export default configureStore({
     reducer : {
-        userToken : userToken.reducer
+        userToken : userToken.reducer,
+        jellyInfo : jellyInfoSlice.reducer
     }
 })
-
