@@ -13,10 +13,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@Controller
+@RestController
 public class NaverController {
 
     private NaverService naverService;
@@ -37,44 +34,29 @@ public class NaverController {
     @Value("#{jellyProperty['naver.client-id']}")
     private String clientId;
 
-
-
-    // 기능 구현 때문에 임시로 만들어놓은 탬플릿
-    @GetMapping("/naverTest")
-    public String naverLogin(Model model){
-        System.out.println("clientId = " + clientId);
-        model.addAttribute("clientId", clientId);
-        return "naverTest";
-    }
-
     @RequestMapping("/oauth2/authorization/naver")
-    public String login(@RequestParam(value = "code")String code, HttpSession session,
-                        @RequestParam(defaultValue = "/") String redirectURL
-    )throws Exception {
+    public Map<String, String> login(@RequestParam(value = "code")String code, HttpSession session)throws Exception {
         log.info("code ={}", code);
-        log.info("redirectURL = {}", redirectURL);
         String accecc_token = naverService.getToken(code,session);
-        return "redirect:/oauth/login/naver/userInfo?token="+accecc_token+"&redirectURL="+redirectURL;
+        Map<String, String> map = new HashMap<>();
+        map.put("token", accecc_token);
+        return map;
     }
 
     @RequestMapping("/oauth/login/naver/userInfo")
-    @ResponseBody
-    public Map<String, String> userInfo(
+    public Map<String, Object> userInfo(
             @RequestParam(value = "token",required = false) String token,
-            HttpServletRequest request,
-            @RequestParam(defaultValue = "/") String redirectURL
+            HttpServletRequest request
     ) throws Exception {
-        Member loginMember = naverService.getUserInfo(token);
-        Map<String, String> map = new HashMap<>();
+        Member userInfo = naverService.getUserInfo(token);
+        Map<String, Object> map = new HashMap<>();
 
-        log.info("redirectURL = {}", redirectURL);
-        log.info("loginMember ={}", loginMember);
+        log.info("userInfo ={}", userInfo);
 
-        if (loginMember != null) {
+        if (userInfo != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("loginMember", loginMember);
-            map.put("status", HttpStatus.OK.toString());
-            map.put("redirectURL", redirectURL);
+            session.setAttribute("userInfo", userInfo);
+            map.put("userInfo", userInfo);
             return map;
         }
         map.put("status", HttpStatus.BAD_REQUEST.toString());
