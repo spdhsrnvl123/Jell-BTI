@@ -3,7 +3,6 @@ import { BalloonBlue, BalloonGreen, BalloonRed, BalloonSkyblue, UpDownAnimation 
 import Button from "components/base/Button";
 import Logo from "components/base/Logo";
 import { Circle, Content } from "components/domain/SearchBox";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -22,6 +21,7 @@ export const PageTitle = styled.h1`
     transform : translate(-50%,-50%);
     font-weight: 600;
     font-size: 55px;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.15);
 `
 export const ButtonBox = styled.div`
     position: absolute;
@@ -140,18 +140,8 @@ const HariboNoise = styled(Circle)`
 `
 
 const MyPage = ()=>{
-    const userToken = useSelector((state)=> state);
-    const navigate = useNavigate()
-    let token = userToken.userToken
-
-    useEffect(()=>{
-        axios({
-            method : "GET",
-            url : `/oauth/login/userInfo?token=${token}`
-        }).then((res)=>{
-            console.log(res);
-        })
-    },[])
+    const navigate = useNavigate();
+    const userData = useSelector((state)=>state.userInformation);
 
     return(
         <>
@@ -167,7 +157,7 @@ const MyPage = ()=>{
             <LogoBox onClick={()=>navigate("/home")} >
                 <Logo fontSize={150} marginLeft="70px" />
             </LogoBox>
-            <PageTitle>하리보님의 <br /> <span style={{fontSize:"40px"}}>마이페이지</span></PageTitle>
+            <PageTitle>{userData !== {}?userData.mNick+"님의 마이페이지":'마이페이지 로딩중...'}</PageTitle>
             <ProfileImage>
                 <HariboProfileContent />
                 <HariboLeftEar />

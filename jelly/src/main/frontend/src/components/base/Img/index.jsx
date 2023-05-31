@@ -13,10 +13,10 @@ const Img = ({src, width, height, ...props})=>{
     )
 }
 
-Img.propTypes = {
-    src : PropTypes.string,
-    width : PropTypes.number,
-    height : PropTypes.number
-}
+// Img.propTypes = {
+//     src : PropTypes.string,
+//     width : PropTypes.number,
+//     height : PropTypes.number
+// }
 
 export default Img;
