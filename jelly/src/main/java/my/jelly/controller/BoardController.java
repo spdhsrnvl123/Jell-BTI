@@ -99,6 +99,12 @@ public class BoardController {
 
         System.out.println("글 삭제 성공");
     }
+
+    // C : Comment Insert (댓글등록)
+    @PostMapping("/comment")
+    public void insertComment(@RequestBody Map<String, Object> map) throws ParseException {
+        commentService.insertComment(map);
+    }
     
 }
 
