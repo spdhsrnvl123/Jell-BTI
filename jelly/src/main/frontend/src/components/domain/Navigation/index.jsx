@@ -1,6 +1,7 @@
 import Button from "components/base/Button"
-import useAuth from "hooks/useAuth"
-import { Link } from "react-router-dom"
+// import useAuth from "hooks/useAuth"
+import { useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 const MenuBox = styled.ul`
@@ -13,6 +14,7 @@ const MenuList = styled.li`
     font-weight: 700;
     padding-left: 51px;
     padding: 20px 48px;
+    cursor: pointer;
     :nth-child(1){
         color : #00A3FF;
     }
@@ -25,15 +27,23 @@ const MenuList = styled.li`
     }
 `
 
-
 const Navigation = ()=>{
+    const navigate = useNavigate()
+    const Auth = (route)=>{
+            const token = localStorage.getItem('token');
+            if(token){
+                navigate(`${route}`)
+            }else{
+                alert("로그인을 해주세요.")
+            }
+        }
 
     return(
         <MenuBox>
             <MenuList><Link to="/home">홈</Link></MenuList>
             <MenuList><Link to="">젤리 테스트</Link></MenuList>
             <MenuList><Link to="/board">커뮤니티</Link></MenuList>
-            <MenuList><Link to="/mypage">마이페이지</Link></MenuList>
+            <MenuList onClick={()=>Auth("/mypage")}>마이페이지</MenuList>
         </MenuBox>
     )
 }

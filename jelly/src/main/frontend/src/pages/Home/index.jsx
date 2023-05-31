@@ -16,6 +16,8 @@ import {
 } from "pages/MyPage";
 import Button from "components/base/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { userInformationIn } from "redux/store";
 
 const Container = styled.div`
   display: flex;
@@ -31,11 +33,26 @@ const LoginBox = styled.div`
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate=useNavigate()
+  let token = localStorage.getItem('token');
+    
+  //토큰이 있을 경우 유저정보 받아오기
+  if(token){
+    axios({
+      method : "GET",
+      url : `/oauth/login/userInfo?token=${token}`
+  }).then((res)=>{
+      // setUser(res.data.userInfo);
+      dispatch(userInformationIn(res.data.userInfo));
+  })
+  }else{
+    console.log("로그인을 하지 않았습니다.")
+  }
+  
   useEffect(() => {
     dispatch(asyncUpFetch());
   }, []);
-  const navigate=useNavigate()
-  
+
   return (
     <Container>
       <MyPageBallonBlue src="/balloonBlue.png" />

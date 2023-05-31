@@ -2,6 +2,10 @@ import styled from "styled-components";
 import Button from "../Button";
 import { useInput } from "hooks/useInput";
 import { useParams } from "react-router-dom";
+import StarRating from "../StarRating";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Form = styled.form`
   display: flex;
@@ -10,7 +14,7 @@ const Form = styled.form`
 `;
 
 const TextArea = styled.textarea`
-  width: 470px;
+  width: 370px;
   height: 270px;
   background: #d9d9d9;
   border-radius: 30px;
@@ -19,6 +23,7 @@ const TextArea = styled.textarea`
   font-size: 35px;
   padding: 0px 20px;
   outline: none;
+  margin-top: 20px;
 `;
 
 const Wrap = styled.div`
@@ -53,32 +58,39 @@ const Stars = styled.div`
 
 const Review = () => {
   const [inputValue, handleChange] = useInput("");
-  const params = useParams();
-  
+  const [count, setCount] = useState(0);
+  const {id} = useParams();
+  const userData = useSelector((state)=>state.userInformation);
+  // console.log(userData);
+  // console.log(id, userData.mNick,inputValue, userData.mJelly,count,userData.mEmail)
 
-  // useEffect(()=>{
-  //   axios({
-  //     url: '',
-  //     method: 'post',
-  //     data: {
-  //       "jIdx": 4739,
-  //       "mNick": "jelly",
-  //       "mJelly": "",
-  //       "jStar": 4,
-  //       "rContent": "제 타입의 젤리네요",
-  //       "mEmail": "magicofclown@naver.com"
-  //     }
-  // }).then((response) => {
-  //     console.log(response)
-  // }).catch((err)=>{
-  //   console.log(err);
-  // })
-  // },[])
+  const ReviewHandler = (e)=>{
+    e.preventDefault();
+      axios({
+        url: '/jellies/rates',
+        method: 'post',
+        data: {
+          "jIdx": id,
+          "mNick": userData.mNick,
+          "mJelly": userData.mJelly,
+          "jStar": count,
+          "rContent": inputValue,
+          "mEmail": userData.mEmail
+        }
+    }).then((response) => {
+      console.log(response)
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
+
 
 
   return (
     <>
-      <Form>
+      <Form onSubmit={ReviewHandler}>
+        <h1 style={{fontSize:"40px",marginBottom:"20px", marginTop:"-40px"}}>별점을 입력해주세요!</h1>
+        <StarRating setCount={setCount} /> 
         <TextArea
          type="text"
          placeholder="후기를 입력해주세요."

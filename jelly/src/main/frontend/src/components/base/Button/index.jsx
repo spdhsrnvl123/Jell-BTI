@@ -16,6 +16,7 @@ const Root = styled.button`
 `
 
 const Button = ({fontSize, fontWeight, padding, margin, bgColor, color, width, children,...props})=>{
+
     return (
         <Root
             fontSize = {fontSize}
