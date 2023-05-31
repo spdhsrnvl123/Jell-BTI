@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 @RequiredArgsConstructor
@@ -36,14 +38,23 @@ public class KakaoController {
 
     // 프론트에서 받은 액세스 토큰으로 카카오서버에 요청해 유저 정보 가져오고, 우리 DB에 있는지 확인, 그리고 로그인/회원가입 처리
     @RequestMapping("/oauth/login/userInfo")
-    public String userInfo(@RequestParam(value = "token") String token) throws Exception {
+    public String userInfo(@RequestParam(value = "token") String token,
+                           HttpServletRequest request)
+            throws Exception {
         Member userInfo = kakaoService.getUserInfo(token);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Map<String, Object> map = new HashMap<String, Object>();
 
-        map.put("userInfo", userInfo);
+        if(userInfo != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("userInfo", userInfo);
+            map.put("userInfo", userInfo);
+            return gson.toJson(map);
+        }
 
-        return gson.toJson(map);
+
+        return "로그인에 실패하였습니다!";
     }
 
 }
+
