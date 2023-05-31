@@ -109,6 +109,7 @@
     }
     cursor: pointer;
     font-size: 2rem;
+    margin-bottom: 2rem;
     `;
 
     export default Board;

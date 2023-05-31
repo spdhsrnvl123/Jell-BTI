@@ -138,7 +138,7 @@ const Content = styled.input`
 const Button = styled.div`
     float: right;
     margin-right: 4.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 `
 
 const Button1 = styled.button`
