@@ -1,21 +1,22 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import jellyInfoSlice from "./jellyInfo";
 
-let userToken = createSlice({
-    name : 'userToken',
-    initialState : '',
+//회원정보 데이터 전역 관리
+let userInformation = createSlice({
+    name : 'userInformation',
+    initialState : {},
     reducers : {
-        userTokenIn(state,action){
-            return state = state + action.payload
+        userInformationIn(state,action){
+            state += Object.assign(state,action.payload)
         }
     }
 });
 
-export let { userTokenIn } = userToken.actions;
+export let { userInformationIn } = userInformation.actions;
 
 export default configureStore({
     reducer : {
-        userToken : userToken.reducer,
+        userInformation : userInformation.reducer,
         jellyInfo : jellyInfoSlice.reducer
     }
 })

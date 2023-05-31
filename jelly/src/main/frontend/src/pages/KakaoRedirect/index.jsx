@@ -18,8 +18,8 @@ export default function KakaoRedirect(){
             url: `/oauth/login/kakao?code=${code}`,
           })
             .then((res) => {
-              console.log(res); // 토큰이 넘어올 것임
-              dispatch(userTokenIn(res.data))
+              // console.log(res.data); // 토큰이 넘어올 것임
+              localStorage.setItem('token',res.data);
               navigate("/mypage")
             }).catch((err) => {
               console.log("소셜로그인 에러", err);

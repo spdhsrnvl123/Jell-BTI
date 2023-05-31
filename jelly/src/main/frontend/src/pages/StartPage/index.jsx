@@ -44,7 +44,6 @@ const SubTitle = styled.div`
 
 const StartPage = ()=>{
     const [move, setMove] = useState(true)
-
     const navigate = useNavigate()
 
     useEffect(()=>{
