@@ -36,6 +36,7 @@ public class NaverController {
 
     @RequestMapping("/oauth2/authorization/naver")
     public Map<String, String> login(@RequestParam(value = "code")String code, HttpSession session)throws Exception {
+        System.out.println("네이버 로그인 안녕하세요");
         log.info("code ={}", code);
         String accecc_token = naverService.getToken(code,session);
         Map<String, String> map = new HashMap<>();
