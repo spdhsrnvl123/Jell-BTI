@@ -4,6 +4,7 @@ import Home from "@/pages/Home"
 import MyPage from "@/pages/MyPage"
 import KakaoRedirect from "@/pages/KakaoRedirect"
 import KakaoLogin from "@/pages/KakaoLoginPage"
+import NaverLogin from "pages/NaverLoginPage"
 import Board from "@/pages/Board/Board"
 import Writing from "@/pages/Board/Writing"
 import Modals from "components/base/Modals"
@@ -19,6 +20,8 @@ const Router = () => {
                 <Route path="/" element={<StartPage />} />
                 <Route path="/oauth/login/kakao" element={<KakaoRedirect />} />
                 <Route path="/login" element={<KakaoLogin />} />
+                <Route path="/naverlogin" element={<NaverLogin />} />
+
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/home" element={<Home />}>
                     <Route path="Modal" element={<Modal />} />
