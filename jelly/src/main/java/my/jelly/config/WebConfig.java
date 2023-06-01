@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(1)
-                .addPathPatterns("/jellies/**")
+                .addPathPatterns("/**")
                 .excludePathPatterns("/oauth/**");
 
     }

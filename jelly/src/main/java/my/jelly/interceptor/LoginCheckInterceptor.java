@@ -1,6 +1,7 @@
 package my.jelly.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         if (!request.getMethod().equals("GET")) {
             if (session == null || session.getAttribute("loginMember") == null) {
                 log.info("비로그인 사용자");
-                response.sendRedirect("/naverTest?redirectURL="+requestURI);
+                response.sendRedirect("http://localhost:4000/login?redirectURL="+requestURI);
 
                 return false;
             }
