@@ -6,6 +6,11 @@ import Img from "../Img";
 import Button from "../Button";
 import Chart from "../Chart";
 import Review from "../Review";
+import Box from "../Box";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faStar
+} from "@fortawesome/free-solid-svg-icons";
 
 const ModalCotainer = styled.div`
   display: flex;
@@ -23,20 +28,19 @@ const ModalCotainer = styled.div`
 const ModalSection = styled.section`
   position: absolute;
   top: 50%;
-  left: 64%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 566px;
-  height: 507px;
+  width: 68vw;
+  height: 50vw;
   background: #f7fef7;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-radius: 50px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const ModalButton = styled.button`
   position: absolute;
-  top: -6%;
-  right: 7%;
+  top: -5%;
+  right: 5%;
   width: 30px;
   font-size: 101px;
   font-weight: 300;
@@ -47,19 +51,23 @@ const ModalButton = styled.button`
 
 const ImgBox = styled.div`
   position: absolute;
-  top: -1.4%;
-  left: -64.5%;
+  top: 14%;
+  left: 2.5%;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
+  overflow-y: auto;
+  margin-left: 37%;
 `;
 
 const Title = styled.div`
-  font-size: 70px;
+  font-size: 7vw;
   margin-top: 60px;
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.15);
+  margin: 40px auto;
 `;
 
 const ChartContainer = styled.div`
@@ -69,6 +77,21 @@ const ChartContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const SubTitle = styled.h2`
+  font-size: 3.5vw;
+  font-weight: bold;
+  padding:0.2vw 4vw;
+`
+
+const BoxContainer = styled.ul`
+  margin: 0 auto;
+`
+
+const StarBox = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 const Modals = () => {
   const navigate = useNavigate();
@@ -89,15 +112,46 @@ const Modals = () => {
   return (
     <ModalCotainer>
       <ModalSection>
-        <ImgBox>
-          <Img src={value.imageUrl} width={380} />
-        </ImgBox>
         <Content>
+        <ImgBox>
+          <Img src={value.imageUrl} width={"26vw"} />
+        </ImgBox>
           <Title>{value.jname}</Title>
           {active ? (
-            <ChartContainer>
-              {value.length === 0 ? "Loading..." : <Chart value={value} />}
-            </ChartContainer>
+            <>
+          <SubTitle>
+                &lt;맛 평가&gt;
+              </SubTitle>
+              <ChartContainer>
+                {value.length === 0 ? "Loading..." : <Chart value={value} />}
+              </ChartContainer>
+              <SubTitle>
+                &lt;별점&gt;
+              </SubTitle>
+              <StarBox>
+              {
+                [1,2,3,4,5].map((v,i)=>{
+                  return               <FontAwesomeIcon
+                  icon={faStar}
+                  key={i}
+                  style={{ color: "#f5eb3b" }}
+                  size="2x"
+                  />
+                })
+              }
+              </StarBox>
+
+              <SubTitle>
+                &lt;최근 후기&gt;
+              </SubTitle>
+          <BoxContainer>
+            <Box>1.나는 달아~~! 나는 매워~~! 나는 짜~~!</Box>
+            <Box>2.나는 달아~~! 나는 매워~~! 나는 짜~~!</Box>
+            <Box>3.나는 달아~~! 나는 매워~~! 나는 짜~~!</Box>
+            <Box>4.나는 달아~~! 나는 매워~~! 나는 짜~~!</Box>
+            <Box>5.나는 달아~~! 나는 매워~~! 나는 짜~~!</Box>
+          </BoxContainer>
+          </>
           ) : (
             <Review />
           )}
@@ -107,8 +161,8 @@ const Modals = () => {
               fontSize={40}
               bgColor={"#16f916"}
               fontWeight={600}
-              padding={"1px 14px"}
-              margin={"0px 10px"}
+              padding={"3px 14px"}
+              margin={"15px auto"}
             >
               후기 작성하기
             </Button>: null

@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import Apexchart from "react-apexcharts";
-import { useSelector } from "react-redux";
 
 const Chart = ({value}) => {
 
@@ -23,7 +21,7 @@ const Chart = ({value}) => {
         }
       },
       title: {
-        text: "<맛 평가>",
+        // text: "<맛 평가>",
         offsetX: 10,
         offsetY: 50,
         style : {
