@@ -44,11 +44,14 @@ const Home = () => {
   }).then((res)=>{
       // setUser(res.data.userInfo);
       dispatch(userInformationIn(res.data.userInfo));
+      const userEmail = res.data.userInfo.mJelly; //mJelly를 mEmail or mNick으로 바꾸면 그걸로 받아온다.
+      console.log(userEmail)
   })
   }else{
     console.log("로그인을 하지 않았습니다.")
   }
   
+
   useEffect(() => {
     dispatch(asyncUpFetch());
   }, []);

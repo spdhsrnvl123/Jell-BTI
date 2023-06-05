@@ -4,6 +4,11 @@ import { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
+
+import axios from "axios"
+
+
+
 const MenuBox = styled.ul`
     display: flex;
     justify-content: center;
@@ -38,10 +43,32 @@ const Navigation = ()=>{
             }
         }
 
+    const Que = (route) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate(`${route}`)
+        } else {
+            alert("로그인을 해주세요.")
+        }
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/jellBTI');
+                setBoardList(response.data.boardList);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return(
         <MenuBox>
             <MenuList><Link to="/home">홈</Link></MenuList>
-            <MenuList><Link to="">젤리 테스트</Link></MenuList>
+            <MenuList onClick={() =>Que("/question")}>젤리 테스트</MenuList>
             <MenuList><Link to="/board">커뮤니티</Link></MenuList>
             <MenuList onClick={()=>Auth("/mypage")}>마이페이지</MenuList>
         </MenuBox>
