@@ -35,7 +35,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate=useNavigate()
   let token = localStorage.getItem('token');
-    
+
   //토큰이 있을 경우 유저정보 받아오기
   if(token){
     axios({
@@ -44,6 +44,9 @@ const Home = () => {
   }).then((res)=>{
       // setUser(res.data.userInfo);
       dispatch(userInformationIn(res.data.userInfo));
+      // 세션에 담긴 userInfo 가져도기
+      const userEmail = res.data.userInfo.mEmail;
+      console.log(userEmail);
   })
   }else{
     console.log("로그인을 하지 않았습니다.")

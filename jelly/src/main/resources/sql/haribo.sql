@@ -33,7 +33,7 @@ update jinfo set image_url = 'https://assets.haribo.com/image/upload/s--uWm0mpkU
 where j_name = '하리보 웜즈 사우어';
 update jinfo set image_url = 'https://assets.haribo.com/image/upload/s--iwT51Kj0--/ar_1466:2021,c_fill,f_auto,q_60/w_642/v1/consumer-sites/ko-kr/Products/Happy_Cola_Zourr_100-g_8691216096370.png'
 where j_name = '하리보해피콜라사우어';
-update jinfo set image_url = 'https://assets.haribo.com/image/upload/s--iwT51Kj0--/ar_1466:2021,c_fill,f_auto,q_60/w_642/v1/consumer-sites/ko-kr/Products/Happy_Cola_Zourr_100-g_8691216096370.png'
+update jinfo set image_url = 'https://assets.haribo.com/image/upload/s--VTy_0uKP--/ar_1473:2033,c_fill,f_auto,q_60/w_664/v1/consumer-sites/ko-kr/Products/Happy_Grapes_100g-new-1.png'
 where j_name = '하리보 해피 그레이프' and j_idx = 4727;
 
 --drop table j_info;
@@ -54,3 +54,5 @@ values(
 (select r_idx from(select rownum, a.* from jrate a order by r_idx desc) where rownum = 1 )+1,
 sysdate, 2, '그냥저냥 젤리 맛이에요', 'magicofclown@naver.com', 4739
 );
+
+select * from jrate;

@@ -219,7 +219,7 @@ const CommentLists = Styled.div`
 
 
 const CommentBind = Styled.div`
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 `
 
 const Comment = Styled.input`
