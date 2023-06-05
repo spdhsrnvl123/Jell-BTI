@@ -1,12 +1,9 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom"
-import { userTokenIn } from "redux/store";
 
 export default function NaverRedirect() {
     const navigate = useNavigate();
-    let dispatch = useDispatch()
 
     useEffect(() => {
         const url = new URL(window.location.href);
@@ -19,7 +16,6 @@ export default function NaverRedirect() {
         })
             .then((res) => {
                 console.log(res); // 토큰이 넘어올 것임
-                dispatch(userTokenIn(res.data))
                 navigate("/mypage")
             }).catch((err) => {
                 console.log("소셜로그인 에러", err);

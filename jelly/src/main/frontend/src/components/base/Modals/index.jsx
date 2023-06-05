@@ -8,9 +8,7 @@ import Chart from "../Chart";
 import Review from "../Review";
 import Box from "../Box";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faStar
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const ModalCotainer = styled.div`
   display: flex;
