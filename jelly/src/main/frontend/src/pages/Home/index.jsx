@@ -35,7 +35,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate=useNavigate()
   let token = localStorage.getItem('token');
-    
+
   //토큰이 있을 경우 유저정보 받아오기
   if(token){
     axios({
@@ -44,8 +44,8 @@ const Home = () => {
   }).then((res)=>{
       // setUser(res.data.userInfo);
       dispatch(userInformationIn(res.data.userInfo));
-      const userEmail = res.data.userInfo.mJelly; //mJelly를 mEmail or mNick으로 바꾸면 그걸로 받아온다.
-      console.log(userEmail)
+      const userEmail = res.data.userInfo.mEmail;
+      console.log(userEmail);
   })
   }else{
     console.log("로그인을 하지 않았습니다.")

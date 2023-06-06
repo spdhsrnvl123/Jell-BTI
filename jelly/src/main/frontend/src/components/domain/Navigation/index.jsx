@@ -1,13 +1,11 @@
 import Button from "components/base/Button"
 // import useAuth from "hooks/useAuth"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 
 import axios from "axios"
-
-
 
 const MenuBox = styled.ul`
     display: flex;
@@ -52,18 +50,28 @@ const Navigation = ()=>{
         }
     }
 
+    const [bool, setBool] = useState(undefined);
+
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async (mEmail) => {
             try {
-                const response = await axios.get('/jellBTI');
-                setBoardList(response.data.boardList);
+                mEmail = "pizzay@kakao.com"; // 수정해야 한다.
+                const response = await axios.get(`/jellBTI?mEmail=${mEmail}`);
+                setBool(response.data); // 서버에서 boolean 값을 바로 받아온다고 가정합니다.
             } catch (error) {
-                console.error(error);
+                console.error(error);   
             }
         };
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        console.log(bool);
+    }, [bool]);
+
+
+
 
     return(
         <MenuBox>

@@ -22,4 +22,15 @@ class MemberServiceTest {
         System.out.println(memberService.findUser(user).getMNick());
     }
 
+    @Test
+    void 회원젤리테스트여부조회(){
+        String user = "pizzay@kakao.com";
+        boolean bool = memberService.searchUserJellyType(user);
+        System.out.println("user" + user);
+        if(bool = true){
+            System.out.println("테스트를 진행한 적이 없는 회원입니다. ");
+        }else{
+            System.out.println("테스트를 이미 진행한 회원입니다. ");
+        }
+    }
 }
