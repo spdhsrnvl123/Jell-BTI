@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
-
 import Header from "../../components/domain/Header";
 import Navigation from "../../components/domain/Navigation";
 
