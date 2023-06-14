@@ -40,22 +40,13 @@ const ModalButton = styled.button`
 `
 
 const Modal = ()=>{
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     return(
         <ModalCotainer>
             <ModalSection>
-                <Button onClick={()=>navigate("/login")} fontSize={50} bgColor={"#16f916"}>
-                    <Img src="../kakaoIcon.png" />
-                    카카오로그인
-                </Button>
-
-                <Button onClick={() => navigate("/naverlogin")} fontSize={50} bgColor={"#16f916"}>
-                    <Img src="../naver_logo.png" />
-                    네이버로그인
-                </Button>
-
-
-
+                <Img src="/yellow.png" width={150} />
+                <Button onClick={()=>navigate("/login")} fontSize={50}>카카오로그인</Button>
+                <Button onClick={() => navigate("/naverlogin")} fontSize={50} >네이버로그인</Button>
                 <ModalButton onClick={()=>navigate("/home")}>
                     &times;
                 </ModalButton>

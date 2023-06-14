@@ -12,6 +12,7 @@ import Read from "pages/Board/Read"
 import Modify from "pages/Board/Modify"
 import Question from "pages/Questions/Question"
 
+
 const Router = () => {
     return (
         <BrowserRouter>

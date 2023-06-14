@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import Img from "../Img";
 
 const BallonBox = styled.div`
     /* position: relative; */
@@ -51,6 +52,7 @@ const BallonThird = ()=>{
     return (
         <BallonBox>
             <BalloonBlue src="./balloonBlue.png" />
+            {/* <Img src="./balloonBlue.png" /> */}
             <BalloonGreen src="./balloonGreen.png" />
             <BalloonRed src="./balloonRed.png" />
         </BallonBox>
