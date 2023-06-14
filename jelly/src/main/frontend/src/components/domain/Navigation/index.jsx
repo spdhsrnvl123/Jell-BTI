@@ -1,10 +1,6 @@
-import Button from "components/base/Button"
-// import useAuth from "hooks/useAuth"
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
-
-
 import axios from "axios"
 
 const MenuBox = styled.ul`
@@ -32,14 +28,14 @@ const MenuList = styled.li`
 
 const Navigation = ()=>{
     const navigate = useNavigate()
-    const Auth = (route)=>{
-            const token = localStorage.getItem('token');
-            if(token){
-                navigate(`${route}`)
-            }else{
-                alert("로그인을 해주세요.")
-            }
-        }
+    // const Auth = (route)=>{
+    //         const token = localStorage.getItem('token');
+    //         if(token){
+    //             navigate(`${route}`)
+    //         }else{
+    //             alert("로그인을 해주세요.")
+    //         }
+    //     }
 
     const Que = (route) => {
         const token = localStorage.getItem('token');
@@ -70,15 +66,12 @@ const Navigation = ()=>{
         console.log(bool);
     }, [bool]);
 
-
-
-
     return(
         <MenuBox>
             <MenuList><Link to="/home">홈</Link></MenuList>
             <MenuList onClick={() =>Que("/question")}>젤리 테스트</MenuList>
             <MenuList><Link to="/board">커뮤니티</Link></MenuList>
-            <MenuList onClick={()=>Auth("/mypage")}>마이페이지</MenuList>
+            <MenuList onClick={()=>navigate("/mypage")}>마이페이지</MenuList>
         </MenuBox>
     )
 }
