@@ -1,18 +1,29 @@
-# 🐻‍ Jell-BTI (젤리 추천 사이트)
-![image](https://user-images.githubusercontent.com/108074336/222364824-36342f21-202b-42ad-af47-4c171e3126bd.png)
+# 🎉 Jell-BTI (젤리 추천 사이트)
+<img width="1024" alt="JELL-BTI" src="https://github.com/kimpizza/Jell-BTI_Project/assets/83896466/98885bc4-d727-4904-81f3-acf3e4cf69b5">
 
-## 🐻 프로젝트 설명        
+
+## 🎞 프로젝트 설명        
 많은 하리보 젤리 중 내 취향에 맞는 젤리는 무엇일까?
 
-## 🐻 팀원  
-김유리(BE)
-박의민(BE)
-이재호(FE)
-이태형(FE)
+## 🧑‍💻 팀원 소개
 
-## 🐻 개발 기간
+### Back End Developer 🙋
 
-## 🐻 프로젝트 기능
+|                                     PIZZAY                                      |                                       EuiMin Park                                       |
+| :---------------------------------------------------------------------------: |:---------------------------------------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/u/108074336?v=4" width="200"/> |<img src="https://avatars.githubusercontent.com/u/108075531?v=4" width="200"/> |
+|                      [김유리](https://github.com/kimpizza)                      |                 [박의민](https://github.com/qkrmekem)                   | 
+
+### Front End Developer 🙋
+
+|                                     이재호                                      |                                       Leutbing                                      |
+| :---------------------------------------------------------------------------: |:---------------------------------------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/u/111284065?v=4" width="200"/> |<img src="https://avatars.githubusercontent.com/u/83896466?s=400&u=fc59230a4dc6b05fb9e03f786c9dfa16d9e21ea6&v=4" width="200"/> |
+|                      [이재호](https://github.com/jaeho13)                      |                 [이태형](https://github.com/spdhsrnvl123)                   | 
+
+## 🏃‍♂️ 개발 기간(진행중..)
+
+## ✨ 프로젝트 기능
 1. 젤리 정보 
 : 젤리에 대한 기본 정보와 맛과 식감에 대한 점수, 다른 사람들이 남긴 젤리 평점을 확인해 젤리 선택에 도움을 줍니다.
 
@@ -22,14 +33,16 @@
 3. 회원 게시판
 : 젤리에 대한 다양한 이야기를 나눌 수 있습니다.
 
-## 🐻 프로젝트 화면 구성(초안)
+## 🎨 프로젝트 화면 구성(초안)
+https://www.figma.com/file/BirIA9SMcNDdzDCB2IDUsj/HARIBO_DESIGN?type=design&node-id=0%3A1&t=RuZ8fKREFFKmksmX-1
+
 <img width="909" alt="스크린샷 2023-03-02 오후 4 48 28" src="https://user-images.githubusercontent.com/108074336/222364621-fff306dd-b5cf-4566-891b-77f3d6bc1fa7.png">
 
-## 🐻 ERD
+## 🚀 ERD
 <img width="1081" alt="스크린샷 2023-03-23 오후 2 25 47" src="https://user-images.githubusercontent.com/108074336/227111784-c32170d6-1cbe-4f66-858c-1875cbbafdc3.png">
 
 
-## 🐻 사용 기술
+## ⚒️ 사용 기술
 <table>
     <tr>
         <th>구분</th>
@@ -95,7 +108,3 @@
     </tr>
 </table>
 
-## 🐻 팀원
-김유리 박의민 이재호 이태형
-
-## 🐻 
