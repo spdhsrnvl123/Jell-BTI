@@ -8,7 +8,7 @@
 ## 🧑‍💻 팀원 소개
 
 ### Back End Developer 🙋
-
+ 
 |                                     PIZZAY                                      |                                       EuiMin Park                                       |
 | :---------------------------------------------------------------------------: |:---------------------------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/108074336?v=4" width="200"/> |<img src="https://avatars.githubusercontent.com/u/108075531?v=4" width="200"/> |
