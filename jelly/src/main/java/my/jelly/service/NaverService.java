@@ -133,6 +133,7 @@ public class NaverService {
             userInfo.setMJelly(0); //초기값은 널로 일단 줌
 
             // 유저 이메일로 유저 객체 검색해보고 등록안된 회원이라면 회원가입 처리
+            // 테스트용 commit
             Member findUser = memberRepository.findBymEmail(userInfo.getMEmail());
             if(findUser == null){
                 log.info("네이버로 처음 로그인하였습니다.");
