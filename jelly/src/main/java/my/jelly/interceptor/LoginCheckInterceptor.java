@@ -23,7 +23,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 
         log.info("로그인 인터셉터 실행 http method ={}",request.getMethod());
 
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         if (!request.getMethod().equals("GET")) {
             if (session == null || session.getAttribute("userInfo") == null) {
                 log.info("비로그인 사용자 접근 시도 requestURL = {}", requestURI);
