@@ -1,17 +1,16 @@
 package my.jelly.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import my.jelly.entity.Member;
 import my.jelly.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,14 +20,23 @@ public class JellyTestController {
     @Autowired
     MemberService memberService;
 
-    //젤리테스트결과 받아오는 컨트롤러
+    static String mEmail; // 회원 이메일 저장용
 
-    //1. 회원의 젤리 타입을 먼저 확인 (신규 테스트인지, 기존 테스트인지 확인하기 위함.)
+    // 젤리테스트결과 받아오는 컨트롤러
+
+    // 1. 회원의 젤리 타입을 먼저 확인 (신규 테스트인지, 기존 테스트인지 확인하기 위함.)
     @GetMapping("/jellBTI")
-    public boolean userTestCheck(@RequestParam String mEmail) throws ParseException{
+    public boolean userTestCheck(@RequestParam String mEmail) throws ParseException {
         System.out.printf("호출완료" + mEmail);
         boolean bool = memberService.searchUserJellyType(mEmail);
         System.out.printf("=====================True or False===================== : " + bool);
         return bool;
     }
+
+    @PostMapping("/jResult")
+    public void userJellyResult(@RequestParam int mJelly) throws ParseException {
+        System.out.printf("@@@@@@@@@@@@@@@@@@@@");
+        // memberService.inputUserJellyResult(mJelly);
+    }
+
 }
