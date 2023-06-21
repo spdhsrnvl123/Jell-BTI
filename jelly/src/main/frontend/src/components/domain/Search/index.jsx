@@ -1,15 +1,12 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useInput } from "hooks/useInput";
-import { asyncUpFetch } from "redux/jellyInfo";
-import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const InputStyle = styled.input`
+const Input = styled.input`
   margin: 0 auto;
   background: #f5f5f5;
   border: 3px solid #ffffff;
@@ -38,7 +35,7 @@ const Search = () => {
   return (
     <Container>
       <form onSubmit={handleSubmit}>
-        <InputStyle
+        <Input
           value={inputValue}
           onChange={handleChange}
           placeholder="원하는 젤리를 검색해주세요!"

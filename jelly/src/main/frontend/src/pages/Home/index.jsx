@@ -44,7 +44,6 @@ const Home = () => {
   }).then((res)=>{
       // setUser(res.data.userInfo);
       dispatch(userInformationIn(res.data.userInfo));
-      // 세션에 담긴 userInfo 가져도기
       const userEmail = res.data.userInfo.mEmail;
       console.log(userEmail);
   })
@@ -52,6 +51,7 @@ const Home = () => {
     console.log("로그인을 하지 않았습니다.")
   }
   
+
   useEffect(() => {
     dispatch(asyncUpFetch());
   }, []);

@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import PropTypes from "prop-types"
 
 const ImgStyle = styled.img`
     width : ${({width})=>width};
@@ -12,11 +11,5 @@ const Img = ({src, width, height, ...props})=>{
         <ImgStyle src={src} width={width} height={height} style={{...props}} />
     )
 }
-
-// Img.propTypes = {
-//     src : PropTypes.string,
-//     width : PropTypes.number,
-//     height : PropTypes.number
-// }
 
 export default Img;

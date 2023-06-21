@@ -39,15 +39,28 @@ const ModalButton = styled.button`
     background-color: transparent;
 `
 
+const ModalContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10% 3%;
+`
+
 const Modal = ()=>{
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     return(
         <ModalCotainer>
             <ModalSection>
-                <Button onClick={()=>navigate("/login")} fontSize={50} bgColor={"#16f916"}>
-                    <Img src="../kakaoIcon.png" />
-                    카카오로그인
-                </Button>
+                <ModalContent>
+                    <Img src="/yellow.png" width={150} marginBottom={25} />
+                    <Button onClick={()=>navigate("/login")} fontSize={50} bgColor={"transparent"}>
+                        <Img src={"/kakao.jpeg"} width={300} />
+                    </Button>
+                    <Button onClick={() => navigate("/naverlogin")} fontSize={50} bgColor={"transparent"}>
+                    <Img src={"/naver.png"} width={300} height={50} />
+                    </Button>
+                </ModalContent>
                 <ModalButton onClick={()=>navigate("/home")}>
                     &times;
                 </ModalButton>

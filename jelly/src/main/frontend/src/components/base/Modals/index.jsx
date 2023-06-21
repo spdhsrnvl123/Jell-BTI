@@ -8,9 +8,8 @@ import Chart from "../Chart";
 import Review from "../Review";
 import Box from "../Box";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faStar
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const ModalCotainer = styled.div`
   display: flex;
@@ -99,6 +98,7 @@ const Modals = () => {
   const { id } = useParams();
   const [value, setValue] = useState([]);
   const [active, setActive] = useState(true);
+  const [score, setScore] = useState(0)
 
   useEffect(() => {
     if (data.status === "complete") {
@@ -108,6 +108,20 @@ const Modals = () => {
       setValue(...item);
     }
   }, [data]);
+
+
+  useEffect(()=>{
+    axios({
+        method: "get",
+        url: `/jellies/${id}`,
+    }).then((response)=>{
+        // console.log(response.data.jelly.score)
+        setScore(response.data.jelly.score)
+    });
+},[])
+
+
+  let count = parseInt(score)
 
   return (
     <ModalCotainer>
@@ -134,7 +148,7 @@ const Modals = () => {
                   return               <FontAwesomeIcon
                   icon={faStar}
                   key={i}
-                  style={{ color: "#f5eb3b" }}
+                  style={{ color: count> i?"#f5eb3b":"black"  }}
                   size="2x"
                   />
                 })
