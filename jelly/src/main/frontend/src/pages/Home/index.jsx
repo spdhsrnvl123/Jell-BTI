@@ -45,7 +45,6 @@ const Home = () => {
       // setUser(res.data.userInfo);
       dispatch(userInformationIn(res.data.userInfo));
       const userEmail = res.data.userInfo.mEmail;
-      console.log(userEmail);
   })
   }else{
     console.log("로그인을 하지 않았습니다.")
