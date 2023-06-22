@@ -17,9 +17,9 @@ const Question = () => {
         <>
             <Header />
             <Navigation />
-            
+
             <Topic>질문</Topic>
-            
+
             <TopTitle>
                 <Title>안녕하세요?</Title>
             </TopTitle>
@@ -75,3 +75,36 @@ const Que = Styled.button`
     cursor: pointer;
 `
 export default Question;
+
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+
+// const MyComponent = () => {
+//   const [responseData, setResponseData] = useState(null);
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   const fetchData = async () => {
+//     try {
+//       const response = await axios.get('/backend/data');
+//       setResponseData(response.data);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       {responseData ? (
+//         <div>백엔드에서 받은 데이터: {responseData}</div>
+//       ) : (
+//         <div>데이터 로딩 중...</div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default MyComponent;
