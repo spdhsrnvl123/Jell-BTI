@@ -12,7 +12,7 @@ const useAuth = () => {
       navigate('/mypage')
     }
   }, [token, navigate]);
-
+  
   return token;
 };
 
