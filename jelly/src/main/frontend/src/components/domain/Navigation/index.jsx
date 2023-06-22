@@ -28,15 +28,6 @@ const MenuList = styled.li`
 
 const Navigation = ()=>{
     const navigate = useNavigate()
-    // const Auth = (route)=>{
-    //         const token = localStorage.getItem('token');
-    //         if(token){
-    //             navigate(`${route}`)
-    //         }else{
-    //             alert("로그인을 해주세요.")
-    //         }
-    //     }
-
     const Que = (route) => {
         const token = localStorage.getItem('token');
         if (token) {

@@ -49,6 +49,9 @@ public class KakaoController {
             HttpSession session = request.getSession();
             session.setAttribute("userInfo", userInfo);
             map.put("userInfo", userInfo);
+
+            //로그인 성공 확인용
+            log.info("로그인 성공!!!, userinfo={}", userInfo);
             return gson.toJson(map);
         }
 
