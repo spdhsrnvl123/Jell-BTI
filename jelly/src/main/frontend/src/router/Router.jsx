@@ -6,7 +6,6 @@ import Kakao from "@/pages/Kakao"
 import KakaoRedirect from "@/utils/KakaoRedirect"
 import Board from "@/pages/Board/Board"
 import Writing from "@/pages/Board/Writing"
-import Modals from "components/base/Modals"
 import Modal from "components/base/Modal"
 import Read from "pages/Board/Read"
 import Modify from "pages/Board/Modify"
@@ -14,7 +13,9 @@ import Question from "pages/Questions/Question"
 import Practice from "pages/Questions/Practice"
 import Naver from "pages/Naver"
 import NaverRedirect from "@/utils/KakaoRedirect"
-
+import GModal from "components/domain/GModal"
+import Review from "components/domain/Review"
+import Goods from "components/domain/Goods"
 
 const Router = () => {
     return (
@@ -28,7 +29,10 @@ const Router = () => {
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/home" element={<Home />}>
                     <Route path="Modal" element={<Modal />} />
-                    <Route path="Modals/:id" element={<Modals />} />
+                    <Route path="goodsModal/:id" element={<GModal />}>
+                        <Route path="" element={<Goods />} />
+                        <Route path="review" element={<Review />} />
+                    </Route>
                 </Route>
                 <Route path="/board" element={<Board />} />
                 <Route path="/writing" element={<Writing />} />

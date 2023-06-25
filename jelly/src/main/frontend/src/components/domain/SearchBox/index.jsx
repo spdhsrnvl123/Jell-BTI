@@ -4,7 +4,7 @@ import { Outlet, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "components/base/Card";
-import Modals from "components/base/Modals";
+import Modals from "components/domain/GModal";
 
 export const Content = styled.div`
   position: relative;

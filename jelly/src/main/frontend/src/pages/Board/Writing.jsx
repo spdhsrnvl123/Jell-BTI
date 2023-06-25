@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Styled from "styled-components";
 import Header from "../../components/domain/Header";
-import Navigation from "../../components/domain/Navigation";
+import Navigation from "../../components/domain/Nav";
 import { useNavigate } from "react-router-dom";
 
 const Writing = () => {

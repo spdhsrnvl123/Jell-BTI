@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const useAxios = ({ url, method, body = null, headers = null })=>{
     const [response, setResponse] = useState(null);
