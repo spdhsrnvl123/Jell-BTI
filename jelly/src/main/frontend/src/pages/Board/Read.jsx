@@ -3,7 +3,7 @@ import axios from 'axios';
 import Styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Header from "../../components/domain/Header";
-import Navigation from "../../components/domain/Navigation";
+import Navigation from "../../components/domain/Nav";
 
 const Read = () => {
     const navigate = useNavigate();
