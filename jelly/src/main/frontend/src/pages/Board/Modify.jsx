@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import Header from "../../components/domain/Header";
-import Navigation from "../../components/domain/Navigation";
+import Navigation from "../../components/domain/Nav";
 
 const Modify = () => {
     const navigate = useNavigate();

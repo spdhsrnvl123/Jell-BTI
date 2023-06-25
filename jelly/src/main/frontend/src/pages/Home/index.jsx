@@ -1,5 +1,4 @@
 import Header from "@/components/domain/Header";
-import Navigation from "@/components/domain/Navigation";
 import Search from "@/components/domain/Search";
 import SearchBox from "components/domain/SearchBox";
 import styled from "styled-components";
@@ -18,6 +17,7 @@ import Button from "components/base/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { userInformationIn } from "redux/store";
+import Nav from "components/domain/Nav";
 
 const Container = styled.div`
   display: flex;
@@ -67,7 +67,7 @@ const Home = () => {
         <Button onClick={()=>navigate("/home/modal")} fontSize={30} fontWeight={700} padding={"0.6em 0.7em"} bgColor={"rgba(0, 163, 255, 0.2)"}>로그인하기</Button>
       </LoginBox>
       <Header />
-      <Navigation />
+      <Nav />
       <Search />
       <SearchBox />
     </Container>

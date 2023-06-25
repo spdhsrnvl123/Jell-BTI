@@ -157,7 +157,7 @@ const MyPage = ()=>{
             <LogoBox onClick={()=>navigate("/home")} >
                 <Logo fontSize={150} marginLeft="70px" />
             </LogoBox>
-            <PageTitle>{userData !== {}?userData.mNick+"님의 마이페이지":'마이페이지 로딩중...'}</PageTitle>
+            <PageTitle>마이페이지</PageTitle>
             <ProfileImage>
                 <HariboProfileContent />
                 <HariboLeftEar />
@@ -167,8 +167,8 @@ const MyPage = ()=>{
                 <HariboNoise />
             </ProfileImage>
             <ButtonBox>
-                <Button fontSize={40} fontWeight={700} padding={"0.5em 0.5em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>내가 작성한<br /> 커뮤니티</Button>
-                <Button fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>젤리 테스트<br /> 시작하기</Button>
+                <Button onClick={()=>navigate("/board")} fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>내가 작성한<br /> 커뮤니티</Button>
+                <Button onClick={()=>navigate("/question")} fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>젤리 테스트<br /> 시작하기</Button>
                 <Button fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>젤리 후기<br /> 작성하기</Button>
                 <Button fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>내가 작성한<br /> 젤리 후기</Button>
             </ButtonBox>
