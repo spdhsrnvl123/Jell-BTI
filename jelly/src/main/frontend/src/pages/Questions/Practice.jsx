@@ -1,8 +1,9 @@
 import React from "react"
 import Header from "components/domain/Header"
-import Navigation from "components/domain/Navigation"
+import Navigation from "components/domain/Nav"
 import { useState } from "react"
 import styled from "styled-components"
+import axios from "axios"
 
 const Practice = () => {
 
@@ -85,22 +86,101 @@ const Practice = () => {
     const [page, setPage] = useState(0)
 
     const handleAnswer = (type) => {
-        // 선택한 대답의 MBTI 타입에 count 증가
         const updatedMbtiList = mbtiList.map((item) => {
             if (item.name === type) {
                 return { ...item, count: item.count + 1 };
             }
             return item;
         });
+
         setMbtiList(updatedMbtiList);
 
-        // 다음 질문으로 넘어가기
         if (page < questionList.length - 1) {
             setPage(page + 1);
         } else {
-            // 테스트 완료 시 결과 보여주기
-            // ...
+            console.log("테스트 종료");
+            setMbti();
         }
+    };
+
+    const setMbti = () => {
+        let EorI =
+            mbtiList.find((data) => data.name === "E").count >
+                mbtiList.find((data) => data.name === "I").count
+                ? "E"
+                : "I";
+        let NorS =
+            mbtiList.find((data) => data.name === "N").count >
+                mbtiList.find((data) => data.name === "S").count
+                ? "N"
+                : "S";
+        let ForT =
+            mbtiList.find((data) => data.name === "F").count >
+                mbtiList.find((data) => data.name === "T").count
+                ? "F"
+                : "T";
+        let PorJ =
+            mbtiList.find((data) => data.name === "P").count >
+                mbtiList.find((data) => data.name === "J").count
+                ? "P"
+                : "J";
+
+        let mbti = EorI + NorS + ForT + PorJ;
+
+        console.log("MBTI 결과:", mbti);
+    };
+
+    const mapMbtiNumber = (mbti) => {
+        switch (mbti) {
+            case "ENTJ":
+            case "ESTP":
+            case "INTJ":
+                return (1);
+
+            case "ESTJ":
+            case "ESFP":
+            case "ISFP":
+                return (2);
+
+            case "ESFJ":
+            case "ENFP":
+            case "INTP":
+                return (3);
+
+            case "ENTP":
+            case "ENFJ":
+            case "INFP":
+                return 4;
+
+            case "ISTP":
+            case "INFJ":
+            case "ISFJ":
+            case "ISTJ":
+                return 5;
+
+            default:
+                return 0;
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const mbtiNumber = mapMbtiNumber(mbtiList);
+
+        //주소 `/jResult?mJelly=${mbtiNumber}`
+
+        axios({
+            url: `/jResult?mJelly=${mbtiNumber}`,
+            method: "post",
+            data: mbtiNumber
+        })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
@@ -110,20 +190,22 @@ const Practice = () => {
             <Topic>질문</Topic>
             {page < questionList.length ? (
                 <div>
-                    <div>{`페이지: ${page + 1} / ${questionList.length}`}</div>
-                    <Quest question={questionList[page].q}></Quest>
+                    <QuestButton>{questionList[page].q}</QuestButton>
                     <div>
                         {questionList[page].a.map((answer, index) => (
-                            <ButtonContainer key={index}>
+                            <Answer key={index}>
                                 <AnswerButton onClick={() => handleAnswer(answer.type)}>
                                     {answer.text}
                                 </AnswerButton>
-                            </ButtonContainer>
+                            </Answer>
                         ))}
                     </div>
+                    <Page>{`페이지: ${page + 1} / ${questionList.length}`}</Page>
                 </div>
             ) : (
-                <div>테스트가 모두 끝났습니다. 결과 보러 가기</div>
+                <div onClick={handleSubmit}>
+                    테스트가 모두 끝났습니다. 결과 보러 가기
+                </div>
             )}
         </>
     );
@@ -132,42 +214,53 @@ const Practice = () => {
 export default Practice;
 
 const Topic = styled.div`
-  width: 100%;
-  height: 3rem;
-  background-color: #FFFFE0;
-  text-align: center;
-  font-size: 3rem;
-  border: 3px solid #F5DA81;
+    width: 100%;
+    height: 3rem;
+    background-color: #FFFFE0;
+    text-align: center;
+    font-size: 3rem;
+    border: 3px solid #F5DA81;
 `;
 
-const Quest = styled.div`
-    width: 40%;
+const QuestButton = styled.div`
+    width: 30%;
     height: 10rem;
     font-size: 3rem;
-    border: 3px solid black;
-    background-color: #EFEFFB;
+    border: 2px solid black;
+    margin: 0 auto;
+    margin-top: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
-    padding: 1rem;
 `
 
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 10rem;
-  margin: 0 auto;
-`;
+const Answer = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+`
 
 const AnswerButton = styled.button`
-  width: 20%;
-  height: 100%;
-  font-size: 2rem;
-  border: 3px solid black;
-  background-color: #EFEFFB;
-  text-align: center;
-  cursor: pointer;
+    width: 30%;
+    height: 10rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    margin-top: 5rem;
+    display: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4E6D0;
+    cursor: pointer;
+`;
+
+const Page = styled.div`
+    width: 50%;
+    height: 5rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 `;

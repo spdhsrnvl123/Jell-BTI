@@ -6,6 +6,7 @@ import axios from "axios"
 const MenuBox = styled.ul`
     display: flex;
     justify-content: center;
+    align-items: center;
 `
 
 const MenuList = styled.li`
@@ -13,6 +14,7 @@ const MenuList = styled.li`
     font-weight: 700;
     padding-left: 51px;
     padding: 20px 48px;
+    text-shadow: 3px 3px 1px #d0d2cf;
     cursor: pointer;
     :nth-child(1){
         color : #00A3FF;
@@ -26,17 +28,8 @@ const MenuList = styled.li`
     }
 `
 
-const Navigation = ()=>{
+const Nav = ()=>{
     const navigate = useNavigate()
-    // const Auth = (route)=>{
-    //         const token = localStorage.getItem('token');
-    //         if(token){
-    //             navigate(`${route}`)
-    //         }else{
-    //             alert("로그인을 해주세요.")
-    //         }
-    //     }
-
     const Que = (route) => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -76,4 +69,4 @@ const Navigation = ()=>{
     )
 }
 
-export default Navigation
+export default Nav;

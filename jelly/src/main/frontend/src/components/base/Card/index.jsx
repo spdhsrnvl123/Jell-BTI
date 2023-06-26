@@ -18,7 +18,6 @@ const ImgBox = styled.div`
   position: relative;
   z-index: 11;
   right: 12%;
-  /* background-color: red; */
 `
 
 const CardContent = styled.div`
@@ -72,7 +71,7 @@ export default function Card({ productList }) {
                 <Img src = {v.imageUrl} width={200} height={280} />              
                 <CardContent>
                   <JellyTitle>{v.jname}</JellyTitle>
-                  <Button onClick={()=>navigate(`/home/modals/${v.jidx}`)} fontSize={20} bgColor={"#16f916"} padding={"2px 10px"}>상세보기</Button>
+                  <Button onClick={()=>navigate(`/home/goodsModal/${v.jidx}`)} fontSize={20} bgColor={"#16f916"} padding={"2px 10px"}>상세보기</Button>
                 </CardContent>
               </ImgBox>
             </SwiperSlide>
