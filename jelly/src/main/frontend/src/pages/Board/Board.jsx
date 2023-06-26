@@ -4,7 +4,7 @@
     import { useNavigate } from 'react-router-dom';
 
     import Header from "../../components/domain/Header";
-    import Navigation from "../../components/domain/Navigation";
+    import Navigation from "../../components/domain/Nav";
 
     const Board = () => {
         const navigate = useNavigate();

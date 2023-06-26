@@ -6,7 +6,7 @@
 많은 하리보 젤리 중 내 취향에 맞는 젤리는 무엇일까?
 
 ## 🧑‍💻 팀원 소개
-
+  
 ### Back End Developer 🙋
  
 |                                     PIZZAY                                      |                                       EuiMin Park                                       |

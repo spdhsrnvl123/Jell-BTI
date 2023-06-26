@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../Button';
 import Img from '../Img';
+import { Children } from 'react';
 
 const ModalCotainer = styled.div`
     display: flex;
@@ -47,20 +48,12 @@ const ModalContent = styled.div`
     padding: 10% 3%;
 `
 
-const Modal = ()=>{
+const Modal = ({children})=>{
     const navigate = useNavigate();
     return(
         <ModalCotainer>
             <ModalSection>
-                <ModalContent>
-                    <Img src="/yellow.png" width={150} marginBottom={25} />
-                    <Button onClick={()=>navigate("/login")} fontSize={50} bgColor={"transparent"}>
-                        <Img src={"/kakao.jpeg"} width={300} />
-                    </Button>
-                    <Button onClick={() => navigate("/naverlogin")} fontSize={50} bgColor={"transparent"}>
-                    <Img src={"/naver.png"} width={300} height={50} />
-                    </Button>
-                </ModalContent>
+                {children}
                 <ModalButton onClick={()=>navigate("/home")}>
                     &times;
                 </ModalButton>

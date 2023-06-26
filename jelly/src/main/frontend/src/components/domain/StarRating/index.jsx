@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Rate from "../Rate";
+import Rate from "../../base/Rate";
 
 const Rating = ({setCount}) => {
   const [rating, setRating] = useState(0);

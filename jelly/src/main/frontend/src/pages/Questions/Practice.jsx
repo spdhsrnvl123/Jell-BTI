@@ -1,6 +1,6 @@
 import React from "react"
 import Header from "components/domain/Header"
-import Navigation from "components/domain/Navigation"
+import Navigation from "components/domain/Nav"
 import { useState } from "react"
 import styled from "styled-components"
 import axios from "axios"

@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import Button from "../Button";
+import Button from "../../base/Button";
 import { useInput } from "hooks/useInput";
 import { useParams } from "react-router-dom";
 import StarRating from "../StarRating";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import useAxios from "hooks/useAxios";
 
 const Form = styled.form`
   display: flex;
@@ -61,8 +62,6 @@ const Review = () => {
   const [count, setCount] = useState(0);
   const {id} = useParams();
   const userData = useSelector((state)=>state.userInformation);
-  // console.log(userData);
-  // console.log(id, userData.mNick,inputValue, userData.mJelly,count,userData.mEmail)
 
   const ReviewHandler = (e)=>{
     e.preventDefault();
