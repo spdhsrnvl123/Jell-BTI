@@ -18,7 +18,6 @@ const ImgBox = styled.div`
   position: relative;
   z-index: 11;
   right: 12%;
-  /* background-color: red; */
 `
 
 const CardContent = styled.div`
