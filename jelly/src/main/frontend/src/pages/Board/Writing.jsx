@@ -98,7 +98,7 @@ const Title = Styled.input`
     background-color: #F4E6D0;
 `
 
-const Content = Styled.input`
+const Content = Styled.textarea`
     width: 90%;
     height: 35rem;
     font-size: 4rem;
