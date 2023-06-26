@@ -64,7 +64,7 @@ const Home = () => {
       <MyPageBallonGreen_2 src="/balloonGreen.png" />
       <MyPageBallonSkyblue_2 src="/ballonSkyblue.png" />
       <LoginBox>
-        <Button onClick={()=>navigate("/home/modal")} fontSize={30} fontWeight={700} padding={"0.6em 0.7em"} bgColor={"rgba(0, 163, 255, 0.2)"}>로그인하기</Button>
+        <Button onClick={()=>navigate("/home/login")} fontSize={30} fontWeight={700} padding={"0.6em 0.7em"} bgColor={"rgba(0, 163, 255, 0.2)"}>로그인하기</Button>
       </LoginBox>
       <Header />
       <Nav />
