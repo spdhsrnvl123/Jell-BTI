@@ -185,16 +185,23 @@ const QuestButton = styled.div`
     height: 10rem;
     font-size: 3rem;
     border: 2px solid black;
+    border-radius: 2rem;
     margin: 0 auto;
     margin-top: 3rem;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    text-align: center;
+`
+
+const Bind = styled.div`
+    display: flex;
+    flex-direction: row;
 `
 
 const Answer = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
 `
 
 const AnswerButton = styled.button`
@@ -202,13 +209,14 @@ const AnswerButton = styled.button`
     height: 10rem;
     font-size: 3rem;
     border: 2px solid black;
+    border-radius: 2rem;
     margin-top: 5rem;
-    display: row;
+    display: flex; /* 수정: 기본 값인 'row' 대신 'flex'로 설정 */
     justify-content: center;
     align-items: center;
     background-color: #F4E6D0;
     cursor: pointer;
-`;
+`
 
 const Page = styled.div`
     width: 50%;

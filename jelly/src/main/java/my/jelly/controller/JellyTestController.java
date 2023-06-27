@@ -32,11 +32,37 @@ public class JellyTestController {
         System.out.printf("=====================True or False===================== : " + bool);
         return bool;
     }
-
     @PostMapping("/jResult")
-    public void userJellyResult(@RequestParam int mJelly) throws ParseException {
-        System.out.printf("@@@@@@@@@@@@@@@@@@@@");
-        // memberService.inputUserJellyResult(mJelly);
+    public void userJellyResult(@RequestParam String mJelly) throws ParseException {
+        int jellBTI = 0;
+//        switch (mJelly){
+//            case "ENTJ" :
+//            case "ESTP" :
+//            case "INTJ" :
+//                jellBTI = 1;
+//            case "ESTJ" :
+//            case "ESFP" :
+//            case "ISFP" :
+//                jellBTI = 2;
+//            case "ESFJ" :
+//            case "ENFP" :
+//            case "INTP" :
+//                jellBTI = 3;
+//            case "ENTP" :
+//            case "ENFJ" :
+//            case "INFP" :
+//                jellBTI = 4;
+//            case "ISTP" :
+//            case "INFJ" :
+//            case "ISFJ" :
+//            case "ISTJ" :
+//                jellBTI = 5;
+//        }
+        if(mJelly != null){
+            System.out.println("jResult호출 성공 : " + mJelly);
+        }else{
+            System.out.println("호출 실패 null 값");
+        }
     }
 
 }
