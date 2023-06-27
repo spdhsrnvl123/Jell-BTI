@@ -166,13 +166,6 @@ const Logo = ({fontSize, ...props})=>{
             <div className="layer"></div>
             <div className="layer"></div>
             <div className="layer"></div>
-            {/* <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div> */}
         </div>
         </Title>
         </>

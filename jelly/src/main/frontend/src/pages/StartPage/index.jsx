@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useEffect } from "react";
 import Ballon from "@/components/base/Ballon";
 import Logo from "@/components/base/Logo";
 import BallonThird from "@/components/base/BallonThird";
@@ -46,21 +45,13 @@ const StartPage = ()=>{
     const [move, setMove] = useState(true)
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        setTimeout(()=>{
-            setMove(false)
-        },3000)
-    },[])
-
     return(
         <Container>
-             {/* hariboMove={move ? "50%": "31%"} */}
             <HariboBox>
                 <Img src="./haribo.png" width={321} height={325} />
                 <Logo fontSize={200} />
                 <SubTitle>HARIBO</SubTitle>
             </HariboBox>
-            {/* kakaoMove={move ? "100%":"50%"} */}
             <KakaoBox>
                 <Img src="./kakaoBackground.png" width={640} height={1080}/>
                 <BallonThird />

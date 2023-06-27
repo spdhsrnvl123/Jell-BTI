@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import my.jelly.entity.Member;
 import my.jelly.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,13 +32,37 @@ public class JellyTestController {
         System.out.printf("=====================True or False===================== : " + bool);
         return bool;
     }
-
     @PostMapping("/jResult")
-    public void userJellyResult(@RequestBody int mJelly) throws ParseException {
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println("젤리 결과 번호 호출" + mJelly);
-        // HttpSession session = request.getSession(false);
-        // Member member = (Member) session.getAttribute("userInfo");
-        // System.out.println("유저정보 잘 가져오나요?" + member.getMEmail()); //memberService.inputUserJellyResult(mJelly); }
+    public void userJellyResult(@RequestParam String mJelly) throws ParseException {
+        int jellBTI = 0;
+//        switch (mJelly){
+//            case "ENTJ" :
+//            case "ESTP" :
+//            case "INTJ" :
+//                jellBTI = 1;
+//            case "ESTJ" :
+//            case "ESFP" :
+//            case "ISFP" :
+//                jellBTI = 2;
+//            case "ESFJ" :
+//            case "ENFP" :
+//            case "INTP" :
+//                jellBTI = 3;
+//            case "ENTP" :
+//            case "ENFJ" :
+//            case "INFP" :
+//                jellBTI = 4;
+//            case "ISTP" :
+//            case "INFJ" :
+//            case "ISFJ" :
+//            case "ISTJ" :
+//                jellBTI = 5;
+//        }
+        if(mJelly != null){
+            System.out.println("jResult호출 성공 : " + mJelly);
+        }else{
+            System.out.println("호출 실패 null 값");
+        }
     }
+
 }

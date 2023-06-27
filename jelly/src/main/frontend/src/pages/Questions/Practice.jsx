@@ -1,6 +1,6 @@
 import React from "react"
 import Header from "components/domain/Header"
-import Navigation from "components/domain/Navigation"
+import Navigation from "components/domain/Nav"
 import { useState } from "react"
 import styled from "styled-components"
 import axios from "axios"
@@ -103,8 +103,6 @@ const Practice = () => {
         }
     };
 
-    // const [mbtiContents, setMbtiContents] = useState([])
-
     const setMbti = () => {
         let EorI =
             mbtiList.find((data) => data.name === "E").count >
@@ -131,63 +129,18 @@ const Practice = () => {
 
         console.log("MBTI 결과:", mbti);
 
-        // MBTI 유형을 숫자로 매핑하는 함수
-    };
-
-    const mapMbtiNumber = (mbti) => {
-        switch (mbti) {
-            case "ENTJ":
-            case "ESTP":
-            case "INTJ":
-                return (1);
-
-            case "ESTJ":
-            case "ESFP":
-            case "ISFP":
-                return (2);
-
-            case "ESFJ":
-            case "ENFP":
-            case "INTP":
-                return (3);
-
-            case "ENTP":
-            case "ENFJ":
-            case "INFP":
-                return 4;
-
-            case "ISTP":
-            case "INFJ":
-            case "ISFJ":
-            case "ISTJ":
-                return 5;
-
-            default:
-                return 0;
-        }
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const mbtiNumber = mapMbtiNumber; // mbti 변수를 전달해줍니다.
-
-        // `/jResult?mJelly=${mbtiNumber}`
-
-        axios({
-            url: `/jResult?mJelly=${1}`,
-            method: "post",
-        })
+        axios
+            .post(`/jResult?mJelly=${mbti}`)
             .then((response) => {
-                console.log(response);
+                console.log("결과 전송 성공:", response.data);
+                // 여기에서 필요한 추가 동작 수행
             })
             .catch((error) => {
-                console.log(error);
+                console.error("결과 전송 실패:", error);
+                // 여기에서 필요한 오류 처리 수행
             });
     };
 
-
-    
     return (
         <>
             <Header />
@@ -208,7 +161,7 @@ const Practice = () => {
                     <Page>{`페이지: ${page + 1} / ${questionList.length}`}</Page>
                 </div>
             ) : (
-                    <div onClick={handleSubmit}>
+                <div>
                     테스트가 모두 끝났습니다. 결과 보러 가기
                 </div>
             )}
@@ -232,16 +185,23 @@ const QuestButton = styled.div`
     height: 10rem;
     font-size: 3rem;
     border: 2px solid black;
+    border-radius: 2rem;
     margin: 0 auto;
     margin-top: 3rem;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    text-align: center;
+`
+
+const Bind = styled.div`
+    display: flex;
+    flex-direction: row;
 `
 
 const Answer = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
 `
 
 const AnswerButton = styled.button`
@@ -249,13 +209,14 @@ const AnswerButton = styled.button`
     height: 10rem;
     font-size: 3rem;
     border: 2px solid black;
+    border-radius: 2rem;
     margin-top: 5rem;
-    display: row;
+    display: flex; /* 수정: 기본 값인 'row' 대신 'flex'로 설정 */
     justify-content: center;
     align-items: center;
     background-color: #F4E6D0;
     cursor: pointer;
-`;
+`
 
 const Page = styled.div`
     width: 50%;

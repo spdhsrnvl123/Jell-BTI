@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Styled from "styled-components";
 import Header from "../../components/domain/Header";
-import Navigation from "../../components/domain/Navigation";
+import Navigation from "../../components/domain/Nav";
 import { useNavigate } from "react-router-dom";
 
 const Writing = () => {
@@ -98,7 +98,7 @@ const Title = Styled.input`
     background-color: #F4E6D0;
 `
 
-const Content = Styled.input`
+const Content = Styled.textarea`
     width: 90%;
     height: 35rem;
     font-size: 4rem;
