@@ -45,14 +45,12 @@ export const BalloonSkyblue = styled.img.attrs({alt:"파란풍선"})`
     position: absolute;
     width:15%;
     animation: ${UpDownAnimation} 3s linear infinite alternate;
-
 `
 
 const BallonThird = ()=>{
     return (
         <BallonBox>
             <BalloonBlue src="./balloonBlue.png" />
-            {/* <Img src="./balloonBlue.png" /> */}
             <BalloonGreen src="./balloonGreen.png" />
             <BalloonRed src="./balloonRed.png" />
         </BallonBox>
