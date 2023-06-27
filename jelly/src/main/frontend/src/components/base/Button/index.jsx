@@ -6,6 +6,7 @@ const Root = styled.button`
     margin : ${({margin})=>margin};
     background: ${({bgColor})=>bgColor};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
     border: 0;
     width: ${({width})=> width};
     color: ${({color})=> color};
@@ -13,9 +14,12 @@ const Root = styled.button`
     cursor: pointer;
     font-weight:${({fontWeight})=>(fontWeight)};
     font-family : ${(fontFamily)=>(fontFamily)};
+    &:hover{
+        color: rgb(255, 255, 255);
+    }
 `
 
-const Button = ({fontSize, fontFamily , fontWeight, padding, margin, bgColor, color, width, children, borderRadius,...props})=>{
+const Button = ({fontSize, fontFamily , fontWeight, padding, margin, bgColor, color, width, children ,...props})=>{
     return (
         <Root
             fontSize = {fontSize}
@@ -25,8 +29,7 @@ const Button = ({fontSize, fontFamily , fontWeight, padding, margin, bgColor, co
             margin = {margin}
             bgColor = {bgColor}
             color = {color}
-            width ={width}
-            boderRadius={borderRadius}
+            width = {width}
             {...props}
         >
             {children}
@@ -43,7 +46,6 @@ Button.propType = {
     bgColor : PropTypes.string,
     color : PropTypes.string,
     width : PropTypes.number,
-    borderRadius : PropTypes.number
 }
 
    
