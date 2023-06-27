@@ -76,7 +76,7 @@ const Navigation = ()=>{
     return(
         <MenuBox>
             <MenuList><Link to="/home">홈</Link></MenuList>
-            <MenuList onClick={() =>Que("/question")}>젤리 테스트</MenuList>
+            <MenuList onClick={() =>Que("/practice")}>젤리 테스트</MenuList>
             <MenuList><Link to="/board">커뮤니티</Link></MenuList>
             <MenuList onClick={()=>Auth("/mypage")}>마이페이지</MenuList>
         </MenuBox>

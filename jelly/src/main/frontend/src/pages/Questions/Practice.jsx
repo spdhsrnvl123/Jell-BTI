@@ -1,183 +1,271 @@
-// [
-//     {
-//         "id": 1,
-//         "option": "EI",
-//         "question": "새 학기가 시작하고 젤리를 가져온 처음 보는 친구",
-//         "answers": [
-//             {
-//                 "type": "E",
-//                 "content": "어 나도 줘 넌 이름이 뭐야"
-//             },
-//             {
-//                 "type": "I",
-//                 "content": "나도 먹고 싶다.. 근데 다가가진 못하겠어"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 2,
-//         "option": "EI",
-//         "question": "처음 가는 젤리 투어",
-//         "answers": [
-//             {
-//                 "type": "E",
+import React from "react"
+import Header from "components/domain/Header"
+import Navigation from "components/domain/Navigation"
+import { useState } from "react"
+import styled from "styled-components"
+import axios from "axios"
 
-//                 "content": "와 여기 진짜 재밌다."
-//             },
-//             {
-//                 "type": "I",
-//                 "content": "내가 왜 여기에 있지 집 가고 싶다."
-//             }
-//         ]
-//     },
-//     {
-//         "id": 3,
-//         "option": "EI",
-//         "question": "앞에 가시는 분이 젤리를 떨어트리셨다.",
-//         "answers": [
-//             {
-//                 "type": "E",
-//                 "content": "저기요!! 여기 젤리 떨어트리셨어요!!!"
-//             },
-//             {
-//                 "type": "I",
-//                 "content": "헉 젤리 떨어트리셨는데 어떡하지…."
-//             }
-//         ]
-//     },
-//     {
-//         "id": 4,
-//         "option": "SN",
-//         "question": "처음보는 젤리를 발견",
-//         "answers": [
-//             {
-//                 "type": "S",
-//                 "content": "도전 노노 익숙한 젤리 구매"
-//             },
-//             {
-//                 "type": "N",
-//                 "content": "이런걸 또 어디서 사겠어 일단 구매"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 5,
-//         "which": "SN",
-//         "question": "길을 가는데 맞은편에서 무섭게 생긴 사람이 걸어온다.",
-//         "answers": [
-//             {
-//                 "type": "S",
-//                 "content": "무서워 보이는 사람이네"
-//             },
-//             {
-//                 "type": "N",
-//                 "content": "저 사람이 내 가방에 있는 젤리 다 내놓으라 하면 어쩌지"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 6,
-//         "which": "SN",
-//         "question": "일주일동안 젤리만 먹기",
-//         "answers": [
-//             {
-//                 "type": "S",
-//                 "content": "그건 불가능 하지 않을까"
-//             },
-//             {
-//                 "type": "N",
-//                 "content": "그거 성공하면 뭐 줄거야?"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 7,
-//         "option": "TF",
-//         "question": "친구가 기분이 안 좋아서 젤리를 먹었다 한다.",
-//         "answers": [
-//             {
-//                 "type": "T",
-//                 "content": "무슨 젤리 먹었어?"
-//             },
-//             {
-//                 "type": "F",
-//                 "content": "기분이 왜 안 좋아?"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 8,
-//         "option": "TF",
-//         "question": "버려진 젤리를 보고",
-//         "answers": [
-//             {
-//                 "type": "T",
-//                 "content": "저기 쓰레기통 아닌데 누가 버린거야"
-//             },
-//             {
-//                 "type": "F",
-//                 "content": "헉 저거 맛있는건데 왜 버렸을까"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 9,
-//         "option": "TF",
-//         "question": "내가 힘들어 보인다고 젤리를 사온 친구",
-//         "answers": [
-//             {
-//                 "type": "T",
-//                 "content": "내가 왜 힘들어 보였어?"
-//             },
-//             {
-//                 "type": "F",
-//                 "content": "이거 내가 진짜 좋아하는거야 고마워"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 10,
-//         "option": "JP",
-//         "question": "친구가 여행 장소를 정하자한다.",
-//         "answers": [
-//             {
-//                 "type": "J",
-//                 "content": "당산역 ㅇㅇ가게로 젤리 사러 가자"
-//             },
-//             {
-//                 "type": "P",
-//                 "content": "난 아무 곳이나 다 좋아"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 11,
-//         "option": "JP",
-//         "question": "과제를 하는 나의 모습",
-//         "answers": [
-//             {
-//                 "type": "J",
-//                 "content": "10시엔 프론트.. 11시엔 백엔드.. 12시엔 젤리 먹으면서 휴식.."
-//             },
-//             {
-//                 "type": "P",
-//                 "content": "책상 먼저 정리하고 시작하자"
-//             }
-//         ]
-//     },
-//     {
-//         "id": 12,
-//         "option": "JP",
-//         "question": "집에 사람들을 초대하며",
-//         "answers": [
-//             {
-//                 "type": "J",
-//                 "content": "몇 명이 오려나?? 젤리는 이 정도면 되겠지"
-//             },
-//             {
-//                 "type": "P",
-//                 "content": "부족하면 더 시켜먹지 뭐"
-//             }
-//         ]
-//     }
-// ]
+const Practice = () => {
+
+    const questionList = [
+        {
+            q: ['새 학기가 시작하고 젤리를 가져온 처음 보는 친구'],
+            a: [{ type: 'E', text: '어 나도 줘 넌 이름이 뭐야' },
+            { type: 'I', text: '나도 먹고 싶다.. 근데 다가가진 못하겠어' }]
+        },
+        {
+            q: ['처음 가는 젤리 투어'],
+            a: [{ type: 'E', text: '와 여기 진짜 재밌다' },
+            { type: 'I', text: '내가 왜 여기에 있지 집 가고 싶다' }]
+        },
+        {
+            q: ['앞에 가시는 분이 젤리를 떨어트리셨다'],
+            a: [{ type: 'E', text: '저기요!! 여기 젤리 떨어트리셨어요!!!' },
+            { type: 'I', text: '헉 젤리 떨어트리셨는데 어떡하지….' }]
+        },
+
+        {
+            q: ['처음보는 젤리를 발견'],
+            a: [{ type: 'N', text: '이런걸 또 어디서 사겠어 일단 구매' },
+            { type: 'S', text: '도전 노노 익숙한 젤리 구매' }]
+        },
+        {
+            q: ['길을 가는데 맞은편에서 무섭게 생긴 사람이 걸어온다'],
+            a: [{ type: 'N', text: '저 사람이 내 가방에 있는 젤리 다 내놓으라 하면 어쩌지' },
+            { type: 'S', text: '무서워 보이는 사람이네' }]
+        },
+        {
+            q: ['일주일동안 젤리만 먹기'],
+            a: [{ type: 'N', text: '그거 성공하면 뭐 줄거야?' },
+            { type: 'S', text: '그건 불가능 하지 않을까' }]
+        },
+
+        {
+            q: ['친구가 기분이 안 좋아서 젤리를 먹었다 한다'],
+            a: [{ type: 'F', text: '기분이 왜 안 좋아?' },
+            { type: 'T', text: '무슨 젤리 먹었어?' }]
+        },
+        {
+            q: ['버려진 젤리를 보고'],
+            a: [{ type: 'F', text: '헉 저거 맛있는건데 왜 버렸을까' },
+            { type: 'T', text: '저기 쓰레기통 아닌데 누가 버린거야' }]
+        },
+        {
+            q: ['내가 힘들어 보인다고 젤리를 사온 친구'],
+            a: [{ type: 'F', text: '이거 내가 진짜 좋아하는거야 고마워' },
+            { type: 'T', text: '내가 왜 힘들어 보였어?' }]
+        },
+
+        {
+            q: ['친구가 여행 장소를 정하자한다'],
+            a: [{ type: 'P', text: '난 아무 곳이나 다 좋아' },
+            { type: 'J', text: '당산역 ㅇㅇ가게로 젤리 사러 가자' }]
+        },
+        {
+            q: ['과제를 하는 나의 모습'],
+            a: [{ type: 'P', text: '책상 먼저 정리하고 시작하자' },
+            { type: 'J', text: '10시엔 프론트.. 11시엔 백엔드.. 12시엔 젤리 먹으면서 휴식..' }]
+        },
+        {
+            q: ['집에 사람들을 초대하며'],
+            a: [{ type: 'P', text: '부족하면 더 시켜먹지 뭐' },
+            { type: 'J', text: '몇 명이 오려나?? 젤리는 이 정도면 되겠지' }]
+        },
+        {
+            q: ['테스트가 모두 끝났습니다. 결과 보러 가기'],
+            a: [{ type: '', text: '결과 보러 가기' }]
+        }
+
+    ]
+
+    const [mbtiList, setMbtiList] = useState([
+        { name: 'E', count: 0 }, { name: 'I', count: 0 }, { name: 'N', count: 0 }, { name: 'S', count: 0 },
+        { name: 'F', count: 0 }, { name: 'T', count: 0 }, { name: 'P', count: 0 }, { name: 'J', count: 0 }
+    ])
+
+    const [page, setPage] = useState(0)
+
+    const handleAnswer = (type) => {
+        const updatedMbtiList = mbtiList.map((item) => {
+            if (item.name === type) {
+                return { ...item, count: item.count + 1 };
+            }
+            return item;
+        });
+
+        setMbtiList(updatedMbtiList);
+
+        if (page < questionList.length - 1) {
+            setPage(page + 1);
+        } else {
+            console.log("테스트 종료");
+            setMbti();
+        }
+    };
+
+    // const [mbtiContents, setMbtiContents] = useState([])
+
+    const setMbti = () => {
+        let EorI =
+            mbtiList.find((data) => data.name === "E").count >
+                mbtiList.find((data) => data.name === "I").count
+                ? "E"
+                : "I";
+        let NorS =
+            mbtiList.find((data) => data.name === "N").count >
+                mbtiList.find((data) => data.name === "S").count
+                ? "N"
+                : "S";
+        let ForT =
+            mbtiList.find((data) => data.name === "F").count >
+                mbtiList.find((data) => data.name === "T").count
+                ? "F"
+                : "T";
+        let PorJ =
+            mbtiList.find((data) => data.name === "P").count >
+                mbtiList.find((data) => data.name === "J").count
+                ? "P"
+                : "J";
+
+        let mbti = EorI + NorS + ForT + PorJ;
+
+        console.log("MBTI 결과:", mbti);
+
+        // MBTI 유형을 숫자로 매핑하는 함수
+    };
+
+    const mapMbtiNumber = (mbti) => {
+        switch (mbti) {
+            case "ENTJ":
+            case "ESTP":
+            case "INTJ":
+                return (1);
+
+            case "ESTJ":
+            case "ESFP":
+            case "ISFP":
+                return (2);
+
+            case "ESFJ":
+            case "ENFP":
+            case "INTP":
+                return (3);
+
+            case "ENTP":
+            case "ENFJ":
+            case "INFP":
+                return 4;
+
+            case "ISTP":
+            case "INFJ":
+            case "ISFJ":
+            case "ISTJ":
+                return 5;
+
+            default:
+                return 0;
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const mbtiNumber = mapMbtiNumber; // mbti 변수를 전달해줍니다.
+
+        // `/jResult?mJelly=${mbtiNumber}`
+
+        axios({
+            url: `/jResult?mJelly=${1}`,
+            method: "post",
+        })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+
+    
+    return (
+        <>
+            <Header />
+            <Navigation />
+            <Topic>질문</Topic>
+            {page < questionList.length ? (
+                <div>
+                    <QuestButton>{questionList[page].q}</QuestButton>
+                    <div>
+                        {questionList[page].a.map((answer, index) => (
+                            <Answer key={index}>
+                                <AnswerButton onClick={() => handleAnswer(answer.type)}>
+                                    {answer.text}
+                                </AnswerButton>
+                            </Answer>
+                        ))}
+                    </div>
+                    <Page>{`페이지: ${page + 1} / ${questionList.length}`}</Page>
+                </div>
+            ) : (
+                    <div onClick={handleSubmit}>
+                    테스트가 모두 끝났습니다. 결과 보러 가기
+                </div>
+            )}
+        </>
+    );
+}
+
+export default Practice;
+
+const Topic = styled.div`
+    width: 100%;
+    height: 3rem;
+    background-color: #FFFFE0;
+    text-align: center;
+    font-size: 3rem;
+    border: 3px solid #F5DA81;
+`;
+
+const QuestButton = styled.div`
+    width: 30%;
+    height: 10rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    margin: 0 auto;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const Answer = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+`
+
+const AnswerButton = styled.button`
+    width: 30%;
+    height: 10rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    margin-top: 5rem;
+    display: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4E6D0;
+    cursor: pointer;
+`;
+
+const Page = styled.div`
+    width: 50%;
+    height: 5rem;
+    font-size: 3rem;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+`;

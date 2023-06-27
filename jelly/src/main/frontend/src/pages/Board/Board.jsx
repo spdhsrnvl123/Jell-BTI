@@ -7,7 +7,9 @@
     import Navigation from "../../components/domain/Navigation";
 
     const Board = () => {
+        
         const navigate = useNavigate();
+
         const [boardList, setBoardList] = useState([]);
 
         useEffect(() => {
