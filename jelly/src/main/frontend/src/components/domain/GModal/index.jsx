@@ -3,9 +3,6 @@ import { useSelector } from "react-redux";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Img from "../../base/Img";
-import Button from "../../base/Button";
-import axios from "axios";
-import Goods from "../Goods";
 
 const ModalCotainer = styled.div`
   display: flex;
@@ -83,7 +80,6 @@ const GModal = () => {
       setValue(...item);
     }
   }, [data]);
-
 
   return (
     <ModalCotainer>

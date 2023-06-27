@@ -59,7 +59,7 @@ public class JellyTestController {
 //                jellBTI = 5;
 //        }
         if(mJelly != null){
-            System.out.println("jResult호출 성공 : " + jellBTI);
+            System.out.println("jResult호출 성공 : " + mJelly);
         }else{
             System.out.println("호출 실패 null 값");
         }
