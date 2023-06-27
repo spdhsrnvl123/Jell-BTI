@@ -34,9 +34,7 @@ public class JellyTestController {
     }
 
     @PostMapping("/jResult")
-    public void userJellyResult(@RequestParam int mJelly) throws ParseException {
-        System.out.printf("@@@@@@@@@@@@@@@@@@@@");
-        // memberService.inputUserJellyResult(mJelly);
+    public void userJellyResult(@RequestParam String mJelly) throws ParseException {
+        System.out.printf("@@@@@@@@@@@@@@@@@@@@ 제발 될거야 이번에는 : " + mJelly);
     }
-
 }
