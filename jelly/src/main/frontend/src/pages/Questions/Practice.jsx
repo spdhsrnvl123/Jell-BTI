@@ -128,58 +128,16 @@ const Practice = () => {
         let mbti = EorI + NorS + ForT + PorJ;
 
         console.log("MBTI 결과:", mbti);
-    };
 
-    const mapMbtiNumber = (mbti) => {
-        switch (mbti) {
-            case "ENTJ":
-            case "ESTP":
-            case "INTJ":
-                return (1);
-
-            case "ESTJ":
-            case "ESFP":
-            case "ISFP":
-                return (2);
-
-            case "ESFJ":
-            case "ENFP":
-            case "INTP":
-                return (3);
-
-            case "ENTP":
-            case "ENFJ":
-            case "INFP":
-                return 4;
-
-            case "ISTP":
-            case "INFJ":
-            case "ISFJ":
-            case "ISTJ":
-                return 5;
-
-            default:
-                return 0;
-        }
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const mbtiNumber = mapMbtiNumber(mbtiList);
-
-        //주소 `/jResult?mJelly=${mbtiNumber}`
-
-        axios({
-            url: `/jResult?mJelly=${mbtiNumber}`,
-            method: "post",
-            data: mbtiNumber
-        })
+        axios
+            .post(`/jResult?mJelly=${mbti}`)
             .then((response) => {
-                console.log(response);
+                console.log("결과 전송 성공:", response.data);
+                // 여기에서 필요한 추가 동작 수행
             })
             .catch((error) => {
-                console.log(error);
+                console.error("결과 전송 실패:", error);
+                // 여기에서 필요한 오류 처리 수행
             });
     };
 
@@ -203,7 +161,7 @@ const Practice = () => {
                     <Page>{`페이지: ${page + 1} / ${questionList.length}`}</Page>
                 </div>
             ) : (
-                <div onClick={handleSubmit}>
+                <div>
                     테스트가 모두 끝났습니다. 결과 보러 가기
                 </div>
             )}
