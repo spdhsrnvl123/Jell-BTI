@@ -21,7 +21,7 @@ const ModalSection = styled.section`
     top:53%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 33%;
+    width : ${({width})=>width};
     height: 65%;
     background: #F7FEF7;
     border-radius: 50px;
@@ -48,13 +48,13 @@ const ModalContent = styled.div`
     padding: 10% 3%;
 `
 
-const Modal = ({children})=>{
+const Modal = ({children,width})=>{
     const navigate = useNavigate();
     return(
         <ModalCotainer>
-            <ModalSection>
+            <ModalSection width={width}>
                 {children}
-                <ModalButton onClick={()=>navigate("/home")}>
+                <ModalButton onClick={()=>navigate(-1)}>
                     &times;
                 </ModalButton>
             </ModalSection>

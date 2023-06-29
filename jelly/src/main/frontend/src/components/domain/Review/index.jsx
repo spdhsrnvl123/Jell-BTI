@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../../base/Button";
 import { useInput } from "hooks/useInput";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import StarRating from "../StarRating";
 import { useState } from "react";
 import axios from "axios";
@@ -62,6 +62,7 @@ const Review = () => {
   const [count, setCount] = useState(0);
   const {id} = useParams();
   const userData = useSelector((state)=>state.userInformation);
+  const navigate = useNavigate()
 
   const ReviewHandler = (e)=>{
     e.preventDefault();
@@ -77,7 +78,8 @@ const Review = () => {
           "mEmail": userData.mEmail
         }
     }).then((response) => {
-      console.log(response)
+      alert("후기가 작성되었습니다.")
+      navigate("/mypage/writingreview")
     }).catch((err)=>{
       console.log(err);
     })

@@ -14,9 +14,6 @@ const Root = styled.button`
     cursor: pointer;
     font-weight:${({fontWeight})=>(fontWeight)};
     font-family : ${(fontFamily)=>(fontFamily)};
-    &:hover{
-        color: rgb(255, 255, 255);
-    }
 `
 
 const Button = ({fontSize, fontFamily , fontWeight, padding, margin, bgColor, color, width, children ,...props})=>{

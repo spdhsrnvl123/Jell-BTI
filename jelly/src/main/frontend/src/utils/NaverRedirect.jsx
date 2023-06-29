@@ -8,7 +8,7 @@ export default function NaverRedirect() {
         const url = new URL(window.location.href);
         console.log(url);
         const code = url.searchParams.get("code");
-        console.log(code)
+        console.log(code);
         axios({
             method: "GET",
             url: `/oauth2/authorization/naver?code=${code}`,

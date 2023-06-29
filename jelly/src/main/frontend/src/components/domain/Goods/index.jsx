@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Box from "components/base/Box";
 import Chart from "components/base/Chart";
 import useAxios from "hooks/useAxios";
 import Button from "components/base/Button";
+import Box from "components/base/Box";
 
 export const BoxContainer = styled.ul`
   margin: 0 auto;
@@ -61,8 +61,16 @@ const Goods = () => {
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: "/jellies/rates/email/spdhsrnvl123-naver.com",
+    url: `/jellies/rates/email/magicofclown-naver.com`,
   });
+
+  console.log(response)
+
+  const a = response?.sort(
+    (a, b) => new Date(b.insertDate) - new Date(a.insertDate)
+  );
+
+  console.log(a);
 
   return (
     <>
@@ -87,7 +95,7 @@ const Goods = () => {
       <BoxContainer>
         {loading
           ? null
-          : response.slice(0, 5).map((v, i) => {
+          : a.slice(0, 5).map((v, i) => {
               return <Box key={i}>{v.rcontent}</Box>;
             })}
       </BoxContainer>
