@@ -60,7 +60,7 @@ const Title = styled.div`
   margin-top: 60px;
   text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.15);
   margin: 30px auto;
-  width: 340px;
+  width: 380px;
   text-align: center;
 `;
 

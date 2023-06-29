@@ -17,7 +17,7 @@ const Cotainer = styled.div`
 const Login = ()=>{
     const navigate = useNavigate();
     return(
-        <Modal>
+        <Modal width={"27%"}>
             <Cotainer>
                 <Img src={"/yellow.png"} width={"33%"} />
                 <Button 

@@ -15,7 +15,7 @@ export function useInput(initialValue){
     const handleChange = (e) =>{
         setInputValue(e.target.value);
         setBoolean(false);
-        console.log(e.target.value)
+        // console.log(e.target.value)
     };
 
 
