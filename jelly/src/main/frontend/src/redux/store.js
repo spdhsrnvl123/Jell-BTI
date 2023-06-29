@@ -7,6 +7,7 @@ let userInformation = createSlice({
     initialState : {},
     reducers : {
         userInformationIn(state,action){
+            // console.log(action.payload)
             state += Object.assign(state,action.payload)
         }
     }
