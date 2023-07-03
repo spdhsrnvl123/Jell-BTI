@@ -37,4 +37,36 @@ public class JellyTestController {
     public void userJellyResult(@RequestParam String mJelly) throws ParseException {
         System.out.printf("@@@@@@@@@@@@@@@@@@@@ 제발 될거야 이번에는 : " + mJelly);
     }
+
+    // int jellBTI = 0;
+    // // switch (mJelly){
+    // // case "ENTJ" :
+    // // case "ESTP" :
+    // // case "INTJ" :
+    // // jellBTI = 1;
+    // // case "ESTJ" :
+    // // case "ESFP" :
+    // // case "ISFP" :
+    // // jellBTI = 2;
+    // // case "ESFJ" :
+    // // case "ENFP" :
+    // // case "INTP" :
+    // // jellBTI = 3;
+    // // case "ENTP" :
+    // // case "ENFJ" :
+    // // case "INFP" :
+    // // jellBTI = 4;
+    // // case "ISTP" :
+    // // case "INFJ" :
+    // // case "ISFJ" :
+    // // case "ISTJ" :
+    // // jellBTI = 5;
+    // // }
+    // if(mJelly!=null)
+    // {
+    // System.out.println("jResult호출 성공 : " + mJelly);
+    // }else
+    // {
+    // System.out.println("호출 실패 null 값");
+    // }
 }
