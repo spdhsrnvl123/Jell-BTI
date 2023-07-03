@@ -16,6 +16,8 @@ import GModal from "components/domain/GModal"
 import Review from "components/domain/Review"
 import Goods from "components/domain/Goods"
 import Login from "pages/Login"
+import ProductList from "pages/ProductList"
+import ReviewList from "pages/ReviewList"
 
 const Router = () => {
     return (
@@ -26,7 +28,10 @@ const Router = () => {
                 <Route path="/oauth/login/kakao" element={<KakaoRedirect />} />
                 <Route path="/naverlogin" element={<Naver />} />
                 <Route path="oauth2/authorization/naver" element={<NaverRedirect />} />
-                <Route path="/mypage" element={<MyPage />} />
+                <Route path="/mypage" element={<MyPage />}>
+                    <Route path="productlist" element={<ProductList />} />
+                    <Route path="reviewlist" element={<ReviewList />} />
+                </Route>
                 <Route path="/home" element={<Home />}>
                     <Route path="login" element={<Login />} />
                     <Route path="goodsModal/:id" element={<GModal />}>

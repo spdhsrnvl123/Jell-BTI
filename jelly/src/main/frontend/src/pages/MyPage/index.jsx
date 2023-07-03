@@ -3,8 +3,10 @@ import { BalloonBlue, BalloonGreen, BalloonRed, BalloonSkyblue, UpDownAnimation 
 import Button from "components/base/Button";
 import Logo from "components/base/Logo";
 import { Circle, Content } from "components/domain/SearchBox";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { userInformationIn } from "redux/store";
 import styled from "styled-components";
 
 export const LogoBox = styled.div`
@@ -141,19 +143,31 @@ const HariboNoise = styled(Circle)`
 
 const MyPage = ()=>{
     const navigate = useNavigate();
-    const userData = useSelector((state)=>state.userInformation);
 
+    const user = useSelector((state)=> state)
+    let token = localStorage.getItem("token")
+
+    useEffect(()=>{
+        axios({
+            method : "GET",
+            url : `/oauth/login/userInfo?token=${token}`
+        }).then((res)=>{
+            console.log(res.data.userInfo)
+            userInformationIn(res.data.userInfo)
+        })
+    },[])
+    
     return(
         <>
             {/* MyPageBallon-풍선이미지 */}
-            <MyPageBallonBlue src="./balloonBlue.png" />
-            <MyPageBallonBlue_2 src="./balloonBlue.png" />
-            <MyPageBallonRed src="./balloonRed.png" />
-            <MyPageBallonRed_2 src="./balloonRed.png" />
-            <MyPageBallonGreen src="./balloonGreen.png" />
-            <MyPageBallonGreen_2 src="./balloonGreen.png" />
-            <MyPageBallonSkyblue src="./ballonSkyblue.png" />
-            <MyPageBallonSkyblue_2 src="./ballonSkyblue.png" />
+            <MyPageBallonBlue src="/balloonBlue.png" />
+            <MyPageBallonBlue_2 src="/balloonBlue.png" />
+            <MyPageBallonRed src="/balloonRed.png" />
+            <MyPageBallonRed_2 src="/balloonRed.png" />
+            <MyPageBallonGreen src="/balloonGreen.png" />
+            <MyPageBallonGreen_2 src="/balloonGreen.png" />
+            <MyPageBallonSkyblue src="/ballonSkyblue.png" />
+            <MyPageBallonSkyblue_2 src="/ballonSkyblue.png" />
             <LogoBox onClick={()=>navigate("/home")} >
                 <Logo fontSize={150} marginLeft="70px" />
             </LogoBox>
@@ -168,10 +182,11 @@ const MyPage = ()=>{
             </ProfileImage>
             <ButtonBox>
                 <Button onClick={()=>navigate("/board")} fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>내가 작성한<br /> 커뮤니티</Button>
-                <Button onClick={()=>navigate("/question")} fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>젤리 테스트<br /> 시작하기</Button>
-                <Button fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>젤리 후기<br /> 작성하기</Button>
-                <Button fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>내가 작성한<br /> 젤리 후기</Button>
+                <Button onClick={()=>navigate("/practice")} fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>젤리 테스트<br /> 시작하기</Button>
+                <Button onClick={()=>navigate("productlist")} fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>젤리 후기<br /> 작성하기</Button>
+                <Button onClick={()=>navigate("writingreview")} fontSize={40} fontWeight={700} padding={"0.5em 0.7em"} margin={"0em 0.5em"} bgColor={"#F7FEF7"} width={"175px"}>내가 작성한<br /> 젤리 후기</Button>
             </ButtonBox>
+            <Outlet />
         </>
     )
 }
