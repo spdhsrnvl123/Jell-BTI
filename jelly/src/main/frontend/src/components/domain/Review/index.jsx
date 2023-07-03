@@ -79,7 +79,7 @@ const Review = () => {
         }
     }).then((response) => {
       alert("후기가 작성되었습니다.")
-      navigate("/mypage/writingreview")
+      navigate("/mypage/reviewlist")
     }).catch((err)=>{
       console.log(err);
     })

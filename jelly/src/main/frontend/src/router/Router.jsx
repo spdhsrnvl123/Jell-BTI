@@ -17,7 +17,7 @@ import Review from "components/domain/Review"
 import Goods from "components/domain/Goods"
 import Login from "pages/Login"
 import ProductList from "pages/ProductList"
-import WritingReview from "pages/WritingReview"
+import ReviewList from "pages/ReviewList"
 
 const Router = () => {
     return (
@@ -30,7 +30,7 @@ const Router = () => {
                 <Route path="oauth2/authorization/naver" element={<NaverRedirect />} />
                 <Route path="/mypage" element={<MyPage />}>
                     <Route path="productlist" element={<ProductList />} />
-                    <Route path="writingreview" element={<WritingReview />} />
+                    <Route path="reviewlist" element={<ReviewList />} />
                 </Route>
                 <Route path="/home" element={<Home />}>
                     <Route path="login" element={<Login />} />
