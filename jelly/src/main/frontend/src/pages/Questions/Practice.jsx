@@ -4,6 +4,7 @@ import Navigation from "components/domain/Nav"
 import { useState } from "react"
 import styled from "styled-components"
 import axios from "axios"
+import { MyPageBallonBlue, MyPageBallonGreen, MyPageBallonGreen_2, MyPageBallonRed, MyPageBallonRed_2, MyPageBallonSkyblue_2 } from "pages/MyPage";
 
 const Practice = () => {
 
@@ -162,14 +163,25 @@ const Practice = () => {
                 </div>
             ) : (
                 <div>
-                    테스트가 모두 끝났습니다. 결과 보러 가기
-                </div>
+                    테스트가 모두 끝났습니다.
+
+                    결과 보러 가기
+                </div >
+
             )}
+            <MyPageBallonBlue src="/balloonBlue.png" />
+            <MyPageBallonRed src="/balloonRed.png" />
+            <MyPageBallonRed_2 src="/balloonRed.png" />
+            <MyPageBallonGreen src="/balloonGreen.png" />
+            <MyPageBallonGreen_2 src="/balloonGreen.png" />
+            <MyPageBallonSkyblue_2 src="/ballonSkyblue.png" />
         </>
     );
 }
 
 export default Practice;
+
+
 
 const Topic = styled.div`
     width: 100%;
@@ -183,13 +195,13 @@ const Topic = styled.div`
 const QuestButton = styled.div`
     width: 30%;
     height: 10rem;
-    font-size: 3rem;
-    border: 2px solid black;
+    font-size: 4rem;
+    /* border: 2px solid black; */
     border-radius: 2rem;
     margin: 0 auto;
     margin-top: 3rem;
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     text-align: center;
 `
@@ -202,6 +214,8 @@ const Bind = styled.div`
 const Answer = styled.div`
     display: flex;
     flex-direction: row;
+    text-align: center;
+    justify-content: center;
 `
 
 const AnswerButton = styled.button`
@@ -210,6 +224,7 @@ const AnswerButton = styled.button`
     font-size: 3rem;
     border: 2px solid black;
     border-radius: 2rem;
+    margin: 0 auto;
     margin-top: 5rem;
     display: flex; /* 수정: 기본 값인 'row' 대신 'flex'로 설정 */
     justify-content: center;
@@ -222,7 +237,7 @@ const Page = styled.div`
     width: 50%;
     height: 5rem;
     font-size: 3rem;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,3 +245,4 @@ const Page = styled.div`
     margin-top: 3rem;
     margin-bottom: 3rem;
 `;
+
