@@ -4,10 +4,11 @@ import Navigation from "components/domain/Nav"
 import { useState } from "react"
 import styled from "styled-components"
 import axios from "axios"
+import useAuth from "hooks/useAuth"
 import { MyPageBallonBlue, MyPageBallonGreen, MyPageBallonGreen_2, MyPageBallonRed, MyPageBallonRed_2, MyPageBallonSkyblue_2 } from "pages/MyPage";
 
 const Practice = () => {
-
+    useAuth("/practice")
     const questionList = [
         {
             q: ['새 학기가 시작하고 젤리를 가져온 처음 보는 친구'],

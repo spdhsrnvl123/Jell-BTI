@@ -2,7 +2,7 @@ import Header from "@/components/domain/Header";
 import Search from "@/components/domain/Search";
 import SearchBox from "components/domain/SearchBox";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncUpFetch } from "redux/jellyInfo";
 import { useEffect } from "react";
 import {
@@ -33,24 +33,22 @@ const LoginBox = styled.div`
 
 const Home = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate=useNavigate()
   let token = localStorage.getItem('token');
 
   //토큰이 있을 경우 유저정보 받아오기
-  if (token) {
+  if(token){
     axios({
-      method: "GET",
-      url: `/oauth/login/userInfo?token=${token}`
-    }).then((res) => {
-      // setUser(res.data.userInfo);
+      method : "GET",
+      url : `/oauth/login/userInfo?token=${token}`
+  }).then((res)=>{
       dispatch(userInformationIn(res.data.userInfo));
       const userEmail = res.data.userInfo.mEmail;
-    })
-  } else {
+  })
+  }else{
     console.log("로그인을 하지 않았습니다.")
   }
-
-
+  
   useEffect(() => {
     dispatch(asyncUpFetch());
   }, []);
@@ -64,7 +62,7 @@ const Home = () => {
       <MyPageBallonGreen_2 src="/balloonGreen.png" />
       <MyPageBallonSkyblue_2 src="/ballonSkyblue.png" />
       <LoginBox>
-        <Button onClick={() => navigate("/home/login")} fontSize={30} fontWeight={700} padding={"0.6em 0.7em"} bgColor={"rgba(0, 163, 255, 0.2)"}>로그인하기</Button>
+        <Button onClick={()=>navigate("/home/login")} fontSize={30} fontWeight={700} padding={"0.6em 0.7em"} bgColor={"rgba(0, 163, 255, 0.2)"}>로그인하기</Button>
       </LoginBox>
       <Header />
       <Nav />
