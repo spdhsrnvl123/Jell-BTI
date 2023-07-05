@@ -18,6 +18,7 @@ import Goods from "components/domain/Goods"
 import Login from "pages/Login"
 import ProductList from "pages/ProductList"
 import ReviewList from "pages/ReviewList"
+import Result from "pages/Questions/Result"
 
 const Router = () => {
     return (
@@ -45,6 +46,7 @@ const Router = () => {
                 <Route path="/modify" element={<Modify />} />
                 <Route path="/question" element={<Question />} />
                 <Route path="/practice" element={<Practice />} />
+                <Route path="/result" element={<Result />} />
             </Routes>
         </BrowserRouter>
     )

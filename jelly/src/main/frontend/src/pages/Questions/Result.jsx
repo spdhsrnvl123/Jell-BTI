@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components";
 import Header from "components/domain/Header";
-import Navigation from "components/domain/Navigation";
+// import Navigation from "components/domain/Navigation";
+import Navigation from "components/domain/Nav"
 import { useState } from "react";
 import axios from "axios";
 
@@ -12,7 +13,7 @@ const Result = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        mJelly="2";
+        mJelly = "2";
         axios({
             url: `/jResult?mJelly=${mJelly}`,
             method: "post",
@@ -55,16 +56,17 @@ const Finish = styled.div`
 `
 
 const Img = styled.div`
-    width: 50%;
+    width: 40%;
     height: 30rem;
     border: 3px dashed red;
 `
 
 const List = styled.div`
-    width: 50%;
+    width: 60%;
     height: 30rem;
     border: 3px solid blue;
     font-size: 3rem;
+    text-align: center;
 `
 
 const Button = styled.button`
