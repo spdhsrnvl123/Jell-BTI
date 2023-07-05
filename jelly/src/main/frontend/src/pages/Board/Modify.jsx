@@ -5,12 +5,15 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import Header from "../../components/domain/Header";
 import Navigation from "../../components/domain/Nav";
+import useAuth from 'hooks/useAuth';
 
 const Modify = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [board, setBoard] = useState({});
     const bIdx = new URLSearchParams(location.search).get('bIdx');
+
+    useAuth(`/modify?bldx=${bIdx}`)
 
     useEffect(() => {
         const fetchData = async () => {
