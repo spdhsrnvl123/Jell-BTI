@@ -113,6 +113,7 @@ const Practice = () => {
         console.log("결과 보러 가기");
         navigate("/result");
     };
+    //이동
 
     const setMbti = () => {
         let EorI =
