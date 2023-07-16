@@ -30,7 +30,6 @@ public class JellyTestController {
     @Autowired
     MemberRepository memberRepository;
 
-
     // 젤리테스트결과 받아오는 컨트롤러
 
     // 1. 회원의 젤리 타입을 먼저 확인 (신규 테스트인지, 기존 테스트인지 확인하기 위함.)
@@ -43,14 +42,15 @@ public class JellyTestController {
     }
 
     @PostMapping("/jResult")
-    public Map<String,String> userJellyResult(@RequestParam String mJelly, HttpServletRequest request) throws ParseException {
+    public Map<String, String> userJellyResult(@RequestParam String mJelly, HttpServletRequest request)
+            throws ParseException {
         System.out.println("프론트에서 젤리 결과 가져오기 : " + mJelly);
         HttpSession session = request.getSession(false);
         Member member = (Member) session.getAttribute("userInfo");
 
-        System.out.println("유저 정보 꺼내오기 성공 "+ member);
+        System.out.println("유저 정보 꺼내오기 성공 " + member);
 
-        Map<String,String> result = jellyTestService.callBackJellyResult(mJelly, member);
+        Map<String, String> result = jellyTestService.callBackJellyResult(mJelly, member);
         return result;
     }
 

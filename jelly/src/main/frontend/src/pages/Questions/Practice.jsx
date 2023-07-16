@@ -6,9 +6,12 @@ import styled from "styled-components"
 import axios from "axios"
 import useAuth from "hooks/useAuth"
 import { MyPageBallonBlue, MyPageBallonGreen, MyPageBallonGreen_2, MyPageBallonRed, MyPageBallonRed_2, MyPageBallonSkyblue_2 } from "pages/MyPage";
+import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Practice = () => {
-    useAuth("/practice")
+    const navigate = useNavigate();
+
     const questionList = [
         {
             q: ['새 학기가 시작하고 젤리를 가져온 처음 보는 친구'],
@@ -74,8 +77,8 @@ const Practice = () => {
             { type: 'J', text: '몇 명이 오려나?? 젤리는 이 정도면 되겠지' }]
         },
         {
-            q: ['테스트가 모두 끝났습니다. 결과 보러 가기'],
-            a: [{ type: '', text: '결과 보러 가기' }]
+            q: ['테스트가 모두 끝났습니다.'],
+            a: [{ type: '', text: '결과 보러 가기' }],
         }
 
     ]
@@ -102,7 +105,13 @@ const Practice = () => {
         } else {
             console.log("테스트 종료");
             setMbti();
+            goToResult(); // 결과 보기 페이지로 이동하는 함수 호출
         }
+    };
+
+    const goToResult = () => {
+        console.log("결과 보러 가기");
+        navigate("/result");
     };
 
     const setMbti = () => {
@@ -148,28 +157,19 @@ const Practice = () => {
             <Header />
             <Navigation />
             <Topic>질문</Topic>
-            {page < questionList.length ? (
+            <div>
+                <QuestButton>{questionList[page].q}</QuestButton>
                 <div>
-                    <QuestButton>{questionList[page].q}</QuestButton>
-                    <div>
-                        {questionList[page].a.map((answer, index) => (
-                            <Answer key={index}>
-                                <AnswerButton onClick={() => handleAnswer(answer.type)}>
-                                    {answer.text}
-                                </AnswerButton>
-                            </Answer>
-                        ))}
-                    </div>
-                    <Page>{`페이지: ${page + 1} / ${questionList.length}`}</Page>
+                    {questionList[page].a.map((answer, index) => (
+                        <Answer key={index}>
+                            <AnswerButton onClick={() => handleAnswer(answer.type)}>
+                                {answer.text}
+                            </AnswerButton>
+                        </Answer>
+                    ))}
                 </div>
-            ) : (
-                <div>
-                    테스트가 모두 끝났습니다.
-
-                    결과 보러 가기
-                </div >
-
-            )}
+                <Page>{`페이지: ${page + 1} / ${questionList.length}`}</Page>
+            </div>
             <MyPageBallonBlue src="/balloonBlue.png" />
             <MyPageBallonRed src="/balloonRed.png" />
             <MyPageBallonRed_2 src="/balloonRed.png" />

@@ -27,7 +27,7 @@ const Result = () => {
             <Topic>테스트 결과</Topic>
             <Finish>
                 <Img />
-                <List>당신은 용감한 젤리입니다.</List>
+                <List>여기</List>
             </Finish>
             <Button onClick={handleSubmit}>클릭미</Button>
         </>
