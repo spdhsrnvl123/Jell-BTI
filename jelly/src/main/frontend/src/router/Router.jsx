@@ -8,7 +8,6 @@ import Board from "@/pages/Board/Board"
 import Writing from "@/pages/Board/Writing"
 import Read from "pages/Board/Read"
 import Modify from "pages/Board/Modify"
-import Question from "pages/Questions/Question"
 import Practice from "pages/Questions/Practice"
 import Naver from "pages/Naver"
 import NaverRedirect from "@/utils/KakaoRedirect"
@@ -44,7 +43,6 @@ const Router = () => {
                 <Route path="/writing" element={<Writing />} />
                 <Route path="/read" element={<Read />} />
                 <Route path="/modify" element={<Modify />} />
-                <Route path="/question" element={<Question />} />
                 <Route path="/practice" element={<Practice />} />
                 <Route path="/result" element={<Result />} />
             </Routes>
