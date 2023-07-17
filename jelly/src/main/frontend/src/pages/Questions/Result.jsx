@@ -5,38 +5,52 @@ import Navigation from "components/domain/Nav";
 import axios from "axios";
 
 const Result = () => {
-    const [jellyResult, setJellyResult] = useState({});
+  const [jellyResult, setJellyResult] = useState({});
 
-    useEffect(() => {
-        fetchJellyResult();
-    }, []);
+  useEffect(() => {
+    fetchJellyResult();
+  }, []);
 
-    const fetchJellyResult = async () => {
-        try {
-            const response = await axios.get("/jResult");
-            setJellyResult(response.data);
-        } catch (error) {
-            console.error("Error fetching jelly result:", error);
-        }
-    };
+  const fetchJellyResult = async () => {
+    try {
+      const response = await axios.get("/jResult");
+      setJellyResult(response.data);
+    } catch (error) {
+      console.error("Error fetching jelly result:", error);
+    }
+  };
 
 
-    return (
-        <>
-            <Header />
-            <Navigation />
-            <Topic>테스트 결과</Topic>
-            <Finish>
-                <Img>
-                    <Img1 src="/jelly/red.png" alt="Jelly Image" />
-                </Img>
-                <List>
-                    {jellyResult.title} <br />
-                    {jellyResult.content}
-                </List>
-            </Finish>
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <Navigation />
+      <Topic>테스트 결과</Topic>
+      <Finish>
+        <Img>
+          {jellyResult.title === "빨간곰 젤리" && (
+            <Img1 src="/jelly/red.png" alt="Jelly Image" />
+          )}
+          {jellyResult.title === "초록곰 젤리" && (
+            <Img1 src="/jelly/green.png" alt="Jelly Image" />
+          )}
+          {jellyResult.title === "주황곰 젤리" && (
+            <Img1 src="/jelly/orange.png" alt="Jelly Image" />
+          )}
+          {jellyResult.title === "투명곰 젤리" && (
+            <Img1 src="/jelly/transparency.png" alt="Jelly Image" />
+          )}
+          {jellyResult.title === "노란곰 젤리" && (
+            <Img1 src="/jelly/yellow.png" alt="Jelly Image" />
+          )}
+        </Img>
+        <List>
+          {jellyResult.title} <br />
+          {jellyResult.content}
+        </List>
+      </Finish>
+    </>
+  );
 };
 
 const Topic = styled.div`   
