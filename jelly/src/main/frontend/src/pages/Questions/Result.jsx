@@ -31,17 +31,17 @@ const Result = () => {
           {jellyResult.title === "빨간곰 젤리" && (
             <Img1 src="/jelly/red.png" alt="Jelly Image" />
           )}
-          {jellyResult.title === "초록곰 젤리" && (
-            <Img1 src="/jelly/green.png" alt="Jelly Image" />
-          )}
           {jellyResult.title === "주황곰 젤리" && (
             <Img1 src="/jelly/orange.png" alt="Jelly Image" />
           )}
-          {jellyResult.title === "투명곰 젤리" && (
-            <Img1 src="/jelly/transparency.png" alt="Jelly Image" />
-          )}
           {jellyResult.title === "노란곰 젤리" && (
             <Img1 src="/jelly/yellow.png" alt="Jelly Image" />
+          )}
+          {jellyResult.title === "초록곰 젤리" && (
+            <Img1 src="/jelly/green.png" alt="Jelly Image" />
+          )}
+          {jellyResult.title === "투명곰 젤리" && (
+            <Img1 src="/jelly/transparency.png" alt="Jelly Image" />
           )}
         </Img>
         <List>
