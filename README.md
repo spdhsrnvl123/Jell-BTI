@@ -1,5 +1,6 @@
 # 🎉 Jell-BTI (젤리 추천 사이트)
 <img width="1024" alt="JELL-BTI" src="https://github.com/kimpizza/Jell-BTI_Project/assets/83896466/98885bc4-d727-4904-81f3-acf3e4cf69b5">
+<img width="1275" alt="스크린샷 2023-07-28 오전 12 09 17" src="https://github.com/kimpizza/Jell-BTI_Project/assets/108074336/8beff271-877b-4028-92ab-96b68e70ff1b">
 
 
 ## 🎞 프로젝트 설명        
