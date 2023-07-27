@@ -49,7 +49,7 @@ const Modify = () => {
             await axios.get(`/delete?bIdx=${bIdx}`);
             navigate(`/board`);
         } catch (error) {
-            
+
             console.error(error);
         }
     };
