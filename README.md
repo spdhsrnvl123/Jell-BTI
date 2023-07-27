@@ -12,6 +12,15 @@ jelly MBTI 테스트: 사용자들은 젤리와 관련된 MBTI 테스트를 수�
 커뮤니티 : 사용자들 간 젤리에 대한 정보와 이야기를 나눌 수 있다.
 카카오, 네이버 간편 로그인 : 사용자들은 별도의 가입절차 없이 카카오, 네이버 계정으로 사이트를 이용할 수 있다.
 
+## 🎨 프로젝트 화면 구성(초안)
+https://www.figma.com/file/BirIA9SMcNDdzDCB2IDUsj/HARIBO_DESIGN?type=design&node-id=0%3A1&t=RuZ8fKREFFKmksmX-1
+
+<img width="909" alt="스크린샷 2023-03-02 오후 4 48 28" src="https://user-images.githubusercontent.com/108074336/222364621-fff306dd-b5cf-4566-891b-77f3d6bc1fa7.png">
+
+## 🚀 ERD
+<img width="1081" alt="스크린샷 2023-03-23 오후 2 25 47" src="https://user-images.githubusercontent.com/108074336/227111784-c32170d6-1cbe-4f66-858c-1875cbbafdc3.png">
+
+### 화면구성
 #### 시작화면
 <img width="1024" alt="JELL-BTI" src="https://github.com/kimpizza/Jell-BTI_Project/assets/83896466/98885bc4-d727-4904-81f3-acf3e4cf69b5">
 <img width="1275" alt="스크린샷 2023-07-28 오전 12 09 17" src="https://github.com/kimpizza/Jell-BTI_Project/assets/108074336/8beff271-877b-4028-92ab-96b68e70ff1b">
@@ -36,25 +45,8 @@ jelly MBTI 테스트: 사용자들은 젤리와 관련된 MBTI 테스트를 수�
 | <img src="https://avatars.githubusercontent.com/u/111284065?v=4" width="200"/> |<img src="https://avatars.githubusercontent.com/u/83896466?s=400&u=fc59230a4dc6b05fb9e03f786c9dfa16d9e21ea6&v=4" width="200"/> |
 |                      [이재호](https://github.com/jaeho13)                      |                 [이태형](https://github.com/spdhsrnvl123)                   | 
 
-## 🏃‍♂️ 개발 기간(진행중..)
+## 🏃‍♂️ 개발 기간
 
-## ✨ 프로젝트 기능
-1. 젤리 정보 
-: 젤리에 대한 기본 정보와 맛과 식감에 대한 점수, 다른 사람들이 남긴 젤리 평점을 확인해 젤리 선택에 도움을 줍니다.
-
-2. 젤비티아이
-: 나와 성향이 가장 비슷한 곰 젤리는 무엇일까 확인하고, 나와 비슷한 유형의 사람들은 어떤 젤리를 선호하는지 알 수 있습니다.
-
-3. 회원 게시판
-: 젤리에 대한 다양한 이야기를 나눌 수 있습니다.
-
-## 🎨 프로젝트 화면 구성(초안)
-https://www.figma.com/file/BirIA9SMcNDdzDCB2IDUsj/HARIBO_DESIGN?type=design&node-id=0%3A1&t=RuZ8fKREFFKmksmX-1
-
-<img width="909" alt="스크린샷 2023-03-02 오후 4 48 28" src="https://user-images.githubusercontent.com/108074336/222364621-fff306dd-b5cf-4566-891b-77f3d6bc1fa7.png">
-
-## 🚀 ERD
-<img width="1081" alt="스크린샷 2023-03-23 오후 2 25 47" src="https://user-images.githubusercontent.com/108074336/227111784-c32170d6-1cbe-4f66-858c-1875cbbafdc3.png">
 
 
 ## ⚒️ 사용 기술
