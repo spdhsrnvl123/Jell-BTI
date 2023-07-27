@@ -2,6 +2,9 @@
 ## 🎞 프로젝트 개요
 많은 하리보 젤리 중 내 취향에 맞는 젤리는 무엇일까?
 
+## 🏃‍♂️ 개발 기간
+2023.01. ~ 2023.05.
+
 ### 프로젝트 목적:
 젤리에 대한 정보를 제공하고, 사용자들이 젤리와 관련된 평가를 남길 수 있는 커뮤니티를 구축, jelly MBTI 테스트를 통해 자신의 성향을 알아볼 수 있는 웹 사이트를 개발하는 것을 목표로 하였다.
 
@@ -26,9 +29,6 @@ https://www.figma.com/file/BirIA9SMcNDdzDCB2IDUsj/HARIBO_DESIGN?type=design&node
 <img width="1275" alt="스크린샷 2023-07-28 오전 12 09 17" src="https://github.com/kimpizza/Jell-BTI_Project/assets/108074336/8beff271-877b-4028-92ab-96b68e70ff1b">
 
 
-## 🎞 프로젝트 설명        
-많은 하리보 젤리 중 내 취향에 맞는 젤리는 무엇일까?
-
 ## 🧑‍💻 팀원 소개
   
 ### Back End Developer 🙋
@@ -45,7 +45,6 @@ https://www.figma.com/file/BirIA9SMcNDdzDCB2IDUsj/HARIBO_DESIGN?type=design&node
 | <img src="https://avatars.githubusercontent.com/u/111284065?v=4" width="200"/> |<img src="https://avatars.githubusercontent.com/u/83896466?s=400&u=fc59230a4dc6b05fb9e03f786c9dfa16d9e21ea6&v=4" width="200"/> |
 |                      [이재호](https://github.com/jaeho13)                      |                 [이태형](https://github.com/spdhsrnvl123)                   | 
 
-## 🏃‍♂️ 개발 기간
 
 
 
