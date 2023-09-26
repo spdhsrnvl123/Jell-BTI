@@ -179,8 +179,8 @@ https://www.figma.com/file/BirIA9SMcNDdzDCB2IDUsj/HARIBO_DESIGN?type=design&node
     </tbody>
                 <thead >
         <tr style="text-align:center">
-            <td>마이페이지</td>
-            <td>마이페이지</td>
+            <td>마이페이지에서 리뷰작성하기</td>
+            <td>마이페이지에서 내가 작성한 리뷰 확인하기</td>
         </tr>
     </thead>
     <tbody>
