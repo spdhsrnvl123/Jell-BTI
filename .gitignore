@@ -1,0 +1,31 @@
+# 루트에 .gitignore 생성
+cat > .gitignore << 'EOF'
+# Mac OS
+.DS_Store
+**/.DS_Store
+
+# Node
+node_modules/
+**/node_modules/
+*.log
+
+# 프론트엔드
+frontend/build/
+frontend/.env
+frontend/.env.local
+
+# 백엔드
+backend/build/
+backend/.gradle/
+backend/bin/
+backend/out/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.swp
+
+# 기타
+*.tmp
+EOF
