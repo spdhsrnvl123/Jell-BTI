@@ -13,7 +13,8 @@ MBTI 테스트를 통해 자신의 성향에 맞는 젤리를 추천받고, 젤�
 | 기간 | 2023.04 ~ 2023.05 |
 | 팀 구성 | FE 2명 / BE 2명 |
 | 담당 | Frontend |
-| 링크 | [Notion](https://roomy-hydrangea-829.notion.site/4808db788a3c42ce9c04066ddf27a41c) · [Figma](https://www.figma.com/design/BirIA9SMcNDdzDCB2IDUsj/JELL-BTI?node-id=0-1&p=f) |
+| 링크 | [Figma](https://www.figma.com/design/BirIA9SMcNDdzDCB2IDUsj/JELL-BTI?node-id=0-1&p=f) |
+
 <br/>
 
 ## 🛠 Tech Stack
